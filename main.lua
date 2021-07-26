@@ -6,10 +6,32 @@
 require "constants"
 require "nn_vision"
 require "fitness"
+require "menu"
 
+-----SETUP-----
+--restart game and navigate to stage select
+emu.poweron()
+menuWait(20)
+menuStart()
+menuDown()
+menuStart()
+menuWait(135)
+menuStart()
+menuWait(10)
+--select Air Man first
+menuUp()
+menuStart()
+--wait until game is playable
+while memory.readbyte(0x01FE) ~= STATE_PLAYING do
+	emu.frameadvance()
+end
+--create save state 
 save = savestate.object()
 savestate.save(save)
+emu.print("save state created")
 
+
+-----MAIN PROGRAM LOOP----
 while true do
 	
 	--vals = getInputValues()
