@@ -7,6 +7,7 @@ require "constants"
 require "nn_vision"
 require "fitness"
 require "menu"
+require "brain"
 
 -----SETUP-----
 --restart game and navigate to stage select
@@ -30,6 +31,17 @@ save = savestate.object()
 savestate.save(save)
 emu.print("save state created")
 
+brain = Brain:new{}
+emu.print("brain created")
+brain.initNewBrain(brain)
+emu.print("brain initialized")
+brain.mutateStructure(brain)
+brain.mutateStructure(brain)
+brain.mutateStructure(brain)
+cs = brain.getAllConnections(brain)
+for i, v in ipairs(cs) do
+	emu.print(v.inNode .. " to " .. v.outNode)
+end
 
 -----MAIN PROGRAM LOOP----
 while true do

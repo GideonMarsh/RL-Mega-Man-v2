@@ -7,7 +7,7 @@ require "constants"
 
 
 --the number of input nodes for each neural network
-inputNodes = (SCREEN_X_MAX - SCREEN_X_MIN) * (SCREEN_Y_MAX - SCREEN_Y_MIN)
+inputNodes = (SCREEN_X_MAX - SCREEN_X_MIN + 1) * (SCREEN_Y_MAX - SCREEN_Y_MIN + 1)
 --the number of output nodes for each neural network
 outputNodes = CONTROLLER_OUTPUTS
 
@@ -55,7 +55,7 @@ end
 
 function ConnectionGene:new(o)
 	o = o or {}
-	if o.inum == nil then
+	if not o.inum then
 		connectionCount = connectionCount + 1
 		o.inum = connectionCount
 	end
@@ -143,10 +143,12 @@ end
 function Brain.addNewConnection(self, inNode, outNode, weight)
 	--connection is illegal if it ends at an input node
 	if outNode <= inputNodes then return false end
+	
 	--connection is illegal if it starts at an output node
 	if inNode > inputNodes then
 		if inNode <= inputNodes + outputNodes then return false end
 	end
+	
 	--connection is illegal if it creates a cycle
 	if self.isNodeLaterOnPath(self, outNode, inNode) then return false end
 	
@@ -156,6 +158,7 @@ function Brain.addNewConnection(self, inNode, outNode, weight)
 	else
 		self.connections[inNode] = newConnection
 	end
+	return true
 end
 
 --add a new node in the middle of an existing connection
@@ -168,21 +171,133 @@ function Brain.addNewNode(self, oldConnection)
 	self.addNewConnection(self, nodeCount, oldConnection.outNode, oldConnection.weight)
 end
 
---get a table of all connections separately
+--get a table of all connections indexed like an array, with a length
 function Brain.getAllConnections(self)
-
+	local allConnections = {length = 0}
+	for i in pairs(self.connections) do
+		local c = self.connections[i]
+		repeat
+			allConnections.length = allConnections.length + 1
+			allConnections[allConnections.length] = c
+			c = c.nextConnection
+		until not c
+	end
+	return allConnections
 end
 
---get a table of all nodes
+--get a table of all nodes indexed like an array, with a length
 function Brain.getAllNodes(self)
-
+	local allConnections = self.getAllConnections(self)
+	local allNodes = {length = 0}
+	for i=1,(inputNodes + outputNodes) do
+		allNodes.length = allNodes.length + 1
+		allNodes[i] = allNodes.length
+	end
+	for i=1,allConnections.length do
+		local c = allConnections[i]
+		if not allNodes[c.inNode] then
+			allNodes.length = allNodes.length + 1
+			allNodes[c.inNode] = allNodes.length
+		end
+		if not allNodes[c.outNode] then
+			allNodes.length = allNodes.length + 1
+			allNodes[c.outNode] = allNodes.length
+		end
+	end
+	
+	local allNodesRev = {length = allNodes.length}
+	for i in pairs(allNodes) do
+		if i ~= "length" then
+			allNodesRev[allNodes[i]] = i
+		end
+	end
+	
+	return allNodesRev
 end
 
 --make one random structural mutation to the neural network
 --if there are no connections, a connection will be added
 --otherwise, choose randomly between adding a connection or a node
 function Brain.mutateStructure(self)
-	
+	local allConnections = self.getAllConnections(self)
+	if (allConnections.length == 0) or math.random() < 0.6 then
+		--add a connection
+		w = (math.random() - 0.5) * 2	--the weight of the new connection
+		
+		--a random connection is made following these steps:
+		--1. pick a node at random to be the start node
+		--2. pick a node at random to be the end node (can be the same as the start node)
+		--3. check to see if the connection already exists
+		--	a. if it does and it's disabled, enable it and return
+		--	b. if it does and it's enabled, return to step 2 and pick a new end node without replacement
+		--	c. if it doesn't, go to step 4
+		--4. attempt to make a new connection between the nodes
+		--	a. if the new connection is successful, return
+		--	b. if not, return to step 2 and pick a new end node without replacement
+		--5. if all end nodes have been tried, return to step 1 and pick a new node without replacement
+		--with this system all potential connections will be tried, even illegal ones
+		--if the outer loop ends without returning, there are no valid connections
+		
+		local startNodes = self.getAllNodes(self)
+		while startNodes.length > 0 do
+			--step 1
+			local s = math.random(startNodes.length)
+			local endNodes = self.getAllNodes(self)
+			while endNodes.length > 0 do
+				--step 2
+				local e = math.random(endNodes.length)
+				--step 3
+				local valid = true
+				local allcons = self.getAllConnections(self)
+				for i in pairs(allcons) do
+					if i ~= "length" then
+						if allcons[i].inNode == startNodes[s] and allcons[i].outNode == endNodes[e] then
+							if c.enabled then
+								valid = false
+								break
+							else
+								--step 3a
+								c.enabled = true
+								return
+							end
+						end
+					end
+				end
+				--step 3c
+				if valid then
+					--step 4
+					valid = self.addNewConnection(self, startNodes[s], endNodes[e], w)
+					--step 4a
+					if valid then return end
+				end
+				--step 3b and 4b (back to start of inner while loop)
+				endNodes[e] = endNodes[endNodes.length]
+				endNodes.length = endNodes.length - 1
+			end
+			--step 5 (back to start of outer while loop)
+			startNodes[s] = startNodes[startNodes.length]
+			startNodes.length = startNodes.length - 1
+		end
+		--if code gets here, no new connections are valid
+		return
+	else
+		--add a node
+		while allConnections.length > 0 do
+			--choose a connection at random
+			local i = math.random(allConnections.length)
+			if allConnections[i].enabled then
+				--if it's enabled, use it to add a node, then return
+				self.addNewNode(self, allConnections[i])
+				return
+			else
+				--if it's disabled, skip it and remove it from the list
+				allConnections[i] = allConnections[allConnections.length]
+				allConnections.length = allConnections.length - 1
+			end
+		end
+		--if code gets here, no connections are valid for adding a node
+		return
+	end
 end
 
 --modify the weights of each connection in the network with a certain probability
@@ -230,8 +345,8 @@ function Brain.prepareNodeTopology(self)
 	
 	--reverse list
 	local list3 = {}
-	for i,v in ipairs(list2) do
-		list3[counter - v] = i
+	for i in pairs(list2) do
+		list3[counter - list2[i]] = i
 	end
 	self.nodeOrder = list3
 end
