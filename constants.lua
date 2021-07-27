@@ -1,12 +1,15 @@
 --constants.lua
 --created by Gideon Marsh
 
---Screen Size
+--Screen limits, in pixels
 SCREEN_X_MIN = 0
 SCREEN_X_MAX = 255
 SCREEN_Y_MIN = 8
 SCREEN_Y_MAX = 231
 --Note: screen height is 0-239, but emulator only displays the range of 8-231
+
+--Number of player controls
+CONTROLLER_OUTPUTS = 6		--up, down, left, right, A, B
 
 --Memory Addresses
 CURRENT_STAGE = 0x002A
