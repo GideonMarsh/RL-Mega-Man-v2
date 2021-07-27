@@ -55,6 +55,10 @@ end
 
 function ConnectionGene:new(o)
 	o = o or {}
+	if o.inum == nil then
+		connectionCount = connectionCount + 1
+		o.inum = connectionCount
+	end
 	setmetatable(o, self)
 	self.__index = self
 	return o
@@ -89,7 +93,33 @@ end
 
 --calculate the outputs based on the given inputs
 function Brain.think(self, inputs)
-
+	local nodes = {}
+	
+	--set input nodes
+	for i=1,inputNodes do
+		nodes[i] = inputs[i]
+	end
+	
+	--forward propagate
+	local n = 1
+	while self.nodeOrder[n] do
+		local con = self.connections[self.nodeOrder[n]]
+		if con then
+			con.calculateValue(con, nodes)
+		end
+	end
+	
+	--return outputs
+	local outputs = {}
+	for i=1,outputNodes do
+		if nodes[i + 1 + inputNodes] then
+			outputs[i] = nodes[i + 1 + inputNodes]
+		else
+			outputs[i] = 0
+		end
+	end
+	
+	return outputs
 end
 
 --check if a node is later in the tree than the given node
@@ -120,7 +150,7 @@ function Brain.addNewConnection(self, inNode, outNode, weight)
 	--connection is illegal if it creates a cycle
 	if self.isNodeLaterOnPath(self, outNode, inNode) then return false end
 	
-	newConnection = ConnectionGene:new{weight=weight,enabled=true,inNode=inNode,outNode=outNode}
+	local newConnection = ConnectionGene:new{weight=weight,enabled=true,inNode=inNode,outNode=outNode}
 	if self.connections[inNode] then
 		self.connections[inNode].addNewConnection(self.connections[inNode], newConnection)
 	else
@@ -130,7 +160,12 @@ end
 
 --add a new node in the middle of an existing connection
 function Brain.addNewNode(self, oldConnection)
-
+	nodeCount = nodeCount + 1
+	
+	oldConnection.enabled = false
+	
+	self.addNewConnection(self, oldConnection.inNode, nodeCount, oldConnection.weight)
+	self.addNewConnection(self, nodeCount, oldConnection.outNode, oldConnection.weight)
 end
 
 --get a table of all connections separately
@@ -147,7 +182,7 @@ end
 --if there are no connections, a connection will be added
 --otherwise, choose randomly between adding a connection or a node
 function Brain.mutateStructure(self)
-
+	
 end
 
 --modify the weights of each connection in the network with a certain probability
@@ -160,7 +195,45 @@ end
 --determines the topological order of the neural network and sets it to nodeOrder
 --this should be called after all modifications to the structure, but before think()
 function Brain.prepareNodeTopology(self)
-
+	self.nodeOrder = {}
+	--create list forward with duplicates
+	local list1 = {index = 0}
+	function list1.add(node)
+		list1.index = list1.index + 1
+		list1[list1.index] = node
+	end
+	
+	for i=1,inputNodes do
+		list1.add(i)
+	end
+	local counter = 1
+	while counter < list1.index do
+		local c = self.connections[list1[counter]]
+		while c do
+			list1.add(c.outNode)
+			c = c.nextConnection
+		end
+		counter = counter + 1
+	end
+	
+	--create backwards list by removing duplicates
+	local list2 = {}
+	
+	counter = 0
+	while list1.index > 0 do
+		if list2[list1[list1.index]] == nil then
+			counter = counter + 1
+			list2[list1[list1.index]] = counter
+		end
+		list1.index = list1.index - 1
+	end
+	
+	--reverse list
+	local list3 = {}
+	for i,v in ipairs(list2) do
+		list3[counter - v] = i
+	end
+	self.nodeOrder = list3
 end
 
 function Brain:new(o)
