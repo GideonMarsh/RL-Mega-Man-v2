@@ -49,7 +49,7 @@ function ConnectionGene.calculateValue(self, nodes)
 		end
 	end
 	if self.nextConnection then
-		self.nextConnection.calculateValue(nodes)
+		self.nextConnection.calculateValue(self.nextConnection, nodes)
 	end
 end
 
@@ -107,6 +107,7 @@ function Brain.think(self, inputs)
 		if con then
 			con.calculateValue(con, nodes)
 		end
+		n = n + 1
 	end
 	
 	--return outputs
@@ -220,7 +221,9 @@ end
 --otherwise, choose randomly between adding a connection or a node
 function Brain.mutateStructure(self)
 	local allConnections = self.getAllConnections(self)
-	if (allConnections.length == 0) or math.random() < 0.6 then
+	local rand = math.random(5)
+	--emu.print(rand)
+	if (allConnections.length == 0) or rand < 5 then
 		--add a connection
 		w = (math.random() - 0.5) * 2	--the weight of the new connection
 		
@@ -252,12 +255,13 @@ function Brain.mutateStructure(self)
 				for i in pairs(allcons) do
 					if i ~= "length" then
 						if allcons[i].inNode == startNodes[s] and allcons[i].outNode == endNodes[e] then
-							if c.enabled then
+							if allcons[i].enabled then
 								valid = false
 								break
 							else
 								--step 3a
-								c.enabled = true
+								allcons[i].enabled = true
+								--emu.print("enable connection between " .. allcons[i].inNode .. " and " .. allcons[i].outNode)
 								return
 							end
 						end
@@ -268,7 +272,10 @@ function Brain.mutateStructure(self)
 					--step 4
 					valid = self.addNewConnection(self, startNodes[s], endNodes[e], w)
 					--step 4a
-					if valid then return end
+					if valid then 
+						--emu.print("add connection between " .. startNodes[s] .. " and " .. endNodes[e])
+						return 
+					end
 				end
 				--step 3b and 4b (back to start of inner while loop)
 				endNodes[e] = endNodes[endNodes.length]
@@ -288,6 +295,7 @@ function Brain.mutateStructure(self)
 			if allConnections[i].enabled then
 				--if it's enabled, use it to add a node, then return
 				self.addNewNode(self, allConnections[i])
+				--emu.print("add node " .. nodeCount .. " between " .. allConnections[i].inNode .. " and " .. allConnections[i].outNode)
 				return
 			else
 				--if it's disabled, skip it and remove it from the list
@@ -346,7 +354,7 @@ function Brain.prepareNodeTopology(self)
 	--reverse list
 	local list3 = {}
 	for i in pairs(list2) do
-		list3[counter - list2[i]] = i
+		list3[counter - list2[i] + 1] = i
 	end
 	self.nodeOrder = list3
 end
