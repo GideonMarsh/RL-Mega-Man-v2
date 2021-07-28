@@ -31,10 +31,14 @@ BOSS_HP = 0x06C1
 GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
 WEIGHT_IMPORTANCE_COEFFICIENT = 5
 
-POPULATION_SIZE = 10
+POPULATION_SIZE = 100
 STRUCTURAL_MUTATION_CHANCE = 0.2
 WEIGHT_MUTATION_CHANCE = 0.4
 BRAIN_DIFFERENCE_DELTA = 10
 
 --Miscellaneous
-TOTAL_FRAME_TIMEOUT = 3600	--max number of frames a brain is allowed to run for (game is 60fps)
+TOTAL_FRAME_TIMEOUT = 36000	--max number of frames a brain is allowed to run for (game is 60fps)
+NO_PROGRESS_TIMEOUT = 1800	--if fitness does not change after this many frames, the current run ends
+QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
+
+FITNESS_OFFSET = 127		--fitness starts at this value + 1, subtract this for actual starting fitness

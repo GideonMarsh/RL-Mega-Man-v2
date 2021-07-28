@@ -39,6 +39,8 @@ ga = GeneticAlgorithmController:new{}
 
 -----MAIN PROGRAM LOOP----
 local frameCounter = 1
+local lastFitness = 0
+local lastFitnessChange = 0
 --loop once per frame
 while true do
 	--do neural network calculation for this frame
@@ -49,6 +51,14 @@ while true do
 					["left"]=(out[3] > 0),["right"]=(out[4] > 0),
 					["A"]=(out[5] > 0),["B"]=(out[6] > 0)})
 					
+	--set fitness as of this frame
+	setFitness()
+	
+	if checkFitness() ~= lastFitness then
+		lastFitnessChange = frameCounter
+		lastFitness = checkFitness()
+	end
+	
 	--show information on screen
 	local outString = ""
 	for i=1,6 do
@@ -59,19 +69,38 @@ while true do
 		end
 	end
 	
-	gui.text(10, 209, outString, "white", "black")
-	gui.text(10, 218, ga.getIndividualInfo(ga), "white", "black")
+	gui.text(10, 12, outString, "white", "black")
+	gui.text(10, 209, ga.getIndividualInfo(ga), "white", "black")
+	gui.text(10, 218, "Fitness: " .. checkFitness(), "white", "black")
 	gui.text(211, 218, frameCounter, "white", "black")
-	
-	--set fitness as of this frame
-	setFitness()
+	gui.text(211, 209, NO_PROGRESS_TIMEOUT - (frameCounter - lastFitnessChange), "white", "black")
 	
 	--check to see if current run is over
+	--run ends if any of these conditions are true:
+	--player died
+	--one second has passed since starting, and no progress was made
+	--thirty seconds has passed without any progress
+	--ten minutes have passed since starting
 	local val = memory.readbyte(0x01FE)
-	if val == 195 or frameCounter == TOTAL_FRAME_TIMEOUT then
+	if (val == 195) or 
+		(frameCounter == TOTAL_FRAME_TIMEOUT) or 
+		(frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT) or 
+		(frameCounter == QUICK_TIMEOUT and lastFitnessChange == 1) then
 		--assign final fitness to current brain
 		local fit = returnFitness()
-		emu.print(fit)
+		if val == 195 then
+			emu.print("Player died; fitness = " .. fit)
+		end
+		if frameCounter == TOTAL_FRAME_TIMEOUT then
+			emu.print("Out of time; fitness = " .. fit)
+		end
+		if frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT then
+			emu.print("Stopped progressing; fitness = " .. fit)
+		end
+		if frameCounter == QUICK_TIMEOUT and lastFitnessChange == 1 then
+			emu.print("No progress at start; fitness = " .. fit)
+		end
+		
 		ga.assignFitness(ga,fit)
 		
 		--prepare next brain
@@ -83,9 +112,11 @@ while true do
 		--reset run
 		savestate.load(save)
 		frameCounter = 1
+		lastFitness = 0
+		lastFitnessChange = 0
+	else
+		--advance to next frame
+		frameCounter = frameCounter + 1
+		emu.frameadvance()
 	end
-	
-	--advance to next frame
-	frameCounter = frameCounter + 1
-	emu.frameadvance()
 end

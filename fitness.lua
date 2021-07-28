@@ -16,6 +16,7 @@ end
 
 function setFitness()
 	local f = findFitness()
+	f = f - FITNESS_OFFSET
 	if f > fitness then fitness = f end
 end
 
