@@ -24,6 +24,8 @@ STATE_RESPAWNING = 195		--one of the GAME_STATE values used while respawning
 STATE_LEVEL_COMPLETE = 143	--GAME_STATE value for completed level
 STATE_STAGE_SELECT = 120	--GAME_STATE value on stage select screen
 STATE_GAME_OVER = 197		--GAME_STATE value for game over
-
-
 BOSS_HP = 0x06C1
+
+--Genetic algorithm
+GENE_IMPORTANCE_COEFFICIENT = 10
+WEIGHT_IMPORTANCE_COEFFICIENT = 5

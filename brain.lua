@@ -42,6 +42,9 @@ end
 
 function ConnectionGene.calculateValue(self, nodes)
 	if self.enabled then
+		if not nodes[self.inNode] then
+			emu.print("ERROR: " .. self.inNode .. " is not a valid node")
+		end
 		if nodes[self.outNode] then
 			nodes[self.outNode] = nodes[self.outNode] + (nodes[self.inNode] * self.weight)
 		else
@@ -55,7 +58,7 @@ end
 
 function ConnectionGene:new(o)
 	o = o or {}
-	if not o.inum then
+	if o.inum == 0 then
 		connectionCount = connectionCount + 1
 		o.inum = connectionCount
 	end
@@ -82,13 +85,94 @@ function Brain.initNewBrain(self)
 end
 
 --make this brain the offspring of two other brains
+--if there is a conflict, priority goes to parentA
 function Brain.crossover(self, parentA, parentB)
-
+	local parentAGenes = parentA.getAllConnections(parentA)
+	local parentBGenes = parentB.getAllConnections(parentB)
+	
+	--start with all genes of parentA
+	for i,v in ipairs(parentAGenes) do
+		if i ~= length then
+			self.addNewConnection(self,v.inNode,v.outNode,v.weight,v.inum,v.enabled)
+		end
+	end
+	
+	--check each gene of parent B before adding
+	local currentGenes = self.getAllConnections(self)
+	for ib,vb in ipairs(parentBGenes) do
+		if ib ~= length then
+			local match = false
+			for ic,vc in ipairs(currentGenes) do
+				if ic ~= length then
+					if vb.inum == vc.inum or (vb.inNode == vc.inNode and vb.outNode == vc.outNode) then
+						--matching gene, choose randomly between their weights
+						if math.random() < 0.5 then vc.weight = vb.weight end
+						match = true
+						break
+					end
+				end
+			end
+			if not match then
+				--doesn't match any gene from parentA, add it if it doesn't create a cycle
+				if not self.isNodeLaterOnPath(self, vb.outNode,vb.inNode) then
+					self.addNewConnection(self,vb.inNode,vb.outNode,vb.weight,vb.inum,vb.enabled)
+				end
+			end
+		end
+	end
 end
 
 --check how similar this brain is to another
 function Brain.compare(self, otherBrain)
-
+	--compare the connection genome of both genes using the following function
+	--d = (c1 * D) / N + c2 * while
+	--c1, c2 = importance coefficients
+	--d = compatibility distance
+	--D = number of excess and disjoint genes
+	--W = average weight differences of matching genes
+	--N = number of genes in the larger genome
+	
+	local c1 = GENE_IMPORTANCE_COEFFICIENT
+	local c2 = WEIGHT_IMPORTANCE_COEFFICIENT
+	
+	local allGenes1 = self.getAllConnections(self)
+	local allGenes2 = otherBrain.getAllConnections(otherBrain)
+	
+	local N = (allGenes1.length > allGenes2.length) and allGenes1.length or allGenes2.length
+	
+	local matchedWeights = {length = 0}
+	--for every gene in allGenes1, try to find a match in allGenes2
+	for i,v in ipairs(allGenes1) do
+		if i ~= "length" then
+			for j,w in ipairs(allGenes2) do
+				if j ~= "length" then
+					if v.inum == w.inum then
+						--genes matched
+						matchedWeights.length = matchedWeights.length + 1
+						matchedWeights[matchedWeights.length] = math.abs(v.weight - w.weight)
+						break
+					end
+				end
+			end
+		end
+	end
+	
+	--number of mismatched genes == total number of genes - matched gene pairs
+	local D = allGenes1.length + allGenes2.length - (matchedWeights.length * 2)
+	
+	--find average weight difference of matched genes
+	local W = 0
+	if matchedWeights.length > 0 then
+		for i,v in ipairs(matchedWeights) do
+			if i ~= "length" then
+				W = W + v
+			end
+		end
+		W = W / matchedWeights.length
+	end
+	
+	local d = (c1 * D) / N + c2 * W
+	return d
 end
 
 --calculate the outputs based on the given inputs
@@ -141,7 +225,7 @@ function Brain.isNodeLaterOnPath(self, startNodeInum, locateInum)
 end
 
 --add a new connection between two nodes
-function Brain.addNewConnection(self, inNode, outNode, weight)
+function Brain.addNewConnection(self, inNode, outNode, weight, inum, enabled)
 	--connection is illegal if it ends at an input node
 	if outNode <= inputNodes then return false end
 	
@@ -153,7 +237,7 @@ function Brain.addNewConnection(self, inNode, outNode, weight)
 	--connection is illegal if it creates a cycle
 	if self.isNodeLaterOnPath(self, outNode, inNode) then return false end
 	
-	local newConnection = ConnectionGene:new{weight=weight,enabled=true,inNode=inNode,outNode=outNode}
+	local newConnection = ConnectionGene:new{weight=weight,inNode=inNode,outNode=outNode,inum=inum,enabled=enabled}
 	if self.connections[inNode] then
 		self.connections[inNode].addNewConnection(self.connections[inNode], newConnection)
 	else
@@ -168,8 +252,8 @@ function Brain.addNewNode(self, oldConnection)
 	
 	oldConnection.enabled = false
 	
-	self.addNewConnection(self, oldConnection.inNode, nodeCount, oldConnection.weight)
-	self.addNewConnection(self, nodeCount, oldConnection.outNode, oldConnection.weight)
+	self.addNewConnection(self, oldConnection.inNode, nodeCount, oldConnection.weight, 0, true)
+	self.addNewConnection(self, nodeCount, oldConnection.outNode, oldConnection.weight, 0, true)
 end
 
 --get a table of all connections indexed like an array, with a length
@@ -270,7 +354,7 @@ function Brain.mutateStructure(self)
 				--step 3c
 				if valid then
 					--step 4
-					valid = self.addNewConnection(self, startNodes[s], endNodes[e], w)
+					valid = self.addNewConnection(self, startNodes[s], endNodes[e], w, 0, true)
 					--step 4a
 					if valid then 
 						--emu.print("add connection between " .. startNodes[s] .. " and " .. endNodes[e])
@@ -312,7 +396,15 @@ end
 --the chance to modify each connection is 1/number of connections or 1%, whichever is higher
 --this means if there is only one connection, it is guaranteed to be modified
 function Brain.mutateWeights(self)
-
+	local allConnections = self.getAllConnections(self)
+	
+	for i,v in ipairs(allConnections) do
+		if i ~= "length" then
+			if (math.min(allConnections.length, 100) * math.random()) < 1 then
+				v.weight = v.weight + ((math.random() - 0.5) * 2)
+			end
+		end
+	end
 end
 
 --determines the topological order of the neural network and sets it to nodeOrder
@@ -360,7 +452,11 @@ function Brain.prepareNodeTopology(self)
 end
 
 function Brain:new(o)
-	o = o or {fitness = -1,connections = {}, nodeOrder = {}, species = -1}
+	o = o or {}
+	o.fitness = -1
+	o.connections = {}
+	o.nodeOrder = {}
+	o.species = -1
 	setmetatable(o, self)
 	self.__index = self
 	return o

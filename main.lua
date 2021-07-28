@@ -31,23 +31,45 @@ save = savestate.object()
 savestate.save(save)
 emu.print("save state created")
 
-brain = Brain:new{}
-emu.print("brain created")
-brain.initNewBrain(brain)
-emu.print("brain initialized")
+brain1 = Brain:new{}
+brain2 = Brain:new{}
+emu.print("brains created")
+brain1.initNewBrain(brain1)
+brain2.initNewBrain(brain2)
+emu.print("brains initialized")
 for i=1,20 do
-	brain.mutateStructure(brain)
+	brain1.mutateStructure(brain1)
+	brain2.mutateStructure(brain2)
 end
-emu.print("brain mutated")
---cs = brain.getAllConnections(brain)
---for i, v in ipairs(cs) do
+emu.print("brains mutated")
+--emu.print("brain 1 connections")
+--cs1 = brain1.getAllConnections(brain1)
+--for i, v in ipairs(cs1) do
 --	emu.print(v.inNode .. " to " .. v.outNode)
 --end
-brain.prepareNodeTopology(brain)
+--emu.print("brain 2 connections")
+--cs2 = brain2.getAllConnections(brain2)
+--for i, v in ipairs(cs2) do
+--	emu.print(v.inNode .. " to " .. v.outNode)
+--end
+brain3 = Brain:new{}
+emu.print("brain3 created")
+brain3.crossover(brain3,brain1,brain2)
+emu.print("brain3 initialized as child")
+--emu.print("brain 3 connections")
+--cs3 = brain3.getAllConnections(brain3)
+--for i, v in ipairs(cs3) do
+--	emu.print(v.inNode .. " to " .. v.outNode)
+--end
+
+brain3.prepareNodeTopology(brain3)
 emu.print("topology prepared")
 --for i,v in ipairs(brain.nodeOrder) do
 --	emu.print(i .. " " .. v)
 --end
+emu.print("brain1 to brain2: " .. brain1.compare(brain1,brain2))
+emu.print("brain1 to brain3: " .. brain1.compare(brain1,brain3))
+emu.print("brain2 to brain3: " .. brain2.compare(brain1,brain3))
 
 -----MAIN PROGRAM LOOP----
 while true do
@@ -57,7 +79,7 @@ while true do
 	--gui.pixel(100,100,{val,val,val})
 	--gui.text(20, 20, val, "white", "black")
 	
-	local out = brain.think(brain, getInputValues())
+	local out = brain3.think(brain3, getInputValues())
 	
 	local outString = ""
 	for i=1,6 do
