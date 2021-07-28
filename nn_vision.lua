@@ -15,7 +15,7 @@ function getInputValues()
 	for i = SCREEN_Y_MIN, SCREEN_Y_MAX do
 		for j = SCREEN_X_MIN, SCREEN_X_MAX do
 			local r, g, b, p = emu.getscreenpixel(j, i, true)
-			values[count] = ((r + g + b) / 3)
+			values[count] = ((r + g + b) / 3) - 128
 			count = count + 1
 		end
 	end

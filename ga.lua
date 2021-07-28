@@ -131,20 +131,27 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	local popCounter = 1
 	
 	for s in pairs(currentSpecies) do
+		emu.print("species " .. s)
 		if newSizes[s] > 0 then
+			emu.print("old size " .. currentSpecies[s].length)
+			emu.print("new size " .. newSizes[s])
 			local avefit = 0
 			for i=1,currentSpecies[s].length do
+				emu.print("brain " .. i .. " fitness " .. currentSpecies[s][i].fitness)
 				avefit = avefit + currentSpecies[s][i].fitness
 			end
-			avefit = avefit / currentSpecies[s].length
+			avefit = math.floor(avefit / currentSpecies[s].length)	--floor it to prevent rounding errors
+			emu.print("ave fit " .. avefit)
 			local eligibleParents = {length = 0}
 			for i=1,currentSpecies[s].length do
 				if currentSpecies[s][i].fitness >= avefit then
+					emu.print("brain " .. i .. " is parent")
 					eligibleParents.length = eligibleParents.length + 1
 					eligibleParents[eligibleParents.length] = currentSpecies[s][i]
 				end
 			end
 			
+			emu.print("eligible parents " .. eligibleParents.length)
 			for i=1,newSizes[s] do
 				parent1 = eligibleParents[math.random(eligibleParents.length)]
 				parent2 = eligibleParents[math.random(eligibleParents.length)]
