@@ -419,8 +419,11 @@ function Brain.prepareNodeTopology(self)
 		list1[list1.index] = node
 	end
 	
+	--only include input nodes that have a connection coming from them
 	for i=1,inputNodes do
-		list1.add(i)
+		if self.connections[i] then
+			list1.add(i)
+		end
 	end
 	local counter = 1
 	while counter < list1.index do
@@ -458,11 +461,13 @@ function Brain.setSpecies(self,specie)
 end
 
 function Brain:new(o)
-	o = o or {}
-	o.fitness = -1
-	o.connections = {}
-	o.nodeOrder = {}
-	o.species = -1
+	if not o then
+		o = {}
+		o.fitness = -1
+		o.connections = {}
+		o.nodeOrder = {}
+		o.species = -1
+	end
 	setmetatable(o, self)
 	self.__index = self
 	return o

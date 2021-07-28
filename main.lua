@@ -10,6 +10,7 @@ require "fitness"
 require "menu"
 require "brain"
 require "ga"
+require "save_progress"
 
 -----SETUP-----
 --restart game and navigate to stage select
@@ -33,11 +34,28 @@ save = savestate.object()
 savestate.save(save)
 emu.print("save state created")
 
---create genetic algorithm controller
-ga = GeneticAlgorithmController:new{}
-
+--create new genetic algorithm controller or load from file
+gaFile = "saves/recent.txt"
+spFile = "saves/recent_species.txt"
+ga = {}	--the name of this variable is not allowed to change since it is saved to a file
+if fileExists(gaFile) and fileExists(spFile) then
+	ga = GeneticAlgorithmController:new(loadFromFile(gaFile))
+	emu.print("population loaded")
+	species = loadFromFile(spFile)
+	reinstantiateSpecies()
+	emu.print("species list loaded")
+	emu.print(species[90].connections[18609].weight)
+else
+	ga = GeneticAlgorithmController:new()
+	emu.print("new population created")
+	saveObject(gaFile, ga)
+	emu.print("population saved")
+	saveObject(spFile, species)
+	emu.print("species list saved")
+end
 
 -----MAIN PROGRAM LOOP----
+savestate.load(save)
 local frameCounter = 1
 local lastFitness = 0
 local lastFitnessChange = 0
@@ -107,6 +125,11 @@ while true do
 		--if no brains remain, create next generation
 		if ga.nextBrain(ga) then
 			ga.makeNextGeneration(ga)
+			emu.print("next generation created")
+			saveGeneration("saves/recent.txt", ga)
+			emu.print("population saved")
+			saveSpecies("saves/recent_species.txt", species)
+			emu.print("species list saved")
 		end
 		
 		--reset run

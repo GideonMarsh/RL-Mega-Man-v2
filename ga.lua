@@ -7,11 +7,16 @@
 require "constants"
 require "brain"
 
+--the table of species' representatives
+--the brains in this table are used as the comparisons to determine which species another brain belongs to
+--the name of this variable is not allowed to change since it is saved to a file
+species = {length = 0}
+
 --the prototype for GeneticAlgorithmController objects
 --GeneticAlgorithmController objects maintain the population of brains being used in the genetic algorithm
 --the main driver should not have access to brain objects directly
 
-GeneticAlgorithmController = {population={},species={},generation=0,currentBrain=0}
+GeneticAlgorithmController = {population={},generation=0,currentBrain=0}
 
 --pass the inputs to the current brain and return the output
 function GeneticAlgorithmController.passInputs(self,inputs)
@@ -131,27 +136,20 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	local popCounter = 1
 	
 	for s in pairs(currentSpecies) do
-		emu.print("species " .. s)
 		if newSizes[s] > 0 then
-			emu.print("old size " .. currentSpecies[s].length)
-			emu.print("new size " .. newSizes[s])
 			local avefit = 0
 			for i=1,currentSpecies[s].length do
-				emu.print("brain " .. i .. " fitness " .. currentSpecies[s][i].fitness)
 				avefit = avefit + currentSpecies[s][i].fitness
 			end
 			avefit = math.floor(avefit / currentSpecies[s].length)	--floor it to prevent rounding errors
-			emu.print("ave fit " .. avefit)
 			local eligibleParents = {length = 0}
 			for i=1,currentSpecies[s].length do
 				if currentSpecies[s][i].fitness >= avefit then
-					emu.print("brain " .. i .. " is parent")
 					eligibleParents.length = eligibleParents.length + 1
 					eligibleParents[eligibleParents.length] = currentSpecies[s][i]
 				end
 			end
 			
-			emu.print("eligible parents " .. eligibleParents.length)
 			for i=1,newSizes[s] do
 				parent1 = eligibleParents[math.random(eligibleParents.length)]
 				parent2 = eligibleParents[math.random(eligibleParents.length)]
@@ -177,7 +175,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--step 4
 	for i,v in ipairs(newPopulation) do
 		local found = false
-		for j,w in ipairs(self.species) do
+		for j,w in ipairs(species) do
 			if j ~= "length" then
 				if v.compare(v,w) <= BRAIN_DIFFERENCE_DELTA then
 					v.species = j
@@ -187,9 +185,9 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			end
 		end
 		if not found then
-			self.species.length = self.species.length + 1
-			self.species[self.species.length] = v
-			v.species = self.species.length
+			species.length = species.length + 1
+			species[species.length] = v
+			v.species = species.length
 		end
 	end
 	
@@ -211,39 +209,67 @@ function GeneticAlgorithmController.getIndividualInfo(self)
 end
 
 function GeneticAlgorithmController:new(o)
-	o = o or {}
-	o.population={}
-	o.species={length = 0}
-	o.generation=1
-	o.currentBrain=1
-	
-	for i=1,POPULATION_SIZE do
-		newBrain = Brain:new{}
-		newBrain.initNewBrain(newBrain)
-		
-		newBrain.prepareNodeTopology(newBrain)
-		o.population[i] = newBrain
-	end
-	
-	for i,v in ipairs(o.population) do
-		local found = false
-		for j,w in ipairs(o.species) do
-			if j ~= "length" then
-				if v.compare(v,w) <= BRAIN_DIFFERENCE_DELTA then
-					v.species = j
-					found = true
-					break
+	if o then
+		for i=1,POPULATION_SIZE do
+			o.population[i] = Brain:new(o.population[i])
+			for j in pairs(o.population[i].connections) do
+				local con = o.population[i].connections[j]
+				while con do
+					con = ConnectionGene:new(con)
+					con = con.nextConnection
 				end
 			end
 		end
-		if not found then
-			o.species.length = o.species.length + 1
-			o.species[o.species.length] = v
-			v.species = o.species.length
+	else
+		o = {}
+		o.population={}
+		o.generation=1
+		o.currentBrain=1
+		
+		species = {length = 0}
+		
+		for i=1,POPULATION_SIZE do
+			newBrain = Brain:new()
+			newBrain.initNewBrain(newBrain)
+			
+			newBrain.prepareNodeTopology(newBrain)
+			o.population[i] = newBrain
+		end
+		
+		for i,v in ipairs(o.population) do
+			local found = false
+			for j,w in ipairs(species) do
+				if j ~= "length" then
+					if v.compare(v,w) <= BRAIN_DIFFERENCE_DELTA then
+						v.species = j
+						found = true
+						break
+					end
+				end
+			end
+			if not found then
+				species.length = species.length + 1
+				species[species.length] = v
+				v.species = species.length
+			end
 		end
 	end
 	
 	setmetatable(o, self)
 	self.__index = self
 	return o
+end
+
+--helper function for reinstantiating species table from file
+function reinstantiateSpecies()
+	for i=1,species.length do
+		species[i] = Brain:new(species[i])
+		for j in pairs(species[i].connections) do
+			local con = species[i].connections[j]
+			while con do
+				con = ConnectionGene:new(con)
+				con = con.nextConnection
+			end
+		end
+	end
 end

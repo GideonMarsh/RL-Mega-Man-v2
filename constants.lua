@@ -2,6 +2,10 @@
 --created by Gideon Marsh
 --github.com/GideonMarsh
 
+
+--File names
+
+
 --Screen limits, in pixels
 SCREEN_X_MIN = 0
 SCREEN_X_MAX = 255
