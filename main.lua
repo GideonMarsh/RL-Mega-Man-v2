@@ -13,6 +13,8 @@ require "ga"
 require "save_progress"
 
 -----SETUP-----
+--set the rng seed to the current time, effectively randomising it
+math.randomseed(os.time())
 --restart game and navigate to stage select
 emu.poweron()
 menuWait(20)
