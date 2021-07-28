@@ -153,7 +153,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			for i=1,newSizes[s] do
 				parent1 = eligibleParents[math.random(eligibleParents.length)]
 				parent2 = eligibleParents[math.random(eligibleParents.length)]
-				newBrain = Brain:new{}
+				newBrain = Brain:new()
 				newBrain.crossover(newBrain,parent1,parent2)
 				newPopulation[popCounter] = newBrain
 				popCounter = popCounter + 1

@@ -46,7 +46,6 @@ if fileExists(gaFile) and fileExists(spFile) then
 	species = loadFromFile(spFile)
 	reinstantiateSpecies()
 	emu.print("species list loaded")
-	emu.print(species[90].connections[18609].weight)
 else
 	ga = GeneticAlgorithmController:new()
 	emu.print("new population created")
@@ -128,9 +127,9 @@ while true do
 		if ga.nextBrain(ga) then
 			ga.makeNextGeneration(ga)
 			emu.print("next generation created")
-			saveGeneration("saves/recent.txt", ga)
+			saveObject(gaFile, ga)
 			emu.print("population saved")
-			saveSpecies("saves/recent_species.txt", species)
+			saveObject(spFile, species)
 			emu.print("species list saved")
 		end
 		
