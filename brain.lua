@@ -1,5 +1,6 @@
 --brain.lua
 --created by Gideon Marsh
+--github.com/GideonMarsh
 
 --the neural network brains that form the population of the genetic algorithm
 
@@ -449,6 +450,11 @@ function Brain.prepareNodeTopology(self)
 		list3[counter - list2[i] + 1] = i
 	end
 	self.nodeOrder = list3
+end
+
+--sets the species this brain belongs in
+function Brain.setSpecies(self,specie)
+	self.species = specie
 end
 
 function Brain:new(o)

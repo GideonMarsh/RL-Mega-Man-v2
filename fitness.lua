@@ -1,5 +1,6 @@
 --fitness.lua
 --created by Gideon Marsh
+--github.com/GideonMarsh
 
 --calculates the fitness of the current player
 

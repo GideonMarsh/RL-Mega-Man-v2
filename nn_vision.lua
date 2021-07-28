@@ -1,5 +1,6 @@
 --nn_vision.lua
 --created by Gideon Marsh
+--github.com/GideonMarsh
 
 --script for reading pixels on screen
 --reads the pixels one row at a time, left to right (like words in a book)

@@ -1,5 +1,6 @@
 --main.lua
 --created by Gideon Marsh
+--github.com/GideonMarsh
 
 --The main driver for the RL-Mega-Man-v2 project scripts
 
@@ -8,6 +9,7 @@ require "nn_vision"
 require "fitness"
 require "menu"
 require "brain"
+require "ga"
 
 -----SETUP-----
 --restart game and navigate to stage select
@@ -31,17 +33,17 @@ save = savestate.object()
 savestate.save(save)
 emu.print("save state created")
 
-brain1 = Brain:new{}
-brain2 = Brain:new{}
-emu.print("brains created")
-brain1.initNewBrain(brain1)
-brain2.initNewBrain(brain2)
-emu.print("brains initialized")
-for i=1,20 do
-	brain1.mutateStructure(brain1)
-	brain2.mutateStructure(brain2)
-end
-emu.print("brains mutated")
+--brain1 = Brain:new{}
+--brain2 = Brain:new{}
+--emu.print("brains created")
+--brain1.initNewBrain(brain1)
+--brain2.initNewBrain(brain2)
+--emu.print("brains initialized")
+--for i=1,20 do
+--	brain1.mutateStructure(brain1)
+--	brain2.mutateStructure(brain2)
+--end
+--emu.print("brains mutated")
 --emu.print("brain 1 connections")
 --cs1 = brain1.getAllConnections(brain1)
 --for i, v in ipairs(cs1) do
@@ -52,24 +54,28 @@ emu.print("brains mutated")
 --for i, v in ipairs(cs2) do
 --	emu.print(v.inNode .. " to " .. v.outNode)
 --end
-brain3 = Brain:new{}
-emu.print("brain3 created")
-brain3.crossover(brain3,brain1,brain2)
-emu.print("brain3 initialized as child")
+--brain3 = Brain:new{}
+--emu.print("brain3 created")
+--brain3.crossover(brain3,brain1,brain2)
+--emu.print("brain3 initialized as child")
 --emu.print("brain 3 connections")
 --cs3 = brain3.getAllConnections(brain3)
 --for i, v in ipairs(cs3) do
 --	emu.print(v.inNode .. " to " .. v.outNode)
 --end
 
-brain3.prepareNodeTopology(brain3)
-emu.print("topology prepared")
+--brain3.prepareNodeTopology(brain3)
+--emu.print("topology prepared")
 --for i,v in ipairs(brain.nodeOrder) do
 --	emu.print(i .. " " .. v)
 --end
-emu.print("brain1 to brain2: " .. brain1.compare(brain1,brain2))
-emu.print("brain1 to brain3: " .. brain1.compare(brain1,brain3))
-emu.print("brain2 to brain3: " .. brain2.compare(brain1,brain3))
+--emu.print("brain1 to brain2: " .. brain1.compare(brain1,brain2))
+--emu.print("brain1 to brain3: " .. brain1.compare(brain1,brain3))
+--emu.print("brain2 to brain3: " .. brain2.compare(brain1,brain3))
+
+
+ga = GeneticAlgorithmController:new{}
+local frameCounter = 1
 
 -----MAIN PROGRAM LOOP----
 while true do
@@ -79,7 +85,7 @@ while true do
 	--gui.pixel(100,100,{val,val,val})
 	--gui.text(20, 20, val, "white", "black")
 	
-	local out = brain3.think(brain3, getInputValues())
+	local out = ga.passInputs(ga, getInputValues())
 	
 	local outString = ""
 	for i=1,6 do
@@ -89,7 +95,9 @@ while true do
 			outString = outString .. "off "
 		end
 	end
-	gui.text(10, 200, outString, "white", "black")
+	
+	gui.text(10, 209, outString, "white", "black")
+	gui.text(10, 218, ga.getIndividualInfo(ga), "white", "black")
 	joypad.set(1, {["up"]=(out[1] > 0),["down"]=(out[2] > 0),
 					["left"]=(out[3] > 0),["right"]=(out[4] > 0),
 					["A"]=(out[5] > 0),["B"]=(out[6] > 0)})
@@ -97,11 +105,17 @@ while true do
 	setFitness()
 	
 	local val = memory.readbyte(0x01FE)
-	if val == 195 then
-		emu.print(returnFitness())
+	if val == 195 or frameCounter = 10000 then
+		local fit = returnFitness()
+		emu.print(fit)
+		ga.assignFitness(ga,fit)
+		if ga.nextBrain(ga) then
+			ga.makeNextGeneration(ga)
+		end
 		savestate.load(save)
 	end
 	
-	
+	frameCounter = frameCounter + 1
 	emu.frameadvance()
+	
 end

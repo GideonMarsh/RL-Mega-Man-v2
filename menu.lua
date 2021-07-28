@@ -1,5 +1,6 @@
 --menu.lua
 --created by Gideon Marsh
+--github.com/GideonMarsh
 
 --helper functions for navigating the game menus
 

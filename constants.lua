@@ -1,5 +1,6 @@
 --constants.lua
 --created by Gideon Marsh
+--github.com/GideonMarsh
 
 --Screen limits, in pixels
 SCREEN_X_MIN = 0
@@ -29,3 +30,8 @@ BOSS_HP = 0x06C1
 --Genetic algorithm
 GENE_IMPORTANCE_COEFFICIENT = 10
 WEIGHT_IMPORTANCE_COEFFICIENT = 5
+
+POPULATION_SIZE = 100
+STRUCTURAL_MUTATION_CHANCE = 0.2
+WEIGHT_MUTATION_CHANCE = 0.4
+BRAIN_DIFFERENCE_DELTA = 10
