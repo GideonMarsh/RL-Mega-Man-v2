@@ -127,7 +127,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	
 	--step 3
-	local newPopulaion = {}
+	local newPopulation = {}
 	local popCounter = 1
 	
 	for s in pairs(currentSpecies) do
@@ -136,9 +136,10 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			for i=1,currentSpecies[s].length do
 				avefit = avefit + currentSpecies[s][i].fitness
 			end
+			avefit = avefit / currentSpecies[s].length
 			local eligibleParents = {length = 0}
 			for i=1,currentSpecies[s].length do
-				if currentSpecies[s][i].fitness > avefit then
+				if currentSpecies[s][i].fitness >= avefit then
 					eligibleParents.length = eligibleParents.length + 1
 					eligibleParents[eligibleParents.length] = currentSpecies[s][i]
 				end
@@ -149,7 +150,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				parent2 = eligibleParents[math.random(eligibleParents.length)]
 				newBrain = Brain:new{}
 				newBrain.crossover(newBrain,parent1,parent2)
-				newPopulaion[popCounter] = newBrain
+				newPopulation[popCounter] = newBrain
 				popCounter = popCounter + 1
 			end
 		end
@@ -186,13 +187,13 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	
 	if self.bestBrain then
-		newPopulaion[popCounter] = self.bestBrain
+		newPopulation[popCounter] = self.bestBrain
 	end
 	
 	self.currentBrain = 1
 	self.generation = self.generation + 1
 	
-	self.population = newPopulaion
+	self.population = newPopulation
 end
 
 --get basic info of current brain
@@ -206,7 +207,7 @@ function GeneticAlgorithmController:new(o)
 	o = o or {}
 	o.population={}
 	o.species={length = 0}
-	o.generation=0
+	o.generation=1
 	o.currentBrain=1
 	
 	for i=1,POPULATION_SIZE do

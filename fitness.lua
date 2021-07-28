@@ -19,6 +19,10 @@ function setFitness()
 	if f > fitness then fitness = f end
 end
 
+function checkFitness()
+	return fitness
+end
+
 function findFitness()
 	local stage = memory.readbyte(CURRENT_STAGE)
 	local screen = memory.readbyte(CURRENT_SCREEN)

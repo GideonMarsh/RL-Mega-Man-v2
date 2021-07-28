@@ -28,10 +28,13 @@ STATE_GAME_OVER = 197		--GAME_STATE value for game over
 BOSS_HP = 0x06C1
 
 --Genetic algorithm
-GENE_IMPORTANCE_COEFFICIENT = 10
+GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
 WEIGHT_IMPORTANCE_COEFFICIENT = 5
 
-POPULATION_SIZE = 100
+POPULATION_SIZE = 10
 STRUCTURAL_MUTATION_CHANCE = 0.2
 WEIGHT_MUTATION_CHANCE = 0.4
 BRAIN_DIFFERENCE_DELTA = 10
+
+--Miscellaneous
+TOTAL_FRAME_TIMEOUT = 3600	--max number of frames a brain is allowed to run for (game is 60fps)
