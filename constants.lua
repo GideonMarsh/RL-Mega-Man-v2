@@ -11,6 +11,9 @@ SCREEN_X_MIN = 0
 SCREEN_X_MAX = 255
 SCREEN_Y_MIN = 8
 SCREEN_Y_MAX = 231
+
+X_OFFSET = 3				--after reading a pixel, move over by the offset
+Y_OFFSET = 3
 --Note: screen height is 0-239, but emulator only displays the range of 8-231
 
 --Number of player controls

@@ -8,22 +8,26 @@ require "constants"
 
 fitness = 0
 
+--return the stored fitness value and reset it to 0
 function returnFitness()
 	local f = fitness
 	fitness = 0
 	return f
 end
 
+--find the fitness value and set it
 function setFitness()
 	local f = findFitness()
 	f = math.floor((f - FITNESS_OFFSET) ^ FITNESS_EXPONENT)
 	if f > fitness then fitness = f end
 end
 
+--return the stored fitness value
 function checkFitness()
 	return fitness
 end
 
+--find the current fitness value based on the game state
 function findFitness()
 	local stage = memory.readbyte(CURRENT_STAGE)
 	local screen = memory.readbyte(CURRENT_SCREEN)

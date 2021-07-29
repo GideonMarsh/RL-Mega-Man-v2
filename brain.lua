@@ -8,7 +8,7 @@ require "constants"
 
 
 --the number of input nodes for each neural network
-inputNodes = (SCREEN_X_MAX - SCREEN_X_MIN + 1) * (SCREEN_Y_MAX - SCREEN_Y_MIN + 1)
+inputNodes = math.floor((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET) * math.floor((SCREEN_Y_MAX - SCREEN_Y_MIN + 1) / Y_OFFSET)
 --the number of output nodes for each neural network
 outputNodes = CONTROLLER_OUTPUTS
 
