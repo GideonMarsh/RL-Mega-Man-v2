@@ -42,7 +42,7 @@ BRAIN_DIFFERENCE_DELTA = 10
 
 --Miscellaneous
 TOTAL_FRAME_TIMEOUT = 36000	--max number of frames a brain is allowed to run for (game is 60fps)
-NO_PROGRESS_TIMEOUT = 1800	--if fitness does not change after this many frames, the current run ends
+NO_PROGRESS_TIMEOUT = 600	--if fitness does not change after this many frames, the current run ends
 QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
 
 FITNESS_OFFSET = 127		--fitness starts at this value + 1, subtract this for actual starting fitness

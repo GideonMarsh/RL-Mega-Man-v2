@@ -88,9 +88,10 @@ while true do
 		end
 	end
 	
+	local info = ga.getIndividualInfo(ga)
 	gui.text(10, 12, outString, "white", "black")
-	gui.text(10, 209, ga.getIndividualInfo(ga), "white", "black")
-	gui.text(10, 218, "Fitness: " .. checkFitness(), "white", "black")
+	gui.text(10, 209, "Generation " .. info[1] .. "; Species " .. info[2], "white", "black")
+	gui.text(10, 218, "Individual " .. info[3] .. "; Fitness: " .. checkFitness(), "white", "black")
 	gui.text(211, 218, frameCounter, "white", "black")
 	gui.text(211, 209, NO_PROGRESS_TIMEOUT - (frameCounter - lastFitnessChange), "white", "black")
 	

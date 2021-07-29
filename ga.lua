@@ -10,7 +10,7 @@ require "brain"
 --the table of species' representatives
 --the brains in this table are used as the comparisons to determine which species another brain belongs to
 --the name of this variable is not allowed to change since it is saved to a file
-species = {length = 0}
+species = {}
 
 --the prototype for GeneticAlgorithmController objects
 --GeneticAlgorithmController objects maintain the population of brains being used in the genetic algorithm
@@ -155,6 +155,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				parent2 = eligibleParents[math.random(eligibleParents.length)]
 				newBrain = Brain:new()
 				newBrain.crossover(newBrain,parent1,parent2)
+				newBrain.species = parent1.species
 				newPopulation[popCounter] = newBrain
 				popCounter = popCounter + 1
 			end
@@ -175,19 +176,22 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--step 4
 	for i,v in ipairs(newPopulation) do
 		local found = false
-		for j,w in ipairs(species) do
-			if j ~= "length" then
-				if v.compare(v,w) <= BRAIN_DIFFERENCE_DELTA then
-					v.species = j
-					found = true
-					break
-				end
+		for j in pairs(species) do
+			if v.compare(v,species[j]) <= BRAIN_DIFFERENCE_DELTA then
+				v.species = j
+				found = true
+				break
 			end
 		end
 		if not found then
-			species.length = species.length + 1
-			species[species.length] = v
-			v.species = species.length
+			local newSpeciesCounter = 1
+			local newSpecies = v.species .. "." .. newSpeciesCounter
+			while species[newSpecies] do
+				newSpeciesCounter = newSpeciesCounter + 1
+				newSpecies = v.species .. "." .. newSpeciesCounter
+			end
+			species[newSpecies] = v
+			v.species = newSpecies
 		end
 	end
 	
@@ -204,8 +208,8 @@ end
 --get basic info of current brain
 function GeneticAlgorithmController.getIndividualInfo(self)
 	local b = self.population[self.currentBrain]
-	return "Generation " .. self.generation .. "; Species " .. b.species .. "; Individual " .. self.currentBrain
-	--return {[1]=self.generation,[2]=b.species,[3]=self.currentBrain}
+	--return "Generation " .. self.generation .. "; Species " .. b.species .. "; Individual " .. self.currentBrain
+	return {[1]=self.generation,[2]=b.species,[3]=self.currentBrain}
 end
 
 function GeneticAlgorithmController:new(o)
@@ -226,8 +230,6 @@ function GeneticAlgorithmController:new(o)
 		o.generation=1
 		o.currentBrain=1
 		
-		species = {length = 0}
-		
 		for i=1,POPULATION_SIZE do
 			newBrain = Brain:new()
 			newBrain.initNewBrain(newBrain)
@@ -236,21 +238,20 @@ function GeneticAlgorithmController:new(o)
 			o.population[i] = newBrain
 		end
 		
+		local initialSpeciesCounter = 1
 		for i,v in ipairs(o.population) do
 			local found = false
-			for j,w in ipairs(species) do
-				if j ~= "length" then
-					if v.compare(v,w) <= BRAIN_DIFFERENCE_DELTA then
-						v.species = j
-						found = true
-						break
-					end
+			for j in pairs(species) do
+				if v.compare(v,species[j]) <= BRAIN_DIFFERENCE_DELTA then
+					v.species = j
+					found = true
+					break
 				end
 			end
 			if not found then
-				species.length = species.length + 1
-				species[species.length] = v
-				v.species = species.length
+				species[initialSpeciesCounter .. ""] = v
+				v.species = initialSpeciesCounter .. ""
+				initialSpeciesCounter = initialSpeciesCounter + 1
 			end
 		end
 	end
@@ -262,7 +263,7 @@ end
 
 --helper function for reinstantiating species table from file
 function reinstantiateSpecies()
-	for i=1,species.length do
+	for i in pairs(species) do
 		species[i] = Brain:new(species[i])
 		for j in pairs(species[i].connections) do
 			local con = species[i].connections[j]
