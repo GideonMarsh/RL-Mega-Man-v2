@@ -54,7 +54,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--1. adjust fitness by species size
 	--	adjustedFitness = fitness / speciesSize
 	--2. apportion new species sizes of next generation
-	--	newSpeciesSize = (sum of all adjusted fitnesses) / (mean adjusted fitness of entire population)
+	--	newSpeciesSize = (sum of all adjusted fitnesses of this species) / (mean adjusted fitness of entire population)
 	--	limit the amount of new organisms to the max population size
 	--3. create new generation
 	--	for each species, select the highest r% of the species to breed

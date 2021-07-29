@@ -16,7 +16,7 @@ end
 
 function setFitness()
 	local f = findFitness()
-	f = f - FITNESS_OFFSET
+	f = math.floor((f - FITNESS_OFFSET) ^ FITNESS_EXPONENT)
 	if f > fitness then fitness = f end
 end
 

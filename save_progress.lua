@@ -45,6 +45,7 @@ function saveObject(filename, object)
 	local t = {}
 	saveit("object", object, t)
 	io.flush()
+	io.close()
 end
 
 --returns true if file exists, false if not

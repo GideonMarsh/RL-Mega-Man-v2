@@ -46,3 +46,5 @@ NO_PROGRESS_TIMEOUT = 600	--if fitness does not change after this many frames, t
 QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
 
 FITNESS_OFFSET = 127		--fitness starts at this value + 1, subtract this for actual starting fitness
+FITNESS_EXPONENT = 1.2		--raise all fitness to this value
+
