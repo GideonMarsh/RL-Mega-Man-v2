@@ -7,16 +7,12 @@
 require "constants"
 require "brain"
 
---the table of species' representatives
---the brains in this table are used as the comparisons to determine which species another brain belongs to
---the name of this variable is not allowed to change since it is saved to a file
-species = {}
 
 --the prototype for GeneticAlgorithmController objects
 --GeneticAlgorithmController objects maintain the population of brains being used in the genetic algorithm
 --the main driver should not have access to brain objects directly
 
-GeneticAlgorithmController = {population={},generation=0,currentBrain=0}
+GeneticAlgorithmController = {population={},species={},generation=0,currentBrain=0}
 
 --pass the inputs to the current brain and return the output
 function GeneticAlgorithmController.passInputs(self,inputs)
@@ -38,6 +34,7 @@ function GeneticAlgorithmController.nextBrain(self)
 end
 
 --finds the brain with the highest fitness and sets it as self.bestBrain
+--should only be called after all brains have been assigned a fitness
 function GeneticAlgorithmController.setBestBrain(self)
 	local best = self.population[1]
 	for b=1,POPULATION_SIZE do
@@ -137,32 +134,103 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	
 	for s in pairs(currentSpecies) do
 		if newSizes[s] > 0 then
-			local avefit = 0
+			--sort all individuals by fitness (hight to low)
+			local fits = {}
+			local fitLen = 0
 			for i=1,currentSpecies[s].length do
-				avefit = avefit + currentSpecies[s][i].fitness
+				fitLen = fitLen + 1
+				fits[fitLen] = currentSpecies[s][i]
 			end
-			avefit = math.floor(avefit / currentSpecies[s].length)	--floor it to prevent rounding errors
-			local eligibleParents = {length = 0}
-			for i=1,currentSpecies[s].length do
-				if currentSpecies[s][i].fitness >= avefit then
-					eligibleParents.length = eligibleParents.length + 1
-					eligibleParents[eligibleParents.length] = currentSpecies[s][i]
+			for i=2,fitLen do
+				local c1 = i - 1
+				local c2 = i
+				while c1 >= 1 and fits[c1].fitness < fits[c2].fitness do
+					local temp = fits[c1]
+					fits[c1] = fits[c2]
+					fits[c2] = temp
+					c1 = c1 - 1
+					c2 = c2 - 1
 				end
 			end
+			--only select top 50% of individuals
+			local eligibleParents = {length = 0}
+			for i=1,math.ceil(fitLen / 2) do
+				eligibleParents.length = eligibleParents.length + 1
+				eligibleParents[eligibleParents.length] = fits[i]
+			end
 			
-			for i=1,newSizes[s] do
-				parent1 = eligibleParents[math.random(eligibleParents.length)]
-				parent2 = eligibleParents[math.random(eligibleParents.length)]
-				newBrain = Brain:new()
-				newBrain.crossover(newBrain,parent1,parent2)
-				newBrain.species = parent1.species
-				newPopulation[popCounter] = newBrain
-				popCounter = popCounter + 1
+			--if there's only one eligible parent, it must be both parents
+			if eligibleParents.length == 1 then
+				for i=1,newSizes[s] do
+					parent1 = eligibleParents[1]
+					parent2 = eligibleParents[1]
+					
+					--make a new brain
+					newBrain = Brain:new()
+					newBrain.crossover(newBrain,parent1,parent2)
+					newBrain.species = parent1.species
+					newPopulation[popCounter] = newBrain
+					popCounter = popCounter + 1
+				end
+				
+			--if there's only two eligible parents, they must both be a parent
+			elseif eligibleParents.length == 2 then
+				for i=1,newSizes[s] do
+					parent1 = eligibleParents[1]
+					parent2 = eligibleParents[2]
+					
+					--make a new brain
+					newBrain = Brain:new()
+					newBrain.crossover(newBrain,parent1,parent2)
+					newBrain.species = parent1.species
+					newPopulation[popCounter] = newBrain
+					popCounter = popCounter + 1
+				end
+				
+			--if there's more than two eligible parents, choose two of them to be parents
+			--weight the likelihood of each individual being chosen by their fitness
+			else
+				local lowFit = eligibleParents[eligibleParents.length].fitness
+				local epWeighted = {length = 0}
+				for i=1,newSizes[s] do
+					--create list of eligible parents, where each parent appears a number of times according to their relative fitness
+					for j=1,eligibleParents.length do
+						local weightedLikelihood = math.floor((eligibleParents[j].fitness / lowFit) ^ 2)
+						for k=1,weightedLikelihood do
+							epWeighted.length = epWeighted.length + 1
+							epWeighted[epWeighted.length] = eligibleParents[j]
+						end
+					end
+					
+					--select one parent from that list
+					parent1 = epWeighted[math.random(epWeighted.length)]
+					
+					--remove all instances of the chosen parent from the list
+					local m = 1
+					while m <= epWeighted.length do
+						if epWeighted[m] == parent1 then
+							epWeighted[m] = epWeighted[epWeighted.length]
+							epWeighted[epWeighted.length] = nil
+							epWeighted.length = epWeighted.length - 1
+						end
+						m = m + 1
+					end
+					
+					--choose the other parent
+					parent2 = epWeighted[math.random(epWeighted.length)]
+					
+					--make a new brain
+					newBrain = Brain:new()
+					newBrain.crossover(newBrain,parent1,parent2)
+					newBrain.species = parent1.species
+					newPopulation[popCounter] = newBrain
+					popCounter = popCounter + 1
+				end
 			end
 		end
 	end
 	
-	--mutate each new brain at random
+	--mutate each new brain at random, then prepare their topology
 	for i in pairs(newPopulation) do
 		if math.random() < STRUCTURAL_MUTATION_CHANCE then
 			newPopulation[i].mutateStructure(newPopulation[i])
@@ -176,8 +244,8 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--step 4
 	for i,v in ipairs(newPopulation) do
 		local found = false
-		for j in pairs(species) do
-			if v.compare(v,species[j]) <= BRAIN_DIFFERENCE_DELTA then
+		for j in pairs(self.species) do
+			if v.compare(v,self.species[j]) <= BRAIN_DIFFERENCE_DELTA then
 				v.species = j
 				found = true
 				break
@@ -186,18 +254,16 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		if not found then
 			local newSpeciesCounter = 1
 			local newSpecies = v.species .. "." .. newSpeciesCounter
-			while species[newSpecies] do
+			while self.species[newSpecies] do
 				newSpeciesCounter = newSpeciesCounter + 1
 				newSpecies = v.species .. "." .. newSpeciesCounter
 			end
-			species[newSpecies] = v
+			self.species[newSpecies] = v
 			v.species = newSpecies
 		end
 	end
 	
-	if self.bestBrain then
-		newPopulation[popCounter] = self.bestBrain
-	end
+	newPopulation[popCounter] = self.bestBrain
 	
 	self.currentBrain = 1
 	self.generation = self.generation + 1
@@ -216,19 +282,16 @@ function GeneticAlgorithmController:new(o)
 	if o then
 		for i=1,POPULATION_SIZE do
 			o.population[i] = Brain:new(o.population[i])
-			for j in pairs(o.population[i].connections) do
-				local con = o.population[i].connections[j]
-				while con do
-					con = ConnectionGene:new(con)
-					con = con.nextConnection
-				end
-			end
+		end
+		for i in pairs(o.species) do
+			o.species[i] = Brain:new(o.species[i])
 		end
 	else
 		o = {}
 		o.population={}
 		o.generation=1
 		o.currentBrain=1
+		o.species={}
 		
 		for i=1,POPULATION_SIZE do
 			newBrain = Brain:new()
@@ -241,15 +304,15 @@ function GeneticAlgorithmController:new(o)
 		local initialSpeciesCounter = 1
 		for i,v in ipairs(o.population) do
 			local found = false
-			for j in pairs(species) do
-				if v.compare(v,species[j]) <= BRAIN_DIFFERENCE_DELTA then
+			for j in pairs(o.species) do
+				if v.compare(v,o.species[j]) <= BRAIN_DIFFERENCE_DELTA then
 					v.species = j
 					found = true
 					break
 				end
 			end
 			if not found then
-				species[initialSpeciesCounter .. ""] = v
+				o.species[initialSpeciesCounter .. ""] = v
 				v.species = initialSpeciesCounter .. ""
 				initialSpeciesCounter = initialSpeciesCounter + 1
 			end
@@ -259,18 +322,4 @@ function GeneticAlgorithmController:new(o)
 	setmetatable(o, self)
 	self.__index = self
 	return o
-end
-
---helper function for reinstantiating species table from file
-function reinstantiateSpecies()
-	for i in pairs(species) do
-		species[i] = Brain:new(species[i])
-		for j in pairs(species[i].connections) do
-			local con = species[i].connections[j]
-			while con do
-				con = ConnectionGene:new(con)
-				con = con.nextConnection
-			end
-		end
-	end
 end

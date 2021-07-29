@@ -38,21 +38,15 @@ emu.print("save state created")
 
 --create new genetic algorithm controller or load from file
 gaFile = "saves/recent.txt"
-spFile = "saves/recent_species.txt"
 ga = {}	--the name of this variable is not allowed to change since it is saved to a file
-if fileExists(gaFile) and fileExists(spFile) then
+if fileExists(gaFile) then
 	ga = GeneticAlgorithmController:new(loadFromFile(gaFile))
 	emu.print("population loaded")
-	species = loadFromFile(spFile)
-	reinstantiateSpecies()
-	emu.print("species list loaded")
 else
 	ga = GeneticAlgorithmController:new()
 	emu.print("new population created")
 	saveObject(gaFile, ga)
 	emu.print("population saved")
-	saveObject(spFile, species)
-	emu.print("species list saved")
 end
 
 -----MAIN PROGRAM LOOP----
@@ -130,8 +124,6 @@ while true do
 			emu.print("next generation created")
 			saveObject(gaFile, ga)
 			emu.print("population saved")
-			saveObject(spFile, species)
-			emu.print("species list saved")
 		end
 		
 		--reset run

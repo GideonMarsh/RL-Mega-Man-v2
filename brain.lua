@@ -461,7 +461,15 @@ function Brain.setSpecies(self,specie)
 end
 
 function Brain:new(o)
-	if not o then
+	if o then
+		for j in pairs(o.connections) do
+			local con = o.connections[j]
+			while con do
+				con = ConnectionGene:new(con)
+				con = con.nextConnection
+			end
+		end
+	else
 		o = {}
 		o.fitness = -1
 		o.connections = {}
