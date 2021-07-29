@@ -198,8 +198,8 @@ function Brain.think(self, inputs)
 	--return outputs
 	local outputs = {}
 	for i=1,outputNodes do
-		if nodes[i + 1 + inputNodes] then
-			outputs[i] = nodes[i + 1 + inputNodes]
+		if nodes[i + inputNodes] then
+			outputs[i] = nodes[i + inputNodes]
 		else
 			outputs[i] = 0
 		end
