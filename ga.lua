@@ -58,7 +58,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--	randomly breed a number of offspring equal to the newSpeciesSize
 	--	randomly mutate every individual with a certain probability
 	--4. separate the new population into species
-	--NOTE: this isn't designed to work with negative fitness values
+	--NOTE: this isn't designed to work with negative fitness values, or when every fitness is 0
 	
 	self.setBestBrain(self)
 	
@@ -95,7 +95,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				sumFitness = sumFitness + currentSpecies[i][j].fitness
 			end
 		end
-		newSizes[i] = math.ceil(sumFitness / meanFitness)
+		newSizes[i] = math.floor(sumFitness / meanFitness)
 		totalPopulation = totalPopulation + newSizes[i]
 	end
 	
@@ -106,25 +106,23 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	if excessPopulation ~= 0 then
 		local ns = {length = 0}
 		for i in pairs(newSizes) do
-			ns.length = ns.length + 1
-			ns[ns.length] = i
+			if newSizes[i] > 0 then
+				ns.length = ns.length + 1
+				ns[ns.length] = i
+			end
 		end
 		while excessPopulation > 0 do
 			--population too high
 			local s = math.random(ns.length)
-			if newSizes[ns[s]] > 0 then
-				newSizes[ns[s]] = newSizes[ns[s]] - 1
-				excessPopulation = excessPopulation - 1
-			end
+			newSizes[ns[s]] = newSizes[ns[s]] - 1
+			excessPopulation = excessPopulation - 1
 		end
 		
 		while excessPopulation < 0 do
 			--population too low
 			local s = math.random(ns.length)
-			if newSizes[ns[s]] > 0 then
-				newSizes[ns[s]] = newSizes[ns[s]] - 1
-				excessPopulation = excessPopulation - 1
-			end
+			newSizes[ns[s]] = newSizes[ns[s]] + 1
+			excessPopulation = excessPopulation + 1
 		end
 	end
 	
