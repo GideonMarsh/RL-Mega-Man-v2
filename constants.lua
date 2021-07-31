@@ -33,6 +33,8 @@ STATE_LEVEL_COMPLETE = 143	--GAME_STATE value for completed level
 STATE_STAGE_SELECT = 120	--GAME_STATE value on stage select screen
 STATE_GAME_OVER = 197		--GAME_STATE value for game over
 BOSS_HP = 0x06C1
+PLAYER_HP = 0x06C0
+MAX_HP = 28					--maximum hp of player and bosses
 
 --Genetic algorithm
 GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
@@ -48,6 +50,6 @@ TOTAL_FRAME_TIMEOUT = 36000	--max number of frames a brain is allowed to run for
 NO_PROGRESS_TIMEOUT = 600	--if fitness does not change after this many frames, the current run ends
 QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
 
-FITNESS_OFFSET = 127		--fitness starts at this value + 1, subtract this for actual starting fitness
-FITNESS_EXPONENT = 1.5		--raise all fitness to this value
-
+FITNESS_OFFSET = 128		--fitness starts at this value + 1, subtract this for actual starting fitness
+FITNESS_BASE = 2			--the priority to give one brain over another if the difference between their fitnesses equals FITNESS_MODIFIER
+FITNESS_MODIFIER = 128		

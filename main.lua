@@ -85,7 +85,7 @@ while true do
 	local info = ga.getIndividualInfo(ga)
 	gui.text(10, 12, outString, "white", "black")
 	gui.text(10, 209, "Generation " .. info[1] .. "; Species " .. info[2], "white", "black")
-	gui.text(10, 218, "Individual " .. info[3] .. "; Fitness: " .. checkFitness(), "white", "black")
+	gui.text(10, 218, "Individual " .. info[3] .. "; Fitness: " .. math.floor(checkFitness()), "white", "black")
 	gui.text(211, 218, frameCounter, "white", "black")
 	gui.text(211, 209, NO_PROGRESS_TIMEOUT - (frameCounter - lastFitnessChange), "white", "black")
 	
@@ -99,7 +99,7 @@ while true do
 	if (val == 195) or 
 		(frameCounter == TOTAL_FRAME_TIMEOUT) or 
 		(frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT) or 
-		(frameCounter == QUICK_TIMEOUT and lastFitnessChange == 1) then
+		(frameCounter == QUICK_TIMEOUT and lastFitnessChange <= 1) then
 		--assign final fitness to current brain
 		local fit = returnFitness()
 		if val == 195 then
@@ -111,7 +111,7 @@ while true do
 		if frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT then
 			emu.print("Stopped progressing; fitness = " .. fit)
 		end
-		if frameCounter == QUICK_TIMEOUT and lastFitnessChange == 1 then
+		if frameCounter == QUICK_TIMEOUT and lastFitnessChange <= 1 then
 			emu.print("No progress at start; fitness = " .. fit)
 		end
 		
