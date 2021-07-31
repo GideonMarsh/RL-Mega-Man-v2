@@ -45,8 +45,6 @@ if fileExists(gaFile) then
 else
 	ga = GeneticAlgorithmController:new()
 	emu.print("new population created")
-	saveObject(gaFile, ga)
-	emu.print("population saved")
 end
 
 -----MAIN PROGRAM LOOP----
@@ -120,10 +118,11 @@ while true do
 		--prepare next brain
 		--if no brains remain, create next generation
 		if ga.nextBrain(ga) then
-			ga.makeNextGeneration(ga)
-			emu.print("next generation created")
+			ga.currentBrain = 1
 			saveObject(gaFile, ga)
 			emu.print("population saved")
+			ga.makeNextGeneration(ga)
+			emu.print("next generation created")
 		end
 		
 		--reset run
