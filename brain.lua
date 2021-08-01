@@ -91,33 +91,43 @@ function Brain.crossover(self, parentA, parentB)
 	local parentAGenes = parentA.getAllConnections(parentA)
 	local parentBGenes = parentB.getAllConnections(parentB)
 	
-	--start with all genes of parentA
+	--make sure parent A has the higher fitness
+	--if fitnesses are equal, pick one at random to be parent A
+	if parentB.fitness > parentA.fitness or (parentA.fitness == parentB.fitness and math.random() < 0.5) then
+		local temp = parentAGenes
+		parentAGenes = parentBGenes
+		parentBGenes = temp
+	end
+	
+	--inherit all genes from parentA
 	for i,v in ipairs(parentAGenes) do
 		if i ~= length then
 			self.addNewConnection(self,v.inNode,v.outNode,v.weight,v.inum,v.enabled)
 		end
 	end
 	
-	--check each gene of parent B before adding
+	--if any gene is shared between both parents, choose randomly between their weights
 	local currentGenes = self.getAllConnections(self)
 	for ib,vb in ipairs(parentBGenes) do
 		if ib ~= length then
-			local match = false
+			local matched = false
 			for ic,vc in ipairs(currentGenes) do
 				if ic ~= length then
-					if vb.inum == vc.inum or (vb.inNode == vc.inNode and vb.outNode == vc.outNode) then
+					if vb.inum == vc.inum then
 						--matching gene, choose randomly between their weights
 						if math.random() < 0.5 then vc.weight = vb.weight end
-						match = true
+						matched = true
 						break
 					end
 				end
 			end
-			if not match then
-				--doesn't match any gene from parentA, add it if it doesn't create a cycle
-				if not self.isNodeLaterOnPath(self, vb.outNode,vb.inNode) then
-					self.addNewConnection(self,vb.inNode,vb.outNode,vb.weight,vb.inum,vb.enabled)
-				end
+			--if fitnesses are equal, also inherit all genes from parent B
+			--don't inherit if it creates a cycle or if another connection already exists between those two nodes
+			if parentA.fitness == parentB.fitness and 
+					not matched and
+					not self.isNodeLaterOnPath(self, vb.outNode, vb.inNode) and
+					not (self[vb.inNode] and self[vb.inNode].outNode == vb.outNode) then
+				self.addNewConnection(self, vb.inNode, vb.outNode, vb.weight, vb.inum, vb.enabled)
 			end
 		end
 	end
@@ -253,8 +263,10 @@ function Brain.addNewNode(self, oldConnection)
 	
 	oldConnection.enabled = false
 	
+	local w = (math.random() - 0.5) * 2
+	
 	self.addNewConnection(self, oldConnection.inNode, nodeCount, oldConnection.weight, 0, true)
-	self.addNewConnection(self, nodeCount, oldConnection.outNode, oldConnection.weight, 0, true)
+	self.addNewConnection(self, nodeCount, oldConnection.outNode, w, 0, true)
 end
 
 --get a table of all connections indexed like an array, with a length
@@ -310,13 +322,13 @@ function Brain.mutateStructure(self)
 	--emu.print(rand)
 	if (allConnections.length == 0) or rand < 5 then
 		--add a connection
-		w = (math.random() - 0.5) * 2	--the weight of the new connection
+		local w = (math.random() - 0.5) * 2	--the weight of the new connection
 		
 		--a random connection is made following these steps:
 		--1. pick a node at random to be the start node
 		--2. pick a node at random to be the end node (can be the same as the start node)
 		--3. check to see if the connection already exists
-		--	a. if it does and it's disabled, enable it and return
+		--	a. if it does and it's disabled, enable it and give it a new weight, and return
 		--	b. if it does and it's enabled, return to step 2 and pick a new end node without replacement
 		--	c. if it doesn't, go to step 4
 		--4. attempt to make a new connection between the nodes
@@ -346,6 +358,7 @@ function Brain.mutateStructure(self)
 							else
 								--step 3a
 								allcons[i].enabled = true
+								allcons[i].weight = w
 								--emu.print("enable connection between " .. allcons[i].inNode .. " and " .. allcons[i].outNode)
 								return
 							end
@@ -394,14 +407,14 @@ function Brain.mutateStructure(self)
 end
 
 --modify the weights of each connection in the network with a certain probability
---the chance to modify each connection is 1/number of connections or 1%, whichever is higher
+--the chance to modify each connection is 1/number of connections or 5%, whichever is higher
 --this means if there is only one connection, it is guaranteed to be modified
 function Brain.mutateWeights(self)
 	local allConnections = self.getAllConnections(self)
 	
 	for i,v in ipairs(allConnections) do
 		if i ~= "length" then
-			if (math.min(allConnections.length, 100) * math.random()) < 1 then
+			if (math.min(allConnections.length, 20) * math.random()) < 1 then
 				v.weight = v.weight + ((math.random() - 0.5) * 2)
 			end
 		end
