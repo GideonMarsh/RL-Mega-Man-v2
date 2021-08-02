@@ -66,7 +66,7 @@ while true do
 					["A"]=(out[5] > 0),["B"]=(out[6] > 0)})
 					
 	--set fitness as of this frame
-	setFitness()
+	setFitness(frameCounter)
 	
 	if checkFitness() ~= lastFitness then
 		lastFitnessChange = frameCounter
@@ -96,14 +96,14 @@ while true do
 	--one second has passed since starting, and no progress was made
 	--thirty seconds has passed without any progress
 	--ten minutes have passed since starting
-	local val = memory.readbyte(0x01FE)
-	if (val == 195) or 
+	local val = memory.readbyte(GAME_STATE)
+	if (val == STATE_RESPAWNING) or 
 		(frameCounter == TOTAL_FRAME_TIMEOUT) or 
 		(frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT) or 
 		(frameCounter == QUICK_TIMEOUT and lastFitnessChange <= 1) then
 		--assign final fitness to current brain
 		local fit = returnFitness()
-		if val == 195 then
+		if val == STATE_RESPAWNING then
 			emu.print("Player died; fitness = " .. fit)
 		end
 		if frameCounter == TOTAL_FRAME_TIMEOUT then

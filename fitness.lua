@@ -14,7 +14,6 @@ function returnFitness()
 	local f = fitness
 	fitness = 0
 	furthest = 0
-	if f == 0 then return 0.001 end
 	return FITNESS_BASE ^ (f  / FITNESS_MODIFIER)
 end
 
@@ -29,7 +28,7 @@ function checkModFitness()
 end
 
 --find and increment the current fitness value based on the game state
-function setFitness()
+function setFitness(framesElapsed)
 	local stage = memory.readbyte(CURRENT_STAGE)
 	local screen = memory.readbyte(CURRENT_SCREEN)
 	local hp = memory.readbyte(PLAYER_HP)
@@ -52,8 +51,11 @@ function setFitness()
 	end
 	pixelProgress = pixelProgress - FITNESS_OFFSET
 	if pixelProgress > furthest then
-		--each pixel of progress is worth (current hp + 28) / 56
-		local addFit = (pixelProgress - furthest) * ((hp + MAX_HP)/(MAX_HP * 2))
+		--each pixel of progress is worth 1, which is split up as follows:
+		--40% is earned no matter what
+		--50% is based on the player's remaining hp
+		--10% is based on the time remaining
+		local addFit = (pixelProgress - furthest) * (0.4 + (0.5 * (hp/MAX_HP)) + (0.1 * (1 - (framesElapsed / TOTAL_FRAME_TIMEOUT))))
 		furthest = pixelProgress
 		fitness = fitness + addFit
 	end

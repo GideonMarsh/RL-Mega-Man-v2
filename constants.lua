@@ -47,14 +47,14 @@ WEIGHT_IMPORTANCE_COEFFICIENT = 2
 POPULATION_SIZE = 100
 STRUCTURAL_MUTATION_CHANCE = 0.25
 WEIGHT_MUTATION_CHANCE = 0.5
-BRAIN_DIFFERENCE_DELTA = 5
+BRAIN_DIFFERENCE_DELTA = 7
 STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed
 
 --Miscellaneous
-TOTAL_FRAME_TIMEOUT = 36000	--max number of frames a brain is allowed to run for (game is 60fps)
+TOTAL_FRAME_TIMEOUT = 25200	--max number of frames a brain is allowed to run for (game is 60fps)
 NO_PROGRESS_TIMEOUT = 600	--if fitness does not change after this many frames, the current run ends
 QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
 
 FITNESS_OFFSET = 128		--fitness starts at this value + 1, subtract this for actual starting fitness
-FITNESS_BASE = 8			--the priority to give one brain over another if the difference between their fitnesses equals FITNESS_MODIFIER
+FITNESS_BASE = 10			--the priority to give one brain over another if the difference between their fitnesses equals FITNESS_MODIFIER
 FITNESS_MODIFIER = 256		

@@ -67,9 +67,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			currentSpecies[s] = {length = 1, [1]=self.population[i]}
 		end
 		aveAlteredFit = aveAlteredFit + self.population[i].fitness
-		if self.population[i].fitness ~= 0.001 then
-			aveUnalteredFit = aveUnalteredFit + (math.log10(self.population[i].fitness)/math.log10(FITNESS_BASE)) * FITNESS_MODIFIER
-		end
+		aveUnalteredFit = aveUnalteredFit + (math.log10(self.population[i].fitness)/math.log10(FITNESS_BASE)) * FITNESS_MODIFIER
 	end
 	aveAlteredFit = aveAlteredFit / POPULATION_SIZE
 	aveUnalteredFit = aveUnalteredFit / POPULATION_SIZE
@@ -217,7 +215,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				for i=1,newSizes[s] do
 					--create list of eligible parents, where each parent appears a number of times according to their relative fitness
 					for j=1,eligibleParents.length do
-						local weightedLikelihood = math.floor((eligibleParents[j].fitness / lowFit) ^ 2)
+						local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
 						for k=1,weightedLikelihood do
 							epWeighted.length = epWeighted.length + 1
 							epWeighted[epWeighted.length] = eligibleParents[j]
