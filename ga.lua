@@ -52,7 +52,8 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--	adjustedFitness = fitness / speciesSize
 	--2. apportion new species sizes of next generation
 	--	newSpeciesSize = (sum of all adjusted fitnesses of this species) / (mean adjusted fitness of entire population)
-	--	limit the amount of new organisms to the max population size
+	--	remove stale species
+	--	force the amount of new organisms to be the max population size
 	--3. create new generation
 	--	for each species, select the highest r% of the species to breed
 	--	randomly breed a number of offspring equal to the newSpeciesSize
@@ -97,10 +98,27 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		end
 		newSizes[i] = math.floor(sumFitness / meanFitness)
 		totalPopulation = totalPopulation + newSizes[i]
+		
+		local speciesAveFit = sumFitness / currentSpecies[i].length
+		if self.species[i].highestFitness < speciesAveFit then
+			self.species[i].highestFitness = speciesAveFit
+			self.species[i].staleCounter = 0
+		else
+			self.species[i].staleCounter = self.species[i].staleCounter + 1
+		end
+	end
+	
+	--check if species are stale and remove them
+	--never remove the species that best brain is a part of
+	for i in pairs(self.species) do
+		if self.species[i].staleCounter >= 20 and not i == self.bestBrain.species then
+			self.species[i].staleCounter = 0
+			newSizes[i] = 0
+		end
 	end
 	
 	--add or remove to the species' sizes to make the population exact
-	--choose species to add/remove from at random
+	--add/remove from all species evenly, in no particular order
 	--leave one space to carry over the best brain
 	local excessPopulation = totalPopulation - (POPULATION_SIZE - 1)
 	if excessPopulation ~= 0 then
@@ -111,18 +129,19 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				ns[ns.length] = i
 			end
 		end
+		local s = 1
 		while excessPopulation > 0 do
 			--population too high
-			local s = math.random(ns.length)
 			newSizes[ns[s]] = newSizes[ns[s]] - 1
 			excessPopulation = excessPopulation - 1
+			s = (s % ns.length) + 1
 		end
 		
 		while excessPopulation < 0 do
 			--population too low
-			local s = math.random(ns.length)
 			newSizes[ns[s]] = newSizes[ns[s]] + 1
 			excessPopulation = excessPopulation + 1
+			s = (s % ns.length) + 1
 		end
 	end
 	
@@ -243,7 +262,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	for i,v in ipairs(newPopulation) do
 		local found = false
 		for j in pairs(self.species) do
-			if v.compare(v,self.species[j]) <= BRAIN_DIFFERENCE_DELTA then
+			if v.compare(v,self.species[j].representative) <= BRAIN_DIFFERENCE_DELTA then
 				v.species = j
 				found = true
 				break
@@ -256,7 +275,10 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				newSpeciesCounter = newSpeciesCounter + 1
 				newSpecies = v.species .. "." .. newSpeciesCounter
 			end
-			self.species[newSpecies] = v
+			self.species[newSpecies] = {}
+			self.species[newSpecies].representative = v
+			self.species[newSpecies].staleCounter = 0
+			self.species[newSpecies].highestFitness = 0
 			v.species = newSpecies
 		end
 	end
@@ -282,7 +304,7 @@ function GeneticAlgorithmController:new(o)
 			o.population[i] = Brain:new(o.population[i])
 		end
 		for i in pairs(o.species) do
-			o.species[i] = Brain:new(o.species[i])
+			o.species[i].representative = Brain:new(o.species[i].representative)
 		end
 	else
 		o = {}
@@ -303,14 +325,17 @@ function GeneticAlgorithmController:new(o)
 		for i,v in ipairs(o.population) do
 			local found = false
 			for j in pairs(o.species) do
-				if v.compare(v,o.species[j]) <= BRAIN_DIFFERENCE_DELTA then
+				if v.compare(v,o.species[j].representative) <= BRAIN_DIFFERENCE_DELTA then
 					v.species = j
 					found = true
 					break
 				end
 			end
 			if not found then
-				o.species[initialSpeciesCounter .. ""] = v
+				o.species[initialSpeciesCounter .. ""] = {}
+				o.species[initialSpeciesCounter .. ""].representative = v
+				o.species[initialSpeciesCounter .. ""].staleCounter = 0
+				o.species[initialSpeciesCounter .. ""].highestFitness = 0
 				v.species = initialSpeciesCounter .. ""
 				initialSpeciesCounter = initialSpeciesCounter + 1
 			end

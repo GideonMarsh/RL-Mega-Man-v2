@@ -44,6 +44,7 @@ POPULATION_SIZE = 100
 STRUCTURAL_MUTATION_CHANCE = 0.3
 WEIGHT_MUTATION_CHANCE = 0.4
 BRAIN_DIFFERENCE_DELTA = 8
+STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed
 
 --Miscellaneous
 TOTAL_FRAME_TIMEOUT = 36000	--max number of frames a brain is allowed to run for (game is 60fps)
