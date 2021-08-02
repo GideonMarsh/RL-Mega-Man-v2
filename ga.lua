@@ -54,6 +54,8 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--4. separate the new population into species
 	--NOTE: this isn't designed to work with negative fitness values, or when every fitness is 0
 	
+	
+	local bestFit = self.bestBrain.fitness
 	--use species to separate population into lists
 	local currentSpecies = {}
 	local aveUnalteredFit = 0
@@ -288,6 +290,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	
 	newPopulation[popCounter] = self.bestBrain
+	self.bestBrain.fitness = bestFit
 	
 	self.currentBrain = 1
 	self.generation = self.generation + 1

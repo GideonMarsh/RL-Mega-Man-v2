@@ -106,18 +106,18 @@ while true do
 		(frameCounter == QUICK_TIMEOUT and lastFitnessChange <= 1) then
 		--assign final fitness to current brain
 		local fit = returnFitness()
-		if val == STATE_RESPAWNING then
-			emu.print("Player died; fitness = " .. fit)
-		end
-		if frameCounter == TOTAL_FRAME_TIMEOUT then
-			emu.print("Out of time; fitness = " .. fit)
-		end
-		if frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT then
-			emu.print("Stopped progressing; fitness = " .. fit)
-		end
-		if frameCounter == QUICK_TIMEOUT and lastFitnessChange <= 1 then
-			emu.print("No progress at start; fitness = " .. fit)
-		end
+		--if val == STATE_RESPAWNING then
+		--	emu.print("Player died; fitness = " .. fit)
+		--end
+		--if frameCounter == TOTAL_FRAME_TIMEOUT then
+		--	emu.print("Out of time; fitness = " .. fit)
+		--end
+		--if frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT then
+		--	emu.print("Stopped progressing; fitness = " .. fit)
+		--end
+		--if frameCounter == QUICK_TIMEOUT and lastFitnessChange <= 1 then
+		--	emu.print("No progress at start; fitness = " .. fit)
+		--end
 		
 		ga.assignFitness(ga,fit)
 		
