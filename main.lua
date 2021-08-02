@@ -97,6 +97,9 @@ while true do
 	--thirty seconds has passed without any progress
 	--ten minutes have passed since starting
 	local val = memory.readbyte(GAME_STATE)
+	if (val == STATE_LEVEL_COMPLETE) then 
+		--WIP
+	end
 	if (val == STATE_RESPAWNING) or 
 		(frameCounter == TOTAL_FRAME_TIMEOUT) or 
 		(frameCounter - lastFitnessChange == NO_PROGRESS_TIMEOUT) or 
