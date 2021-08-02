@@ -52,7 +52,7 @@ STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a 
 
 --Miscellaneous
 TOTAL_FRAME_TIMEOUT = 25200	--max number of frames a brain is allowed to run for (game is 60fps)
-NO_PROGRESS_TIMEOUT = 600	--if fitness does not change after this many frames, the current run ends
+NO_PROGRESS_TIMEOUT = 1200	--if fitness does not change after this many frames, the current run ends
 QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
 
 FITNESS_OFFSET = 128		--fitness starts at this value + 1, subtract this for actual starting fitness
