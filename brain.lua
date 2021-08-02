@@ -142,8 +142,6 @@ function Brain.compare(self, otherBrain)
 	--D = number of excess and disjoint genes
 	--W = average weight differences of matching genes
 	--N = number of genes in the larger genome
-	--if N < 3, use instead
-	--(c1 * D) / 3 + c2 * W
 	
 	local c1 = GENE_IMPORTANCE_COEFFICIENT
 	local c2 = WEIGHT_IMPORTANCE_COEFFICIENT
@@ -185,7 +183,6 @@ function Brain.compare(self, otherBrain)
 	end
 	
 	local d = ((c1 * D) / N) + (c2 * W)
-	if N < 3 then d = ((c1 * D) / 3) + (c2 * W) end
 	return d
 end
 
