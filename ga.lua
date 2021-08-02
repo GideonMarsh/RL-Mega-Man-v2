@@ -111,7 +111,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--check if species are stale and remove them
 	--never remove the species that best brain is a part of
 	for i in pairs(self.species) do
-		if self.species[i].staleCounter >= 20 and not i == self.bestBrain.species then
+		if self.species[i].staleCounter >= STALE_SPECIES_CUTOFF and not i == self.bestBrain.species then
 			self.species[i].staleCounter = 0
 			newSizes[i] = 0
 		end
