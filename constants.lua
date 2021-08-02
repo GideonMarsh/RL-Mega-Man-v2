@@ -38,12 +38,12 @@ MAX_HP = 28					--maximum hp of player and bosses
 
 --Genetic algorithm
 GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
-WEIGHT_IMPORTANCE_COEFFICIENT = 5
+WEIGHT_IMPORTANCE_COEFFICIENT = 2
 
 POPULATION_SIZE = 100
 STRUCTURAL_MUTATION_CHANCE = 0.3
 WEIGHT_MUTATION_CHANCE = 0.4
-BRAIN_DIFFERENCE_DELTA = 8
+BRAIN_DIFFERENCE_DELTA = 4
 STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed
 
 --Miscellaneous

@@ -136,12 +136,14 @@ end
 --check how similar this brain is to another
 function Brain.compare(self, otherBrain)
 	--compare the connection genome of both genes using the following function
-	--d = (c1 * D) / N + c2 * while
+	--d = (c1 * D) / N + c2 * W
 	--c1, c2 = importance coefficients
 	--d = compatibility distance
 	--D = number of excess and disjoint genes
 	--W = average weight differences of matching genes
 	--N = number of genes in the larger genome
+	--if N < 3, use instead
+	--(c1 * D) / 3 + c2 * W
 	
 	local c1 = GENE_IMPORTANCE_COEFFICIENT
 	local c2 = WEIGHT_IMPORTANCE_COEFFICIENT
@@ -182,7 +184,8 @@ function Brain.compare(self, otherBrain)
 		W = W / matchedWeights.length
 	end
 	
-	local d = (c1 * D) / N + c2 * W
+	local d = ((c1 * D) / N) + (c2 * W)
+	if N < 3 then d = ((c1 * D) / 3) + (c2 * W) end
 	return d
 end
 
