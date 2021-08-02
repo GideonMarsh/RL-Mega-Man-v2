@@ -23,6 +23,10 @@ end
 --assign a fitness value to the current brain
 function GeneticAlgorithmController.assignFitness(self, fitness)
 	self.population[self.currentBrain].fitness = fitness
+	if not self.bestBrain or fitness > self.bestBrain.fitness then
+		self.bestBrain = self.population[self.currentBrain]
+		emu.print("New Best!")
+	end
 end
 
 --selects the next brain to be run
@@ -31,18 +35,6 @@ function GeneticAlgorithmController.nextBrain(self)
 	self.currentBrain = self.currentBrain + 1
 	if self.currentBrain > POPULATION_SIZE then return true end
 	return false
-end
-
---finds the brain with the highest fitness and sets it as self.bestBrain
---should only be called after all brains have been assigned a fitness
-function GeneticAlgorithmController.setBestBrain(self)
-	local best = self.population[1]
-	for b=1,POPULATION_SIZE do
-		if self.population[b].fitness > best.fitness then
-			best = self.population[b]
-		end
-	end
-	self.bestBrain = best
 end
 
 --create the next generation, using the current one as parents
@@ -60,8 +52,6 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--	randomly mutate every individual with a certain probability
 	--4. separate the new population into species
 	--NOTE: this isn't designed to work with negative fitness values, or when every fitness is 0
-	
-	self.setBestBrain(self)
 	
 	--use species to separate population into lists
 	local currentSpecies = {}

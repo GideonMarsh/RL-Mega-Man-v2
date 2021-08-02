@@ -4,7 +4,9 @@
 
 
 --File names
-
+WORKING_FILE = "saves/recent.txt"
+LOG_FILE = "saves/Generation_"
+LOG_FILE_EXT = ".txt"
 
 --Screen limits, in pixels
 SCREEN_X_MIN = 0
@@ -41,7 +43,7 @@ GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
 WEIGHT_IMPORTANCE_COEFFICIENT = 2
 
 POPULATION_SIZE = 100
-STRUCTURAL_MUTATION_CHANCE = 0.2
+STRUCTURAL_MUTATION_CHANCE = 0.25
 WEIGHT_MUTATION_CHANCE = 0.5
 BRAIN_DIFFERENCE_DELTA = 5
 STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed

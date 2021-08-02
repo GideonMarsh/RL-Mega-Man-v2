@@ -37,10 +37,9 @@ savestate.save(save)
 emu.print("save state created")
 
 --create new genetic algorithm controller or load from file
-gaFile = "saves/recent.txt"
 ga = {}	--the name of this variable is not allowed to change since it is saved to a file
-if fileExists(gaFile) then
-	ga = GeneticAlgorithmController:new(loadFromFile(gaFile))
+if fileExists(WORKING_FILE) then
+	ga = GeneticAlgorithmController:new(loadFromFile(WORKING_FILE))
 	emu.print("population loaded")
 else
 	ga = GeneticAlgorithmController:new()
@@ -119,7 +118,8 @@ while true do
 		--if no brains remain, create next generation
 		if ga.nextBrain(ga) then
 			ga.currentBrain = 1
-			saveObject(gaFile, ga)
+			saveObject(WORKING_FILE, ga)
+			saveObject(LOG_FILE .. ga.generation .. LOG_FILE_EXT, ga)
 			emu.print("population saved")
 			ga.makeNextGeneration(ga)
 			emu.print("next generation created")
