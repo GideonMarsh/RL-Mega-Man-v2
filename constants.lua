@@ -5,7 +5,9 @@
 
 --File names
 WORKING_FILE = "saves/recent.txt"
-LOG_FILE = "saves/Generation_"
+HISTORY_FILE = "saves/Generation_"
+HISTORY_FILE_EXT = ".txt"
+LOG_FILE = "logs/Generation_Log_"
 LOG_FILE_EXT = ".txt"
 
 --Screen limits, in pixels

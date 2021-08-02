@@ -11,6 +11,7 @@ require "menu"
 require "brain"
 require "ga"
 require "save_progress"
+require "log"
 
 -----SETUP-----
 --set the rng seed to the current time, effectively randomising it
@@ -45,6 +46,9 @@ else
 	ga = GeneticAlgorithmController:new()
 	emu.print("new population created")
 end
+
+openLogFile(ga.generation)
+logFile:write("Generation ", ga.generation, "\n\n")
 
 -----MAIN PROGRAM LOOP----
 savestate.load(save)
@@ -119,10 +123,14 @@ while true do
 		if ga.nextBrain(ga) then
 			ga.currentBrain = 1
 			saveObject(WORKING_FILE, ga)
-			saveObject(LOG_FILE .. ga.generation .. LOG_FILE_EXT, ga)
+			saveObject(HISTORY_FILE .. ga.generation .. HISTORY_FILE_EXT, ga)
 			emu.print("population saved")
 			ga.makeNextGeneration(ga)
 			emu.print("next generation created")
+			logFile:flush()
+			logFile:close()
+			openLogFile(ga.generation)
+			logFile:write("Generation ", ga.generation, "\n\n")
 		end
 		
 		--reset run

@@ -6,7 +6,7 @@
 
 require "constants"
 require "brain"
-
+require "log"
 
 --the prototype for GeneticAlgorithmController objects
 --GeneticAlgorithmController objects maintain the population of brains being used in the genetic algorithm
@@ -26,6 +26,7 @@ function GeneticAlgorithmController.assignFitness(self, fitness)
 	if not self.bestBrain or fitness > self.bestBrain.fitness then
 		self.bestBrain = self.population[self.currentBrain]
 		emu.print("New Best!")
+		logFile:write("New highest fitness: ", fitness, "\n")
 	end
 end
 
@@ -55,7 +56,8 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	
 	--use species to separate population into lists
 	local currentSpecies = {}
-	
+	local aveUnalteredFit = 0
+	local aveAlteredFit = 0
 	for i=1,POPULATION_SIZE do
 		local s = self.population[i].species
 		if currentSpecies[s] then
@@ -64,7 +66,14 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		else
 			currentSpecies[s] = {length = 1, [1]=self.population[i]}
 		end
+		aveAlteredFit = aveAlteredFit + self.population[i].fitness
+		if self.population[i].fitness ~= 0.001 then
+			aveUnalteredFit = aveUnalteredFit + (math.log10(self.population[i].fitness)/math.log10(FITNESS_BASE)) * FITNESS_MODIFIER
+		end
 	end
+	aveAlteredFit = aveAlteredFit / POPULATION_SIZE
+	aveUnalteredFit = aveUnalteredFit / POPULATION_SIZE
+	logFile:write("Population average fitness: ", aveUnalteredFit, "\nPopulation average modified fitness: ", aveAlteredFit, "\n")
 	
 	--step 1
 	local meanFitness = 0
@@ -75,6 +84,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		meanFitness = meanFitness + self.population[i].fitness
 	end
 	meanFitness = meanFitness / POPULATION_SIZE
+	logFile:write("Mean adjusted fitness: ", meanFitness, "\n")
 	
 	--step 2
 	local newSizes = {}
@@ -88,7 +98,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		end
 		newSizes[i] = math.floor(sumFitness / meanFitness)
 		totalPopulation = totalPopulation + newSizes[i]
-		
+		logFile:write("Species ", i, " sum adjusted fitnesses: ", sumFitness, "\n")
 		local speciesAveFit = sumFitness / currentSpecies[i].length
 		if self.species[i].highestFitness < speciesAveFit then
 			self.species[i].highestFitness = speciesAveFit
@@ -104,6 +114,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		if self.species[i].staleCounter >= STALE_SPECIES_CUTOFF and not i == self.bestBrain.species then
 			self.species[i].staleCounter = 0
 			newSizes[i] = 0
+			logFile:write("Stale species removed: ", i, "\n")
 		end
 	end
 	
@@ -133,6 +144,10 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			excessPopulation = excessPopulation + 1
 			s = (s % ns.length) + 1
 		end
+	end
+	
+	for p in pairs(newSizes) do
+		logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", newSizes[p], "\n")
 	end
 	
 	--step 3
@@ -270,6 +285,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			self.species[newSpecies].staleCounter = 0
 			self.species[newSpecies].highestFitness = 0
 			v.species = newSpecies
+			logFile:write("New Species: ", newSpecies, "\n")
 		end
 	end
 	

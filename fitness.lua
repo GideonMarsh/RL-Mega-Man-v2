@@ -18,9 +18,14 @@ function returnFitness()
 	return FITNESS_BASE ^ (f  / FITNESS_MODIFIER)
 end
 
---return the stored fitness value
+--return the stored fitness value (unmodified)
 function checkFitness()
 	return fitness
+end
+
+--return the modified fitness value
+function checkModFitness()
+	return FITNESS_BASE ^ (fitness  / FITNESS_MODIFIER) 
 end
 
 --find and increment the current fitness value based on the game state
