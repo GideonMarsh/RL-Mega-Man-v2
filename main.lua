@@ -25,8 +25,9 @@ menuStart()
 menuWait(135)
 menuStart()
 menuWait(10)
---select Air Man first
-menuUp()
+--select Metal Man first
+menuDown()
+menuLeft()
 menuStart()
 --wait until game is playable
 while memory.readbyte(0x01FE) ~= STATE_PLAYING do

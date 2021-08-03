@@ -48,6 +48,39 @@ function setFitness(framesElapsed)
 			local mx = memory.readbyte(PLAYER_X)
 			pixelProgress = (screen * 255) + mx
 		end
+	elseif stage == 6 then
+		--Metal Man's stage
+		if screen == 1 then
+			--first screen with overhang
+			local mx = memory.readbyte(PLAYER_X)
+			local my = memory.readbyte(PLAYER_Y)
+			if mx > 160 then
+				pixelProgress = (screen * 255) + mx - math.abs(110 - my)
+			else
+				pixelProgress = (screen * 255) + mx
+			end
+		elseif screen == 9 then
+			--second screen with overhang
+			local mx = memory.readbyte(PLAYER_X)
+			local my = memory.readbyte(PLAYER_Y)
+			if my < 100 then
+				pixelProgress = (screen * 255) + mx - (100 - my)
+			else
+				pixelProgress = (screen * 255) + mx
+			end
+		elseif screen == 10 then
+			--midway room
+			local mx = memory.readbyte(PLAYER_X)
+			pixelProgress = (screen * 255) + (255 - mx)
+		elseif screen == 21 then
+			--boss room
+			local bhp = memory.readbyte(BOSS_HP)
+			pixelProgress = (screen * 255) + ((28 - bhp) * 10)
+		else
+			--everywhere else
+			local mx = memory.readbyte(PLAYER_X)
+			pixelProgress = (screen * 255) + mx
+		end
 	end
 	pixelProgress = pixelProgress - FITNESS_OFFSET
 	if pixelProgress > furthest then
