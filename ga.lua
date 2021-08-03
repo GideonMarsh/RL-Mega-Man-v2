@@ -112,7 +112,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--never remove the species that best brain is a part of
 	for i in pairs(self.species) do
 		if self.species[i].staleCounter >= STALE_SPECIES_CUTOFF and not i == self.bestBrain.species then
-			self.species[i].staleCounter = 0
+			self.species[i].staleCounter = -1
 			newSizes[i] = 0
 			logFile:write("Stale species removed: ", i, "\n")
 		end
@@ -296,6 +296,20 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	self.generation = self.generation + 1
 	
 	self.population = newPopulation
+	
+	--check to see which species are extinct
+	for i in pairs(self.species) do
+		if self.species[i].staleCounter >= 0 then
+			local matched = false
+			for j,v in ipairs(self.population) do
+				if v.species == i then 
+					matched = true
+					break
+				end
+			end
+			if not matched then self.species[i].staleCounter = -1 end
+		end
+	end
 end
 
 --get basic info of current brain
