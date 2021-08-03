@@ -442,7 +442,10 @@ function Brain.prepareNodeTopology(self)
 	while counter < list1.index do
 		local c = self.connections[list1[counter]]
 		while c do
-			list1.add(c.outNode)
+			if not pcall(function() list1.add(c.outNode) end) then
+				emu.print(self.getAllConnections(self))
+				error("node topology ran out of memory")
+			end
 			c = c.nextConnection
 		end
 		counter = counter + 1

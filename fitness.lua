@@ -54,8 +54,16 @@ function setFitness(framesElapsed)
 			--first screen with overhang
 			local mx = memory.readbyte(PLAYER_X)
 			local my = memory.readbyte(PLAYER_Y)
-			if mx > 160 then
-				pixelProgress = (screen * 255) + mx - math.abs(110 - my)
+			if mx > 152 and my > 132 then
+				pixelProgress = 0
+			else
+				pixelProgress = (screen * 255) + mx
+			end
+		elseif screen == 2 then
+			local mx = memory.readbyte(PLAYER_X)
+			local my = memory.readbyte(PLAYER_Y)
+			if my > 132 then
+				pixelProgress = 0
 			else
 				pixelProgress = (screen * 255) + mx
 			end

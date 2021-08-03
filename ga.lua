@@ -105,8 +105,14 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	
 	--check if staleness needs to be incremented
-	if aveAlteredFit > self.averagePerformance then
-		self.averagePerformance = aveAlteredFit
+	local numSpecies = 0
+	for i in pairs(currentSpecies) do
+		numSpecies = numSpecies + 1
+	end
+	local aveFitPerSpecies = (aveAlteredFit * POPULATION_SIZE) / numSpecies
+	logFile:write("Average fitness per species: ", aveFitPerSpecies, "\n")
+	if aveFitPerSpecies > self.averagePerformance then
+		self.averagePerformance = aveFitPerSpecies
 		self.staleness = 0
 	else
 		self.staleness = self.staleness + 1
