@@ -12,7 +12,7 @@ require "log"
 --GeneticAlgorithmController objects maintain the population of brains being used in the genetic algorithm
 --the main driver should not have access to brain objects directly
 
-GeneticAlgorithmController = {population={},species={},generation=0,currentBrain=0}
+GeneticAlgorithmController = {population={},species={},generation=0,currentBrain=0,averagePerformance=0,staleness=0}
 
 --pass the inputs to the current brain and return the output
 function GeneticAlgorithmController.passInputs(self,inputs)
@@ -25,6 +25,7 @@ function GeneticAlgorithmController.assignFitness(self, fitness)
 	self.population[self.currentBrain].fitness = fitness
 	if not self.bestBrain or fitness > self.bestBrain.fitness then
 		self.bestBrain = self.population[self.currentBrain]
+		self.staleness = 0
 		emu.print("New Best!")
 		logFile:write("New highest fitness: ", fitness, "\n")
 	end
@@ -45,7 +46,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--	adjustedFitness = fitness / speciesSize
 	--2. apportion new species sizes of next generation
 	--	newSpeciesSize = (sum of all adjusted fitnesses of this species) / (mean adjusted fitness of entire population)
-	--	remove stale species
+	--	do staleness check
 	--	force the amount of new organisms to be the max population size
 	--3. create new generation
 	--	for each species, select the highest r% of the species to breed
@@ -88,6 +89,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	
 	--step 2
 	local newSizes = {}
+	local sumFitnesses = {}
 	local totalPopulation = 0
 	for i in pairs(currentSpecies) do
 		local sumFitness = 0
@@ -96,30 +98,43 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				sumFitness = sumFitness + currentSpecies[i][j].fitness
 			end
 		end
+		sumFitnesses[i] = sumFitness
 		newSizes[i] = math.floor(sumFitness / meanFitness)
 		totalPopulation = totalPopulation + newSizes[i]
 		logFile:write("Species ", i, " sum adjusted fitnesses: ", sumFitness, "\n")
-		local speciesAveFit = sumFitness / currentSpecies[i].length
-		if self.species[i].highestFitness < speciesAveFit then
-			self.species[i].highestFitness = speciesAveFit
-			self.species[i].staleCounter = 0
-		else
-			self.species[i].staleCounter = math.max(self.species[i].staleCounter + 1, 1)
-		end
-		
 	end
 	
-	--check if species are stale and remove them
-	--never remove the species that best brain is a part of
-	for i in pairs(currentSpecies) do
-		logFile:write("Species ", i, " staleness: ", self.species[i].staleCounter)
-		if self.species[i].staleCounter >= STALE_SPECIES_CUTOFF and not (i == self.bestBrain.species) then
-			self.species[i].staleCounter = -1
-			totalPopulation = totalPopulation - newSizes[i]
-			newSizes[i] = 0
-			logFile:write(" - Removed\n")
-		else
-			logFile:write("\n")
+	--check if staleness needs to be incremented
+	if aveAlteredFit > self.averagePerformance then
+		self.averagePerformance = aveAlteredFit
+		self.staleness = 0
+	else
+		self.staleness = self.staleness + 1
+	end
+	logFile:write("Staleness: ", self.staleness, "\n")
+	
+	--if the population is stale, remove all but top 3 species
+	if self.staleness >= STALE_SPECIES_CUTOFF then
+		logFile:write("Population stale - extinction event\n")
+		self.staleness = 0
+		sumFitnesses[-1] = 0
+		local savedSpecies = {[1]=self.bestBrain.species,[2]=-1,[3]=-1,l=0}
+		for i in pairs(sumFitnesses) do
+			if i ~= savedSpecies[1] and sumFitnesses[i] > sumFitnesses[savedSpecies[2]] then
+				savedSpecies[3] = savedSpecies[2]
+				savedSpecies[2] = i
+			elseif i ~= savedSpecies[1] and sumFitnesses[i] > sumFitnesses[savedSpecies[3]] then
+				savedSpecies[3] = i
+			end
+			savedSpecies.l = savedSpecies.l + 1
+		end
+		if savedSpecies.l > 3 then
+			for i in pairs(newSizes) do
+				if i ~= savedSpecies[1] and i ~= savedSpecies[2] and i ~= savedSpecies[3] then
+					totalPopulation = totalPopulation - newSizes[i]
+					newSizes[i] = 0
+				end
+			end
 		end
 	end
 	
@@ -272,7 +287,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	for i,v in ipairs(newPopulation) do
 		local found = false
 		for j in pairs(self.species) do
-			if v.compare(v,self.species[j].representative) <= BRAIN_DIFFERENCE_DELTA then
+			if v.compare(v,self.species[j]) <= BRAIN_DIFFERENCE_DELTA then
 				v.species = j
 				found = true
 				break
@@ -285,10 +300,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				newSpeciesCounter = newSpeciesCounter + 1
 				newSpecies = v.species .. "." .. newSpeciesCounter
 			end
-			self.species[newSpecies] = {}
-			self.species[newSpecies].representative = v
-			self.species[newSpecies].staleCounter = 0
-			self.species[newSpecies].highestFitness = 0
+			self.species[newSpecies] = v
 			v.species = newSpecies
 			logFile:write("New Species: ", newSpecies, "\n")
 		end
@@ -301,20 +313,6 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	self.generation = self.generation + 1
 	
 	self.population = newPopulation
-	
-	--check to see which species are extinct
-	for i in pairs(self.species) do
-		if self.species[i].staleCounter >= 0 then
-			local matched = false
-			for j,v in ipairs(self.population) do
-				if v.species == i then 
-					matched = true
-					break
-				end
-			end
-			if not matched then self.species[i].staleCounter = -1 end
-		end
-	end
 end
 
 --get basic info of current brain
@@ -330,7 +328,7 @@ function GeneticAlgorithmController:new(o)
 			o.population[i] = Brain:new(o.population[i])
 		end
 		for i in pairs(o.species) do
-			o.species[i].representative = Brain:new(o.species[i].representative)
+			o.species[i] = Brain:new(o.species[i])
 		end
 	else
 		o = {}
@@ -338,6 +336,8 @@ function GeneticAlgorithmController:new(o)
 		o.generation=1
 		o.currentBrain=1
 		o.species={}
+		o.averagePerformance = 0
+		o.staleness = 0
 		
 		for i=1,POPULATION_SIZE do
 			newBrain = Brain:new()
@@ -351,17 +351,14 @@ function GeneticAlgorithmController:new(o)
 		for i,v in ipairs(o.population) do
 			local found = false
 			for j in pairs(o.species) do
-				if v.compare(v,o.species[j].representative) <= BRAIN_DIFFERENCE_DELTA then
+				if v.compare(v,o.species[j]) <= BRAIN_DIFFERENCE_DELTA then
 					v.species = j
 					found = true
 					break
 				end
 			end
 			if not found then
-				o.species[initialSpeciesCounter .. ""] = {}
-				o.species[initialSpeciesCounter .. ""].representative = v
-				o.species[initialSpeciesCounter .. ""].staleCounter = 0
-				o.species[initialSpeciesCounter .. ""].highestFitness = 0
+				o.species[initialSpeciesCounter .. ""] = v
 				v.species = initialSpeciesCounter .. ""
 				initialSpeciesCounter = initialSpeciesCounter + 1
 			end
