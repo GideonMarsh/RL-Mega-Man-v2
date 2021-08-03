@@ -83,6 +83,32 @@ while true do
 		end
 	end
 	
+	if out[7] < -100 then
+		outString = outString .. "Atomic Fire"
+	elseif out[7] < -80 then
+		outString = outString .. "Air Shooter"
+	elseif out[7] < -60 then
+		outString = outString .. "Leaf Shield"
+	elseif out[7] < -40 then
+		outString = outString .. "Bubble Lead"
+	elseif out[7] < -20 then
+		outString = outString .. "Quick Boomerang"
+	elseif out[7] < 0 then
+		outString = outString .. "Time Stopper"
+	elseif out[7] > 100 then
+		outString = outString .. "Metal Blade"
+	elseif out[7] > 80 then
+		outString = outString .. "Crash Bomb"
+	elseif out[7] > 60 then
+		outString = outString .. "Item 1"
+	elseif out[7] > 40 then
+		outString = outString .. "Item 2"
+	elseif out[7] > 20 then
+		outString = outString .. "Item 3"
+	else
+		outString = outString .. "Mega Buster"
+	end
+	
 	local info = ga.getIndividualInfo(ga)
 	gui.text(10, 12, outString, "white", "black")
 	gui.text(10, 209, "Generation " .. info[1] .. "; Species " .. info[2], "white", "black")

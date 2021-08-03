@@ -21,7 +21,7 @@ Y_OFFSET = 3
 --Note: screen height is 0-239, but emulator only displays the range of 8-231
 
 --Number of player controls
-CONTROLLER_OUTPUTS = 18		--up, down, left, right, A, B, weapon selection
+CONTROLLER_OUTPUTS = 7		--up, down, left, right, A, B, weapon selection
 
 --Memory Addresses
 CURRENT_STAGE = 0x002A
@@ -45,8 +45,8 @@ GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
 WEIGHT_IMPORTANCE_COEFFICIENT = 2
 
 POPULATION_SIZE = 100
-STRUCTURAL_MUTATION_CHANCE = 0.25
-WEIGHT_MUTATION_CHANCE = 0.5
+STRUCTURAL_MUTATION_CHANCE = 0.2
+WEIGHT_MUTATION_CHANCE = 0.4
 BRAIN_DIFFERENCE_DELTA = 7
 STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed
 

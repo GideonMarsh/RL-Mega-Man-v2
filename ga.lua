@@ -106,15 +106,20 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		else
 			self.species[i].staleCounter = math.max(self.species[i].staleCounter + 1, 1)
 		end
+		
 	end
 	
 	--check if species are stale and remove them
 	--never remove the species that best brain is a part of
-	for i in pairs(self.species) do
-		if self.species[i].staleCounter >= STALE_SPECIES_CUTOFF and not i == self.bestBrain.species then
+	for i in pairs(currentSpecies) do
+		logFile:write("Species ", i, " staleness: ", self.species[i].staleCounter)
+		if self.species[i].staleCounter >= STALE_SPECIES_CUTOFF and not (i == self.bestBrain.species) then
 			self.species[i].staleCounter = -1
+			totalPopulation = totalPopulation - newSizes[i]
 			newSizes[i] = 0
-			logFile:write("Stale species removed: ", i, "\n")
+			logFile:write(" - Removed\n")
+		else
+			logFile:write("\n")
 		end
 	end
 	

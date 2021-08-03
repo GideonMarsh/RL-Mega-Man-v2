@@ -1,0 +1,78 @@
+Generation 9
+
+Population average fitness: 141.75683837302
+Population average modified fitness: 3.7585856971114
+Mean adjusted fitness: 0.8699083973584
+Species 44.2 sum adjusted fitnesses: 3.9937381629106
+Species 89.4.1 sum adjusted fitnesses: 3.9937381629106
+Species 84.2 sum adjusted fitnesses: 1
+Species 44.1 sum adjusted fitnesses: 4.0661834929299
+Species 79.2 sum adjusted fitnesses: 3.9937381629106
+Species 89.2 sum adjusted fitnesses: 1
+Species 84.3 sum adjusted fitnesses: 2.7962428977463
+Species 84.1 sum adjusted fitnesses: 3.9937381629106
+Species 100.1 sum adjusted fitnesses: 3.993735511561
+Species 9.2.1 sum adjusted fitnesses: 3.9937381629106
+Species 9.2 sum adjusted fitnesses: 3.9937381629106
+Species 100.2 sum adjusted fitnesses: 3.9937381629106
+Species 79.3 sum adjusted fitnesses: 3.2453036221829
+Species 9.1 sum adjusted fitnesses: 3.9937381629106
+Species 99.3 sum adjusted fitnesses: 2.9958254419404
+Species 79.4 sum adjusted fitnesses: 3.9937381629106
+Species 99.1.1 sum adjusted fitnesses: 3.9937381629106
+Species 79.6 sum adjusted fitnesses: 3.9937381629106
+Species 79.5 sum adjusted fitnesses: 3.9937381629106
+Species 89.1 sum adjusted fitnesses: 3.9937381629106
+Species 89.3 sum adjusted fitnesses: 3.9937381629106
+Species 44.3 sum adjusted fitnesses: 3.9937381629106
+Species 100.3 sum adjusted fitnesses: 3.9937381629106
+Species 99.2 sum adjusted fitnesses: 3.9937381629106
+Species 44.2 staleness: 2
+Species 89.4.1 staleness: 1
+Species 84.2 staleness: 5
+Species 44.1 staleness: 5
+Species 79.2 staleness: 5
+Species 89.2 staleness: 6
+Species 84.3 staleness: 3
+Species 84.1 staleness: 5
+Species 100.1 staleness: 4
+Species 9.2.1 staleness: 0
+Species 9.2 staleness: 2
+Species 100.2 staleness: 4
+Species 79.3 staleness: 3
+Species 9.1 staleness: 3
+Species 99.3 staleness: 2
+Species 79.4 staleness: 4
+Species 99.1.1 staleness: 0
+Species 79.6 staleness: 0
+Species 79.5 staleness: 4
+Species 89.1 staleness: 6
+Species 89.3 staleness: 5
+Species 44.3 staleness: 4
+Species 100.3 staleness: 3
+Species 99.2 staleness: 1
+Species 44.2 size: 5 -> 5
+Species 89.4.1 size: 8 -> 5
+Species 84.2 size: 2 -> 2
+Species 44.1 size: 6 -> 5
+Species 79.2 size: 4 -> 5
+Species 89.2 size: 2 -> 2
+Species 84.3 size: 5 -> 4
+Species 84.1 size: 5 -> 5
+Species 99.2 size: 4 -> 5
+Species 9.2.1 size: 4 -> 5
+Species 9.2 size: 1 -> 5
+Species 100.3 size: 4 -> 5
+Species 100.1 size: 5 -> 4
+Species 44.3 size: 4 -> 4
+Species 99.3 size: 3 -> 3
+Species 79.4 size: 5 -> 4
+Species 89.3 size: 4 -> 4
+Species 9.1 size: 5 -> 4
+Species 79.5 size: 4 -> 4
+Species 89.1 size: 4 -> 4
+Species 79.6 size: 3 -> 4
+Species 99.1.1 size: 4 -> 4
+Species 79.3 size: 4 -> 3
+Species 100.2 size: 5 -> 4
+New Species: 79.6.1
