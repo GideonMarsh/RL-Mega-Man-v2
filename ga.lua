@@ -104,7 +104,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			self.species[i].highestFitness = speciesAveFit
 			self.species[i].staleCounter = 0
 		else
-			self.species[i].staleCounter = self.species[i].staleCounter + 1
+			self.species[i].staleCounter = math.max(self.species[i].staleCounter + 1, 1)
 		end
 	end
 	

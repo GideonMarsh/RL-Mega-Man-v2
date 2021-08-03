@@ -21,7 +21,7 @@ Y_OFFSET = 3
 --Note: screen height is 0-239, but emulator only displays the range of 8-231
 
 --Number of player controls
-CONTROLLER_OUTPUTS = 6		--up, down, left, right, A, B
+CONTROLLER_OUTPUTS = 18		--up, down, left, right, A, B, weapon selection
 
 --Memory Addresses
 CURRENT_STAGE = 0x002A
