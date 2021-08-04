@@ -69,7 +69,7 @@ Brain = {fitness = -1,connections = {}, nodeOrder = {}, species = -1}
 --initialize this brain from scratch
 --should only be used when creating the initial population
 function Brain.initNewBrain(self)
-	self.mutateStructure(self)
+	self.mutateAddConnection(self)
 end
 
 --make this brain the offspring of two other brains
@@ -169,7 +169,7 @@ function Brain.compare(self, otherBrain)
 		W = W / matchedWeights.length
 	end
 	
-	local d = ((c1 * D) / N) + (c2 * W) + D
+	local d = math.max(((c1 * D) / N),D) + (c2 * W)
 	return d
 end
 

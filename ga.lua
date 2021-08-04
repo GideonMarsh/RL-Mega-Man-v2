@@ -100,9 +100,15 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			end
 		end
 		sumFitnesses[i] = sumFitness
-		newSizes[i] = math.floor(sumFitness / meanFitness)
+		newSizes[i] = math.floor((sumFitness / meanFitness) + 0.5)
 		totalPopulation = totalPopulation + newSizes[i]
-		logFile:write("Species ", i, " sum adjusted fitnesses: ", sumFitness, "\n")
+		--logFile:write("Species ", i, " sum adjusted fitnesses: ", sumFitness, "\n")
+	end
+	
+	for i=1,specieCount do
+		if currentSpecies[i] then
+			logFile:write("Species ", i, " sum adjusted fitnesses: ", sumFitnesses[i], "\n")
+		end
 	end
 	
 	--check if staleness needs to be incremented
@@ -151,27 +157,30 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				ns[ns.length] = i
 			end
 		end
-		local s = 1
 		while excessPopulation > 0 do
 			--population too high
-			newSizes[ns[s]] = newSizes[ns[s]] - 1
-			excessPopulation = excessPopulation - 1
-			s = (s % ns.length) + 1
+			local rand = math.random(ns.length)
+			if newSizes[ns[rand]] > 0 then
+				newSizes[ns[rand]] = newSizes[ns[rand]] - 1
+				excessPopulation = excessPopulation - 1
+			end
 		end
 		
 		while excessPopulation < 0 do
 			--population too low
-			newSizes[ns[s]] = newSizes[ns[s]] + 1
+			local rand = math.random(ns.length)
+			newSizes[ns[rand]] = newSizes[ns[rand]] + 1
 			excessPopulation = excessPopulation + 1
-			s = (s % ns.length) + 1
 		end
 	end
 	
-	for p in pairs(newSizes) do
-		if p == self.bestBrain.species then
-			logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", (newSizes[p] + 1), "\n")
-		else
-			logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", newSizes[p], "\n")
+	for p=1,specieCount do
+		if newSizes[p] then
+			if p == self.bestBrain.species then
+				logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", (newSizes[p] + 1), "\n")
+			else
+				logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", newSizes[p], "\n")
+			end
 		end
 	end
 	

@@ -65,5 +65,5 @@ NO_PROGRESS_TIMEOUT = 1200	--if fitness does not change after this many frames, 
 QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
 
 FITNESS_OFFSET = 128		--fitness starts at this value + 1, subtract this for actual starting fitness
-FITNESS_BASE = 10			--the priority to give one brain over another if the difference between their fitnesses equals FITNESS_MODIFIER
+FITNESS_BASE = 8			--the priority to give one brain over another if the difference between their fitnesses equals FITNESS_MODIFIER
 FITNESS_MODIFIER = 256		
