@@ -42,7 +42,7 @@ MAX_HP = 28					--maximum hp of player and bosses
 
 --Neural Network
 --the number of input nodes for each neural network
-INPUT_NODES = math.floor((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET) * math.floor((SCREEN_Y_MAX - SCREEN_Y_MIN + 1) / Y_OFFSET)
+INPUT_NODES = math.ceil((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET) * math.ceil((SCREEN_Y_MAX - SCREEN_Y_MIN + 1) / Y_OFFSET)
 --the number of output nodes for each neural network
 OUTPUT_NODES = CONTROLLER_OUTPUTS
 
@@ -53,7 +53,7 @@ WEIGHT_IMPORTANCE_COEFFICIENT = 2
 POPULATION_SIZE = 100
 STRUCTURAL_MUTATION_CHANCE = 0.1
 WEIGHT_MUTATION_CHANCE = 0.4
-BRAIN_DIFFERENCE_DELTA = 7
+BRAIN_DIFFERENCE_DELTA = 6
 STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed
 
 --Miscellaneous

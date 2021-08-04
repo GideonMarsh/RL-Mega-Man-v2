@@ -58,7 +58,7 @@ function setFitness(framesElapsed)
 			--first screen with overhang
 			local mx = memory.readbyte(PLAYER_X)
 			local my = memory.readbyte(PLAYER_Y)
-			if mx < 41 then
+			if mx < 56 then
 				pixelProgress = FITNESS_OFFSET
 			elseif mx > 152 and my > 132 then
 				pixelProgress = FITNESS_OFFSET

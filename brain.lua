@@ -6,6 +6,7 @@
 
 require "constants"
 require "inum_tracker"
+require "display_brain"
 
 --prototype for ConnectionGene objects
 --ConnectionGene objects store the structure of the neural network
@@ -190,6 +191,8 @@ function Brain.think(self, inputs)
 		end
 		n = n + 1
 	end
+	
+	--drawBrain(nodes, self.getAllConnections(self))
 	
 	--return outputs
 	local outputs = {}
