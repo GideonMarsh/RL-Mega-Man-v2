@@ -349,6 +349,12 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	
 	--step 4
+	local oldNumSpecies = 0
+	for i in pairs(currentSpecies) do
+		oldNumSpecies = oldNumSpecies + 1
+	end
+	
+	
 	for i,v in ipairs(newPopulation) do
 		local found = false
 		for j in pairs(currentSpecies) do
@@ -376,6 +382,16 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	
 	newPopulation[popCounter] = self.bestBrain
 	self.bestBrain.fitness = bestFit
+	
+	local newSpecies = {}
+	local newNumSpecies = 0
+	for i=1,POPULATION_SIZE do
+		if not newSpecies[newPopulation[i].species] then
+			newSpecies[newPopulation[i].species] = true
+			newNumSpecies = newNumSpecies + 1
+		end
+	end
+	logFile:write("Number of species: " , oldNumSpecies, " -> ", newNumSpecies, "\n")
 	
 	self.currentBrain = 1
 	self.generation = self.generation + 1
