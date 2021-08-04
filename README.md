@@ -5,6 +5,8 @@ The goal of this project is to make a framework that can perform reinforcement l
 
 Version 1 can be found [here](https://github.com/GideonMarsh/RL-Mega-Man).
 
+Press spacebar while script is running to show a display of the currently running brain. If you are using the speedup or turbo functions of the emulator, showing the brain will significantly reduce the emulator's performance.
+
 ### Program Input
 
 The script reads the pixel values from the screen using the emulator function emu.getscreenpixel(). The value of each pixel is converted to a single value by averaging the rgb values together. After that, it is subtracted by 128; this is so the input values are not all positive values.
@@ -35,8 +37,4 @@ The population of brains is split into categories called species based on their 
 
 *Fitness*
 
-Fitness is awarded based on the progress made through the level. Each level in the game is split into a series of rooms, which are maintained within the game's code. Some rooms are stitched together horizontally to create a long, seamless room; even in these cases the rooms are still maintained individually in the game's code. Mega Man's position is relative to the room he is in, and so fitness can easily be determined using a combination of the level being played, the current room, and Mega Man's position in that room. Each room is 256 pixels wide and rooms are indexed starting from 0, so fitness = room number * 256 + the specific room's fitness function:
--For rooms where the goal is to the right, or to the bottom right with no obstacles preventing descent: room fitness = Mega Man's x position
--For rooms where the goal is to the left, or to the bottom left with no obstacles preventing descent: room fitness = Mega Man's x position inverted (256 - x)
--For rooms where the goal is at the top, or rooms with obstacles preventing descent: room fitness = x position of room goal +/- Mega Man's y position (y position is used as a penalty, so approaching the target x position also requires approaching the target y position)
--For boss rooms: room fitness = boss hp lost * 10 (bosses have 28 hp, so specifically it is (28 - boss current hp) * 10)
+To be finished later.
