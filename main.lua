@@ -155,7 +155,7 @@ while true do
 		--prepare next brain
 		--if no brains remain, create next generation
 		if ga.nextBrain(ga) then
-			ga.currentBrain = 1
+			ga.currentBrain = 100
 			local tempObj = {ga=ga,specieCount=specieCount,connectionCount=connectionCount,nodeCount=nodeCount}
 			saveObject(WORKING_FILE, tempObj)
 			saveObject(HISTORY_FILE .. ga.generation .. HISTORY_FILE_EXT, tempObj)

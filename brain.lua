@@ -169,7 +169,7 @@ function Brain.compare(self, otherBrain)
 		W = W / matchedWeights.length
 	end
 	
-	local d = ((c1 * D) / N) + (c2 * W)
+	local d = ((c1 * D) / N) + (c2 * W) + D
 	return d
 end
 
@@ -302,97 +302,92 @@ function Brain.getAllNodes(self)
 	return allNodesRev
 end
 
---make one random structural mutation to the neural network
---if there are no connections, a connection will be added
---otherwise, choose randomly between adding a connection or a node
-function Brain.mutateStructure(self)
-	local allConnections = self.getAllConnections(self)
-	local rand = math.random(5)
-	--emu.print(rand)
-	if (allConnections.length == 0) or rand < 5 then
-		--add a connection
-		local w = (math.random() - 0.5) * 2	--the weight of the new connection
-		
-		--a random connection is made following these steps:
-		--1. pick a node at random to be the start node
-		--2. pick a node at random to be the end node (can be the same as the start node)
-		--3. check to see if the connection already exists
-		--	a. if it does and it's disabled, enable it and give it a new weight, and return
-		--	b. if it does and it's enabled, return to step 2 and pick a new end node without replacement
-		--	c. if it doesn't, go to step 4
-		--4. attempt to make a new connection between the nodes
-		--	a. if the new connection is successful, return
-		--	b. if not, return to step 2 and pick a new end node without replacement
-		--5. if all end nodes have been tried, return to step 1 and pick a new node without replacement
-		--with this system all potential connections will be tried, even illegal ones
-		--if the outer loop ends without returning, there are no valid connections
-		
-		local startNodes = self.getAllNodes(self)
-		while startNodes.length > 0 do
-			--step 1
-			local s = math.random(startNodes.length)
-			local endNodes = self.getAllNodes(self)
-			while endNodes.length > 0 do
-				--step 2
-				local e = math.random(endNodes.length)
-				--step 3
-				local valid = true
-				local allcons = self.getAllConnections(self)
-				for i in pairs(allcons) do
-					if i ~= "length" then
-						if allcons[i].inNode == startNodes[s] and allcons[i].outNode == endNodes[e] then
-							if allcons[i].enabled then
-								valid = false
-								break
-							else
-								--step 3a
-								allcons[i].enabled = true
-								allcons[i].weight = w
-								--emu.print("enable connection between " .. allcons[i].inNode .. " and " .. allcons[i].outNode)
-								return
-							end
+--add a connection to the network, if possible
+function Brain.mutateAddConnection(self)
+	local w = (math.random() - 0.5) * 2	--the weight of the new connection
+	
+	--a random connection is made following these steps:
+	--1. pick a node at random to be the start node
+	--2. pick a node at random to be the end node (can be the same as the start node)
+	--3. check to see if the connection already exists
+	--	a. if it does and it's disabled, enable it and give it a new weight, and return
+	--	b. if it does and it's enabled, return to step 2 and pick a new end node without replacement
+	--	c. if it doesn't, go to step 4
+	--4. attempt to make a new connection between the nodes
+	--	a. if the new connection is successful, return
+	--	b. if not, return to step 2 and pick a new end node without replacement
+	--5. if all end nodes have been tried, return to step 1 and pick a new node without replacement
+	--with this system all potential connections will be tried, even illegal ones
+	--if the outer loop ends without returning, there are no valid connections
+	
+	local startNodes = self.getAllNodes(self)
+	while startNodes.length > 0 do
+		--step 1
+		local s = math.random(startNodes.length)
+		local endNodes = self.getAllNodes(self)
+		while endNodes.length > 0 do
+			--step 2
+			local e = math.random(endNodes.length)
+			--step 3
+			local valid = true
+			local allcons = self.getAllConnections(self)
+			for i in pairs(allcons) do
+				if i ~= "length" then
+					if allcons[i].inNode == startNodes[s] and allcons[i].outNode == endNodes[e] then
+						if allcons[i].enabled then
+							valid = false
+							break
+						else
+							--step 3a
+							allcons[i].enabled = true
+							allcons[i].weight = w
+							--emu.print("enable connection between " .. allcons[i].inNode .. " and " .. allcons[i].outNode)
+							return
 						end
 					end
 				end
-				--step 3c
-				if valid then
-					--step 4
-					valid = self.addNewConnection(self, startNodes[s], endNodes[e], w, 0, true)
-					--step 4a
-					if valid then 
-						--emu.print("add connection between " .. startNodes[s] .. " and " .. endNodes[e])
-						return 
-					end
+			end
+			--step 3c
+			if valid then
+				--step 4
+				valid = self.addNewConnection(self, startNodes[s], endNodes[e], w, 0, true)
+				--step 4a
+				if valid then 
+					--emu.print("add connection between " .. startNodes[s] .. " and " .. endNodes[e])
+					return 
 				end
-				--step 3b and 4b (back to start of inner while loop)
-				endNodes[e] = endNodes[endNodes.length]
-				endNodes.length = endNodes.length - 1
 			end
-			--step 5 (back to start of outer while loop)
-			startNodes[s] = startNodes[startNodes.length]
-			startNodes.length = startNodes.length - 1
+			--step 3b and 4b (back to start of inner while loop)
+			endNodes[e] = endNodes[endNodes.length]
+			endNodes.length = endNodes.length - 1
 		end
-		--if code gets here, no new connections are valid
-		return
-	else
-		--add a node
-		while allConnections.length > 0 do
-			--choose a connection at random
-			local i = math.random(allConnections.length)
-			if allConnections[i].enabled then
-				--if it's enabled, use it to add a node, then return
-				self.addNewNode(self, allConnections[i])
-				--emu.print("add node " .. nodeCount .. " between " .. allConnections[i].inNode .. " and " .. allConnections[i].outNode)
-				return
-			else
-				--if it's disabled, skip it and remove it from the list
-				allConnections[i] = allConnections[allConnections.length]
-				allConnections.length = allConnections.length - 1
-			end
-		end
-		--if code gets here, no connections are valid for adding a node
-		return
+		--step 5 (back to start of outer while loop)
+		startNodes[s] = startNodes[startNodes.length]
+		startNodes.length = startNodes.length - 1
 	end
+	--if code gets here, no new connections are valid
+	return
+end
+
+--add a node to the neural network, if possible
+function Brain.mutateAddNode(self)
+	local allConnections = self.getAllConnections(self)
+	while allConnections.length > 0 do
+		--choose a connection at random
+		local i = math.random(allConnections.length)
+		if allConnections[i].enabled then
+			--if it's enabled, use it to add a node, then return
+			self.addNewNode(self, allConnections[i])
+			--emu.print("add node " .. nodeCount .. " between " .. allConnections[i].inNode .. " and " .. allConnections[i].outNode)
+			return
+		else
+			--if it's disabled, skip it and remove it from the list
+			allConnections[i] = allConnections[allConnections.length]
+			allConnections.length = allConnections.length - 1
+		end
+	end
+	--if code gets here, no connections are valid for adding a node
+	return
 end
 
 --modify the weights of each connection in the network with a certain probability
@@ -406,6 +401,53 @@ function Brain.mutateWeights(self)
 			if (math.min(allConnections.length, 20) * math.random()) < 1 then
 				v.weight = v.weight + ((math.random() - 0.5) * 2)
 			end
+		end
+	end
+end
+
+--disable a connection, if possible
+function Brain.mutateDisable(self)
+	local allConnections = self.getAllConnections(self)
+	while allConnections.length > 0 do
+		local rand = math.random(allConnections.length)
+		local inValid = false
+		local outValid = false
+		
+		if allConnections[rand].inNode <= INPUT_NODES then 
+			--inNode is input node
+			inValid = true 
+		else
+			--inNode has another outgoing connection
+			local con = self.connections[allConnections[rand].inNode]
+			if con.outNode ~= allConnections[rand].outNode or con.nextConnection then
+				inValid = true
+			end
+		end
+		
+		if inValid then
+			if allConnections[rand].outNode > INPUT_NODES and allConnections[rand].outNode <= INPUT_NODES + OUTPUT_NODES then
+				--outNode is output node
+				outValid = true
+			else
+				--outNOde has another incoming connection
+				local allCons = self.getAllConnections(self)
+				for i in pairs(allCons) do
+					if i ~= "length" then
+						if allCons[i].inNode ~= allConnections[rand].inNode and allCons[i].outNode == allConnections[rand].outNode then
+							outValid = true
+							break
+						end
+					end
+				end
+			end
+		end
+		
+		if inValid and outValid then
+			allConnections[rand].enabled = false
+			return
+		else
+			allConnections[rand] = allConnections[allConnections.length]
+			allConnections.length = allConnections.length - 1
 		end
 	end
 end

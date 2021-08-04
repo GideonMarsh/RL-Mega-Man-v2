@@ -168,7 +168,11 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	
 	for p in pairs(newSizes) do
-		logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", newSizes[p], "\n")
+		if p == self.bestBrain.species then
+			logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", (newSizes[p] + 1), "\n")
+		else
+			logFile:write("Species ", p, " size: ", currentSpecies[p].length, " -> ", newSizes[p], "\n")
+		end
 	end
 	
 	--step 3
@@ -202,72 +206,117 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				eligibleParents[eligibleParents.length] = fits[i]
 			end
 			
-			--if there's only one eligible parent, it must be both parents
-			if eligibleParents.length == 1 then
-				for i=1,newSizes[s] do
-					parent1 = eligibleParents[1]
-					parent2 = eligibleParents[1]
+			if math.random() < FORCE_SEXUAL_REPRODUCTION then
+				--force sexual reproduction
+				--if there's only one eligible parent, it must be both parents
+				if eligibleParents.length == 1 then
+					for i=1,newSizes[s] do
+						parent1 = eligibleParents[1]
+						parent2 = eligibleParents[1]
+						
+						--make a new brain
+						newBrain = Brain:new()
+						newBrain.crossover(newBrain,parent1,parent2)
+						newBrain.species = parent1.species
+						newPopulation[popCounter] = newBrain
+						popCounter = popCounter + 1
+					end
 					
-					--make a new brain
-					newBrain = Brain:new()
-					newBrain.crossover(newBrain,parent1,parent2)
-					newBrain.species = parent1.species
-					newPopulation[popCounter] = newBrain
-					popCounter = popCounter + 1
-				end
-				
-			--if there's only two eligible parents, they must both be a parent
-			elseif eligibleParents.length == 2 then
-				for i=1,newSizes[s] do
-					parent1 = eligibleParents[1]
-					parent2 = eligibleParents[2]
+				--if there's only two eligible parents, they must both be a parent
+				elseif eligibleParents.length == 2 then
+					for i=1,newSizes[s] do
+						parent1 = eligibleParents[1]
+						parent2 = eligibleParents[2]
+						
+						--make a new brain
+						newBrain = Brain:new()
+						newBrain.crossover(newBrain,parent1,parent2)
+						newBrain.species = parent1.species
+						newPopulation[popCounter] = newBrain
+						popCounter = popCounter + 1
+					end
 					
-					--make a new brain
-					newBrain = Brain:new()
-					newBrain.crossover(newBrain,parent1,parent2)
-					newBrain.species = parent1.species
-					newPopulation[popCounter] = newBrain
-					popCounter = popCounter + 1
+				--if there's more than two eligible parents, choose two of them to be parents
+				--weight the likelihood of each individual being chosen by their fitness
+				else
+					local lowFit = eligibleParents[eligibleParents.length].fitness
+					local epWeighted = {length = 0}
+					for i=1,newSizes[s] do
+						--create list of eligible parents, where each parent appears a number of times according to their relative fitness
+						for j=1,eligibleParents.length do
+							local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
+							for k=1,weightedLikelihood do
+								epWeighted.length = epWeighted.length + 1
+								epWeighted[epWeighted.length] = eligibleParents[j]
+							end
+						end
+						
+						--select one parent from that list
+						parent1 = epWeighted[math.random(epWeighted.length)]
+						
+						--remove all instances of the chosen parent from the list
+						local m = 1
+						while m <= epWeighted.length do
+							if epWeighted[m] == parent1 then
+								epWeighted[m] = epWeighted[epWeighted.length]
+								epWeighted[epWeighted.length] = nil
+								epWeighted.length = epWeighted.length - 1
+							end
+							m = m + 1
+						end
+						
+						--choose the other parent
+						parent2 = epWeighted[math.random(epWeighted.length)]
+						
+						--make a new brain
+						newBrain = Brain:new()
+						newBrain.crossover(newBrain,parent1,parent2)
+						newBrain.species = parent1.species
+						newPopulation[popCounter] = newBrain
+						popCounter = popCounter + 1
+					end
 				end
-				
-			--if there's more than two eligible parents, choose two of them to be parents
-			--weight the likelihood of each individual being chosen by their fitness
 			else
-				local lowFit = eligibleParents[eligibleParents.length].fitness
-				local epWeighted = {length = 0}
-				for i=1,newSizes[s] do
-					--create list of eligible parents, where each parent appears a number of times according to their relative fitness
-					for j=1,eligibleParents.length do
-						local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
-						for k=1,weightedLikelihood do
-							epWeighted.length = epWeighted.length + 1
-							epWeighted[epWeighted.length] = eligibleParents[j]
-						end
+				--allow asexual reproduction
+				--if there's only one eligible parent, it must be both parents
+				if eligibleParents.length == 1 then
+					for i=1,newSizes[s] do
+						parent1 = eligibleParents[1]
+						parent2 = eligibleParents[1]
+						
+						--make a new brain
+						newBrain = Brain:new()
+						newBrain.crossover(newBrain,parent1,parent2)
+						newBrain.species = parent1.species
+						newPopulation[popCounter] = newBrain
+						popCounter = popCounter + 1
 					end
 					
-					--select one parent from that list
-					parent1 = epWeighted[math.random(epWeighted.length)]
-					
-					--remove all instances of the chosen parent from the list
-					local m = 1
-					while m <= epWeighted.length do
-						if epWeighted[m] == parent1 then
-							epWeighted[m] = epWeighted[epWeighted.length]
-							epWeighted[epWeighted.length] = nil
-							epWeighted.length = epWeighted.length - 1
+				--if there's more than one eligible parent, choose two of them with replacement to be parents
+				--weight the likelihood of each individual being chosen by their fitness
+				else
+					local lowFit = eligibleParents[eligibleParents.length].fitness
+					local epWeighted = {length = 0}
+					for i=1,newSizes[s] do
+						--create list of eligible parents, where each parent appears a number of times according to their relative fitness
+						for j=1,eligibleParents.length do
+							local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
+							for k=1,weightedLikelihood do
+								epWeighted.length = epWeighted.length + 1
+								epWeighted[epWeighted.length] = eligibleParents[j]
+							end
 						end
-						m = m + 1
+						
+						parent1 = epWeighted[math.random(epWeighted.length)]
+						parent2 = epWeighted[math.random(epWeighted.length)]
+						
+						--make a new brain
+						newBrain = Brain:new()
+						newBrain.crossover(newBrain,parent1,parent2)
+						newBrain.species = parent1.species
+						newPopulation[popCounter] = newBrain
+						popCounter = popCounter + 1
 					end
-					
-					--choose the other parent
-					parent2 = epWeighted[math.random(epWeighted.length)]
-					
-					--make a new brain
-					newBrain = Brain:new()
-					newBrain.crossover(newBrain,parent1,parent2)
-					newBrain.species = parent1.species
-					newPopulation[popCounter] = newBrain
-					popCounter = popCounter + 1
 				end
 			end
 		end
@@ -275,8 +324,14 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	
 	--mutate each new brain at random, then prepare their topology
 	for i in pairs(newPopulation) do
-		if math.random() < STRUCTURAL_MUTATION_CHANCE then
-			newPopulation[i].mutateStructure(newPopulation[i])
+		if math.random() < NODE_MUTATION_CHANCE then
+			newPopulation[i].mutateAddNode(newPopulation[i])
+		end
+		if math.random() < CONNECTION_MUTATION_CHANCE then
+			newPopulation[i].mutateAddConnection(newPopulation[i])
+		end
+		if math.random() < DISABLE_MUTATION_CHANCE then
+			newPopulation[i].mutateDisable(newPopulation[i])
 		end
 		if math.random() < WEIGHT_MUTATION_CHANCE then
 			newPopulation[i].mutateWeights(newPopulation[i])
@@ -288,10 +343,18 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	for i,v in ipairs(newPopulation) do
 		local found = false
 		for j in pairs(currentSpecies) do
-			if v.compare(v,currentSpecies[j][1]) <= BRAIN_DIFFERENCE_DELTA then
-				v.species = j
-				found = true
-				break
+			if j == self.bestBrain.species then
+				if v.compare(v,self.bestBrain) <= BRAIN_DIFFERENCE_DELTA then
+					v.species = j
+					found = true
+					break
+				end
+			else
+				if v.compare(v,currentSpecies[j][1]) <= BRAIN_DIFFERENCE_DELTA then
+					v.species = j
+					found = true
+					break
+				end
 			end
 		end
 		if not found then
