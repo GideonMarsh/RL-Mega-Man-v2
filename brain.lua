@@ -192,7 +192,7 @@ function Brain.think(self, inputs)
 		n = n + 1
 	end
 	
-	--drawBrain(nodes, self.getAllConnections(self))
+	drawBrain(nodes, self.getAllConnections(self))
 	
 	--return outputs
 	local outputs = {}
