@@ -252,7 +252,7 @@ function Brain.addNewNode(self, oldConnection)
 	
 	oldConnection.enabled = false
 	
-	local w = (math.random() - 0.5) * 2
+	local w = (math.random(2001) - 1001) / 1000
 	
 	self.addNewConnection(self, oldConnection.inNode, nodeCount, oldConnection.weight, 0, true)
 	self.addNewConnection(self, nodeCount, oldConnection.outNode, w, 0, true)
@@ -304,7 +304,7 @@ end
 
 --add a connection to the network, if possible
 function Brain.mutateAddConnection(self)
-	local w = (math.random() - 0.5) * 2	--the weight of the new connection
+	local w = (math.random(2001) - 1001) / 1000	--the weight of the new connection
 	
 	--a random connection is made following these steps:
 	--1. pick a node at random to be the start node
@@ -399,7 +399,7 @@ function Brain.mutateWeights(self)
 	for i,v in ipairs(allConnections) do
 		if i ~= "length" then
 			if (math.min(allConnections.length, 20) * math.random()) < 1 then
-				v.weight = v.weight + ((math.random() - 0.5) * 2)
+				v.weight = v.weight + (math.random(2001) - 1001) / 1000
 			end
 		end
 	end

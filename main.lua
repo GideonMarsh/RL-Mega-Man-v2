@@ -13,6 +13,7 @@ require "ga"
 require "save_progress"
 require "log"
 require "inum_tracker"
+require "display_brain"
 
 -----SETUP-----
 --set the rng seed to the current time, effectively randomising it
@@ -57,12 +58,21 @@ openLogFile(ga.generation)
 logFile:write("Generation ", ga.generation, "\n\n")
 
 -----MAIN PROGRAM LOOP----
+local inControl = true
 savestate.load(save)
 local frameCounter = 1
 local lastFitness = 0
 local lastFitnessChange = 0
 --loop once per frame
 while true do
+	if input.get()["space"] then
+		if inControl then
+			doDraw = not doDraw
+			inControl = false
+		end
+	else
+		inControl = true
+	end
 	--do neural network calculation for this frame
 	local out = ga.passInputs(ga, getInputValues())
 	
@@ -80,42 +90,44 @@ while true do
 	end
 	
 	--show information on screen
-	local outString = ""
-	for i=1,6 do
-		if out[i] > 0 then
-			outString = outString .. "on "
-		else
-			outString = outString .. "off "
+	if not doDraw then
+		local outString = ""
+		for i=1,6 do
+			if out[i] > 0 then
+				outString = outString .. "on "
+			else
+				outString = outString .. "off "
+			end
 		end
+		if out[7] < -100 then
+			outString = outString .. "Atomic Fire"
+		elseif out[7] < -80 then
+			outString = outString .. "Air Shooter"
+		elseif out[7] < -60 then
+			outString = outString .. "Leaf Shield"
+		elseif out[7] < -40 then
+			outString = outString .. "Bubble Lead"
+		elseif out[7] < -20 then
+			outString = outString .. "Quick Boomerang"
+		elseif out[7] < 0 then
+			outString = outString .. "Time Stopper"
+		elseif out[7] > 100 then
+			outString = outString .. "Metal Blade"
+		elseif out[7] > 80 then
+			outString = outString .. "Crash Bomb"
+		elseif out[7] > 60 then
+			outString = outString .. "Item 1"
+		elseif out[7] > 40 then
+			outString = outString .. "Item 2"
+		elseif out[7] > 20 then
+			outString = outString .. "Item 3"
+		else
+			outString = outString .. "Mega Buster"
+		end
+
+		gui.text(10, 12, outString, "white", "black")
 	end
-	if out[7] < -100 then
-		outString = outString .. "Atomic Fire"
-	elseif out[7] < -80 then
-		outString = outString .. "Air Shooter"
-	elseif out[7] < -60 then
-		outString = outString .. "Leaf Shield"
-	elseif out[7] < -40 then
-		outString = outString .. "Bubble Lead"
-	elseif out[7] < -20 then
-		outString = outString .. "Quick Boomerang"
-	elseif out[7] < 0 then
-		outString = outString .. "Time Stopper"
-	elseif out[7] > 100 then
-		outString = outString .. "Metal Blade"
-	elseif out[7] > 80 then
-		outString = outString .. "Crash Bomb"
-	elseif out[7] > 60 then
-		outString = outString .. "Item 1"
-	elseif out[7] > 40 then
-		outString = outString .. "Item 2"
-	elseif out[7] > 20 then
-		outString = outString .. "Item 3"
-	else
-		outString = outString .. "Mega Buster"
-	end
-	
 	local info = ga.getIndividualInfo(ga)
-	gui.text(10, 12, outString, "white", "black")
 	gui.text(10, 209, "Generation " .. info[1] .. "; Species " .. info[2], "white", "black")
 	gui.text(10, 218, "Individual " .. info[3] .. "; Fitness: " .. math.floor(checkFitness()), "white", "black")
 	gui.text(211, 218, frameCounter, "white", "black")
