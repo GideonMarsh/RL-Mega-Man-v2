@@ -5,21 +5,7 @@
 --the neural network brains that form the population of the genetic algorithm
 
 require "constants"
-
-
---the number of input nodes for each neural network
-inputNodes = math.floor((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET) * math.floor((SCREEN_Y_MAX - SCREEN_Y_MIN + 1) / Y_OFFSET)
---the number of output nodes for each neural network
-outputNodes = CONTROLLER_OUTPUTS
-
---the innovation numbers for nodes and connections
---these ensure that no two nodes share the same id, same for connections
---nodes with innovation numbers 1-inputNodes are input nodes
---nodes with innovation numbers (inputNodes+1)-outputNodes are output nodes
---nodes with innovation numbers >outputNodes are hidden nodes
-nodeCount = inputNodes + outputNodes
-connectionCount = 0
-
+require "inum_tracker"
 
 --prototype for ConnectionGene objects
 --ConnectionGene objects store the structure of the neural network
@@ -191,7 +177,7 @@ function Brain.think(self, inputs)
 	local nodes = {}
 	
 	--set input nodes
-	for i=1,inputNodes do
+	for i=1,INPUT_NODES do
 		nodes[i] = inputs[i]
 	end
 	
@@ -207,9 +193,9 @@ function Brain.think(self, inputs)
 	
 	--return outputs
 	local outputs = {}
-	for i=1,outputNodes do
-		if nodes[i + inputNodes] then
-			outputs[i] = nodes[i + inputNodes]
+	for i=1,OUTPUT_NODES do
+		if nodes[i + INPUT_NODES] then
+			outputs[i] = nodes[i + INPUT_NODES]
 		else
 			outputs[i] = 0
 		end
@@ -238,11 +224,11 @@ end
 --add a new connection between two nodes
 function Brain.addNewConnection(self, inNode, outNode, weight, inum, enabled)
 	--connection is illegal if it ends at an input node
-	if outNode <= inputNodes then return false end
+	if outNode <= INPUT_NODES then return false end
 	
 	--connection is illegal if it starts at an output node
-	if inNode > inputNodes then
-		if inNode <= inputNodes + outputNodes then return false end
+	if inNode > INPUT_NODES then
+		if inNode <= INPUT_NODES + OUTPUT_NODES then return false end
 	end
 	
 	--connection is illegal if it creates a cycle
@@ -287,7 +273,7 @@ end
 function Brain.getAllNodes(self)
 	local allConnections = self.getAllConnections(self)
 	local allNodes = {length = 0}
-	for i=1,(inputNodes + outputNodes) do
+	for i=1,(INPUT_NODES + OUTPUT_NODES) do
 		allNodes.length = allNodes.length + 1
 		allNodes[i] = allNodes.length
 	end
@@ -433,7 +419,7 @@ function Brain.prepareNodeTopology(self)
 	end
 	
 	--only include input nodes that have a connection coming from them
-	for i=1,inputNodes do
+	for i=1,INPUT_NODES do
 		if self.connections[i] then
 			list1.add(i)
 		end

@@ -12,6 +12,7 @@ require "brain"
 require "ga"
 require "save_progress"
 require "log"
+require "inum_tracker"
 
 -----SETUP-----
 --set the rng seed to the current time, effectively randomising it
@@ -41,7 +42,11 @@ emu.print("save state created")
 --create new genetic algorithm controller or load from file
 ga = {}	--the name of this variable is not allowed to change since it is saved to a file
 if fileExists(WORKING_FILE) then
-	ga = GeneticAlgorithmController:new(loadFromFile(WORKING_FILE))
+	local tempObj = loadFromFile(WORKING_FILE)
+	ga = GeneticAlgorithmController:new(tempObj.ga)
+	specieCount = tempObj.specieCount
+	connectionCount = tempObj.connectionCount
+	nodeCount = tempObj.nodeCount
 	emu.print("population loaded")
 else
 	ga = GeneticAlgorithmController:new()
@@ -83,7 +88,6 @@ while true do
 			outString = outString .. "off "
 		end
 	end
-	
 	if out[7] < -100 then
 		outString = outString .. "Atomic Fire"
 	elseif out[7] < -80 then
@@ -152,8 +156,9 @@ while true do
 		--if no brains remain, create next generation
 		if ga.nextBrain(ga) then
 			ga.currentBrain = 1
-			saveObject(WORKING_FILE, ga)
-			saveObject(HISTORY_FILE .. ga.generation .. HISTORY_FILE_EXT, ga)
+			local tempObj = {ga=ga,specieCount=specieCount,connectionCount=connectionCount,nodeCount=nodeCount}
+			saveObject(WORKING_FILE, tempObj)
+			saveObject(HISTORY_FILE .. ga.generation .. HISTORY_FILE_EXT, tempObj)
 			emu.print("population saved")
 			ga.makeNextGeneration(ga)
 			emu.print("next generation created")

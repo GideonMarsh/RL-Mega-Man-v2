@@ -40,6 +40,12 @@ BOSS_HP = 0x06C1
 PLAYER_HP = 0x06C0
 MAX_HP = 28					--maximum hp of player and bosses
 
+--Neural Network
+--the number of input nodes for each neural network
+INPUT_NODES = math.floor((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET) * math.floor((SCREEN_Y_MAX - SCREEN_Y_MIN + 1) / Y_OFFSET)
+--the number of output nodes for each neural network
+OUTPUT_NODES = CONTROLLER_OUTPUTS
+
 --Genetic algorithm
 GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
 WEIGHT_IMPORTANCE_COEFFICIENT = 2

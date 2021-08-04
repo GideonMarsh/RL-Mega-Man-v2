@@ -26,11 +26,11 @@ save = savestate.object()
 savestate.save(save)
 emu.print("save state created")
 
-testbrain = Brain:new()
-for i=1,10 do
-	testbrain.mutateStructure(testbrain)
-end
-emu.print(testbrain.getAllConnections(testbrain))
+--testbrain = Brain:new()
+--for i=1,10 do
+--	testbrain.mutateStructure(testbrain)
+--end
+--emu.print(testbrain.getAllConnections(testbrain))
 
 savestate.load(save)
 local frameCounter = 1

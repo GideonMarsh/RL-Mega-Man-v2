@@ -50,12 +50,18 @@ function setFitness(framesElapsed)
 		end
 	elseif stage == 6 then
 		--Metal Man's stage
-		if screen == 1 then
+		if screen == 0 then
+			--level start, has conveyor
+			local mx = memory.readbyte(PLAYER_X)
+			pixelProgress = math.floor((mx - FITNESS_OFFSET)/ 10) + FITNESS_OFFSET
+		elseif screen == 1 then
 			--first screen with overhang
 			local mx = memory.readbyte(PLAYER_X)
 			local my = memory.readbyte(PLAYER_Y)
-			if mx > 152 and my > 132 then
-				pixelProgress = 0
+			if mx < 41 then
+				pixelProgress = FITNESS_OFFSET
+			elseif mx > 152 and my > 132 then
+				pixelProgress = FITNESS_OFFSET
 			else
 				pixelProgress = (screen * 255) + mx
 			end
@@ -63,7 +69,7 @@ function setFitness(framesElapsed)
 			local mx = memory.readbyte(PLAYER_X)
 			local my = memory.readbyte(PLAYER_Y)
 			if my > 132 then
-				pixelProgress = 0
+				pixelProgress = FITNESS_OFFSET
 			else
 				pixelProgress = (screen * 255) + mx
 			end

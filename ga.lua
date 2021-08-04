@@ -7,12 +7,13 @@
 require "constants"
 require "brain"
 require "log"
+require "inum_tracker"
 
 --the prototype for GeneticAlgorithmController objects
 --GeneticAlgorithmController objects maintain the population of brains being used in the genetic algorithm
 --the main driver should not have access to brain objects directly
 
-GeneticAlgorithmController = {population={},species={},generation=0,currentBrain=0,averagePerformance=0,staleness=0}
+GeneticAlgorithmController = {population={},generation=0,currentBrain=0,averagePerformance=0,staleness=0}
 
 --pass the inputs to the current brain and return the output
 function GeneticAlgorithmController.passInputs(self,inputs)
@@ -105,14 +106,8 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	
 	--check if staleness needs to be incremented
-	local numSpecies = 0
-	for i in pairs(currentSpecies) do
-		numSpecies = numSpecies + 1
-	end
-	local aveFitPerSpecies = (aveAlteredFit * POPULATION_SIZE) / numSpecies
-	logFile:write("Average fitness per species: ", aveFitPerSpecies, "\n")
-	if aveFitPerSpecies > self.averagePerformance then
-		self.averagePerformance = aveFitPerSpecies
+	if aveAlteredFit > self.averagePerformance then
+		self.averagePerformance = aveAlteredFit
 		self.staleness = 0
 	else
 		self.staleness = self.staleness + 1
@@ -292,23 +287,18 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--step 4
 	for i,v in ipairs(newPopulation) do
 		local found = false
-		for j in pairs(self.species) do
-			if v.compare(v,self.species[j]) <= BRAIN_DIFFERENCE_DELTA then
+		for j in pairs(currentSpecies) do
+			if v.compare(v,currentSpecies[j][1]) <= BRAIN_DIFFERENCE_DELTA then
 				v.species = j
 				found = true
 				break
 			end
 		end
 		if not found then
-			local newSpeciesCounter = 1
-			local newSpecies = v.species .. "." .. newSpeciesCounter
-			while self.species[newSpecies] do
-				newSpeciesCounter = newSpeciesCounter + 1
-				newSpecies = v.species .. "." .. newSpeciesCounter
-			end
-			self.species[newSpecies] = v
-			v.species = newSpecies
-			logFile:write("New Species: ", newSpecies, "\n")
+			specieCount = specieCount + 1
+			logFile:write("Species: " , v.species, " creates subspecies ", specieCount, "\n")
+			v.species = specieCount
+			currentSpecies[specieCount] = {[1]=v}
 		end
 	end
 	
@@ -333,15 +323,11 @@ function GeneticAlgorithmController:new(o)
 		for i=1,POPULATION_SIZE do
 			o.population[i] = Brain:new(o.population[i])
 		end
-		for i in pairs(o.species) do
-			o.species[i] = Brain:new(o.species[i])
-		end
 	else
 		o = {}
 		o.population={}
 		o.generation=1
 		o.currentBrain=1
-		o.species={}
 		o.averagePerformance = 0
 		o.staleness = 0
 		
@@ -350,24 +336,9 @@ function GeneticAlgorithmController:new(o)
 			newBrain.initNewBrain(newBrain)
 			
 			newBrain.prepareNodeTopology(newBrain)
+			specieCount = specieCount + 1
+			newBrain.species = specieCount
 			o.population[i] = newBrain
-		end
-		
-		local initialSpeciesCounter = 1
-		for i,v in ipairs(o.population) do
-			local found = false
-			for j in pairs(o.species) do
-				if v.compare(v,o.species[j]) <= BRAIN_DIFFERENCE_DELTA then
-					v.species = j
-					found = true
-					break
-				end
-			end
-			if not found then
-				o.species[initialSpeciesCounter .. ""] = v
-				v.species = initialSpeciesCounter .. ""
-				initialSpeciesCounter = initialSpeciesCounter + 1
-			end
 		end
 	end
 	
