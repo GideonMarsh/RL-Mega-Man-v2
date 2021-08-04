@@ -6,7 +6,7 @@
 
 require "constants"
 
-doDraw = true
+doDraw = false
 
 function drawBrain(nodes, connections)
 	if doDraw then
