@@ -53,7 +53,11 @@ function setFitness(framesElapsed)
 		if screen == 0 then
 			--level start, has conveyor
 			local mx = memory.readbyte(PLAYER_X)
-			pixelProgress = math.floor((mx - FITNESS_OFFSET)/ 10) + FITNESS_OFFSET
+			if mx <= 174 then
+				pixelProgress = FITNESS_OFFSET
+			else
+				pixelProgress = FITNESS_OFFSET + 1
+			end
 		elseif screen == 1 then
 			--first screen with overhang
 			local mx = memory.readbyte(PLAYER_X)
