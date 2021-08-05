@@ -31,7 +31,7 @@ end
 function ConnectionGene.calculateValue(self, nodes)
 	if self.enabled then
 		if not nodes[self.inNode] then
-			emu.print("ERROR: " .. self.inNode .. " is not a valid node")
+			error("ERROR: " .. self.inNode .. " is not a valid node")
 		end
 		if nodes[self.outNode] then
 			nodes[self.outNode] = nodes[self.outNode] + (nodes[self.inNode] * self.weight)
@@ -192,7 +192,7 @@ function Brain.think(self, inputs)
 		n = n + 1
 	end
 	
-	drawBrain(nodes, self.getAllConnections(self))
+	drawBrain(nodes, self.getAllConnections(self), self)
 	
 	--return outputs
 	local outputs = {}
@@ -470,12 +470,14 @@ function Brain.prepareNodeTopology(self)
 		end
 	end
 	local counter = 1
-	while counter < list1.index do
+	while counter <= list1.index do
 		local c = self.connections[list1[counter]]
 		while c do
-			if not pcall(function() list1.add(c.outNode) end) then
-				emu.print(self.getAllConnections(self))
-				error("node topology ran out of memory")
+			if c.outNode <= INPUT_NODES or c.outNode > INPUT_NODES + OUTPUT_NODES then
+				if not pcall(function() list1.add(c.outNode) end) then
+					emu.print(self.getAllConnections(self))
+					error("node topology ran out of memory")
+				end
 			end
 			c = c.nextConnection
 		end

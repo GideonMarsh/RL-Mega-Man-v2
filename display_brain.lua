@@ -5,10 +5,11 @@
 --displays one of the neural networks as it is running
 
 require "constants"
+require "save_progress"
 
 doDraw = false
 
-function drawBrain(nodes, connections)
+function drawBrain(nodes, connections, brain)
 	if doDraw then
 		local nodePositions = {}
 		local pixelsInRow = math.floor((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET)
@@ -36,6 +37,11 @@ function drawBrain(nodes, connections)
 				if connections[i].inNode <= INPUT_NODES then activeInputs[connections[i].inNode] = true end
 				local c1 = nodePositions[connections[i].inNode]
 				local c2 = nodePositions[connections[i].outNode]
+				if not c1 then
+					saveObject("saves/error_brain.txt", brain)
+					saveObject("saves/error_nodes.txt", nodes)
+					error(connections[i].inNode .. " has no position")
+				end
 				if connections[i].inNode > INPUT_NODES + OUTPUT_NODES then
 					c1.x = 0.75 * c1.x + 0.25 * c2.x
 					if c1.x >= c2.x then c1.x = c1.x - 30 end
@@ -57,10 +63,10 @@ function drawBrain(nodes, connections)
 			if activeInputs[i] then 
 				local color = math.floor(nodes[i])
 				if color > 0 then 
-					color = color * 2
+					color = color + 128
 					gui.pixel(nodePositions[i].x, nodePositions[i].y, {0,color,0})
 				else
-					color = (-2 * color) - 1
+					color = (color == 0) and 0 or ((-1 * color) + 128)
 					gui.pixel(nodePositions[i].x, nodePositions[i].y, {color,0,0})
 				end
 			else
@@ -83,16 +89,11 @@ function drawBrain(nodes, connections)
 		for i in pairs(nodePositions) do
 			if i > INPUT_NODES then
 				local color = nodes[i] and math.floor(nodes[i]) or 0
-				if i <= INPUT_NODES + OUTPUT_NODES and color > 0 then 
-					color = 128 
-				else
-					color = -128
-				end
 				if color > 0 then 
-					color = color * 2
+					color = color + 128
 					gui.box(nodePositions[i].x - 1, nodePositions[i].y - 1, nodePositions[i].x + 1, nodePositions[i].y + 1, {0,color,0})
 				else
-					color = (-2 * color) - 1
+					color = (color == 0) and 0 or ((-1 * color) + 128)
 					gui.box(nodePositions[i].x - 1, nodePositions[i].y - 1, nodePositions[i].x + 1, nodePositions[i].y + 1, {color,0,0})
 				end
 			end
