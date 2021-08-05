@@ -338,6 +338,9 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		end
 		if math.random() < CONNECTION_MUTATION_CHANCE then
 			newPopulation[i].mutateAddConnection(newPopulation[i])
+			if math.random() < CONNECTION_MUTATION_CHANCE then
+				newPopulation[i].mutateAddConnection(newPopulation[i])
+			end
 		end
 		if math.random() < DISABLE_MUTATION_CHANCE then
 			newPopulation[i].mutateDisable(newPopulation[i])

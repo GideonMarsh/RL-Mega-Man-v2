@@ -79,8 +79,8 @@ function Brain.crossover(self, parentA, parentB)
 	local parentBGenes = parentB.getAllConnections(parentB)
 	
 	--make sure parent A has the higher fitness
-	--if fitnesses are equal, pick one at random to be parent A
-	if parentB.fitness > parentA.fitness or (parentA.fitness == parentB.fitness and math.random() < 0.5) then
+	--if fitnesses are equal, make the smaller one parent A
+	if parentB.fitness > parentA.fitness or (parentA.fitness == parentB.fitness and parentAGenes.length > parentBGenes.length) then
 		local temp = parentAGenes
 		parentAGenes = parentBGenes
 		parentBGenes = temp
@@ -107,14 +107,6 @@ function Brain.crossover(self, parentA, parentB)
 						break
 					end
 				end
-			end
-			--if fitnesses are equal, also inherit all genes from parent B
-			--don't inherit if it creates a cycle or if another connection already exists between those two nodes
-			if parentA.fitness == parentB.fitness and 
-					not matched and
-					not self.isNodeLaterOnPath(self, vb.outNode, vb.inNode) and
-					not (self[vb.inNode] and self[vb.inNode].outNode == vb.outNode) then
-				self.addNewConnection(self, vb.inNode, vb.outNode, vb.weight, vb.inum, vb.enabled)
 			end
 		end
 	end
