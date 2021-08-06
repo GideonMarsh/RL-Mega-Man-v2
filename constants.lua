@@ -47,7 +47,7 @@ INPUT_NODES = math.ceil((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET) * math.cei
 OUTPUT_NODES = CONTROLLER_OUTPUTS
 
 --Genetic algorithm
-GENE_IMPORTANCE_COEFFICIENT = 10	--coefficients used in Brain.compare()
+GENE_IMPORTANCE_COEFFICIENT = 5		--coefficients used in Brain.compare()
 WEIGHT_IMPORTANCE_COEFFICIENT = 2
 
 POPULATION_SIZE = 200
@@ -55,9 +55,8 @@ NODE_MUTATION_CHANCE = 0.05
 CONNECTION_MUTATION_CHANCE = 0.25
 WEIGHT_MUTATION_CHANCE = 0.4
 DISABLE_MUTATION_CHANCE = 0.01
-BRAIN_DIFFERENCE_DELTA = 8
+BRAIN_DIFFERENCE_DELTA = 5
 STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed
-FORCE_SEXUAL_REPRODUCTION = 0.5
 
 --Miscellaneous
 TOTAL_FRAME_TIMEOUT = 25200	--max number of frames a brain is allowed to run for (game is 60fps)
@@ -65,5 +64,5 @@ NO_PROGRESS_TIMEOUT = 1200	--if fitness does not change after this many frames, 
 QUICK_TIMEOUT = 60			--if no progress is made in the first this many frames, the run ends
 
 FITNESS_OFFSET = 128		--fitness starts at this value + 1, subtract this for actual starting fitness
-FITNESS_BASE = 2			--the priority to give one brain over another if the difference between their fitnesses equals FITNESS_MODIFIER
+FITNESS_BASE = 4			--the priority to give one brain over another if the difference between their fitnesses equals FITNESS_MODIFIER
 FITNESS_MODIFIER = 256		

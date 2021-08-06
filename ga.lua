@@ -28,7 +28,7 @@ function GeneticAlgorithmController.assignFitness(self, fitness)
 		self.bestBrain = self.population[self.currentBrain]
 		self.staleness = 0
 		emu.print("New Best!")
-		logFile:write("New highest fitness: ", fitness, "\n")
+		logFile:write("New highest fitness: ", fitness, " (species ", self.bestBrain.species,")\n")
 	end
 end
 
@@ -151,26 +151,41 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	local excessPopulation = totalPopulation - (POPULATION_SIZE - 1)
 	if excessPopulation ~= 0 then
 		local ns = {length = 0}
-		for i in pairs(newSizes) do
-			if newSizes[i] > 0 then
-				ns.length = ns.length + 1
-				ns[ns.length] = i
+		for i in pairs(sumFitnesses) do
+			ns.length = ns.length + 1
+			ns[ns.length] = i
+			if ns.length > 1 then
+				for s=ns.length,2,-1 do
+					if sumFitnesses[ns[s]] < sumFitnesses[ns[s - 1]] then
+						local temp = ns[s - 1]
+						ns[s - 1] = ns[s]
+						ns[s] = temp
+					else
+						break
+					end
+				end
 			end
 		end
+		local count = 1
 		while excessPopulation > 0 do
 			--population too high
-			local rand = math.random(ns.length)
-			if newSizes[ns[rand]] > 0 then
-				newSizes[ns[rand]] = newSizes[ns[rand]] - 1
+			if newSizes[ns[count]] == 0 then
+				count = count + 1
+			else
+				newSizes[ns[count]] = newSizes[ns[count]] - 1
 				excessPopulation = excessPopulation - 1
 			end
 		end
-		
+		count = ns.length
+		while count > 0 and newSizes[ns[count]] > 0 do
+			count = count - 1
+		end
 		while excessPopulation < 0 do
 			--population too low
-			local rand = math.random(ns.length)
-			newSizes[ns[rand]] = newSizes[ns[rand]] + 1
+			if count == 0 then count = ns.length end
+			newSizes[ns[count]] = newSizes[ns[count]] + 1
 			excessPopulation = excessPopulation + 1
+			count = count - 1
 		end
 	end
 	
@@ -215,117 +230,44 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				eligibleParents[eligibleParents.length] = fits[i]
 			end
 			
-			if math.random() < FORCE_SEXUAL_REPRODUCTION then
-				--force sexual reproduction
-				--if there's only one eligible parent, it must be both parents
-				if eligibleParents.length == 1 then
-					for i=1,newSizes[s] do
-						parent1 = eligibleParents[1]
-						parent2 = eligibleParents[1]
-						
-						--make a new brain
-						newBrain = Brain:new()
-						newBrain.crossover(newBrain,parent1,parent2)
-						newBrain.species = parent1.species
-						newPopulation[popCounter] = newBrain
-						popCounter = popCounter + 1
-					end
+			--if there's only one eligible parent, it must be both parents
+			if eligibleParents.length == 1 then
+				for i=1,newSizes[s] do
+					parent1 = eligibleParents[1]
+					parent2 = eligibleParents[1]
 					
-				--if there's only two eligible parents, they must both be a parent
-				elseif eligibleParents.length == 2 then
-					for i=1,newSizes[s] do
-						parent1 = eligibleParents[1]
-						parent2 = eligibleParents[2]
-						
-						--make a new brain
-						newBrain = Brain:new()
-						newBrain.crossover(newBrain,parent1,parent2)
-						newBrain.species = parent1.species
-						newPopulation[popCounter] = newBrain
-						popCounter = popCounter + 1
-					end
-					
-				--if there's more than two eligible parents, choose two of them to be parents
-				--weight the likelihood of each individual being chosen by their fitness
-				else
-					local lowFit = eligibleParents[eligibleParents.length].fitness
-					local epWeighted = {length = 0}
-					for i=1,newSizes[s] do
-						--create list of eligible parents, where each parent appears a number of times according to their relative fitness
-						for j=1,eligibleParents.length do
-							local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
-							for k=1,weightedLikelihood do
-								epWeighted.length = epWeighted.length + 1
-								epWeighted[epWeighted.length] = eligibleParents[j]
-							end
-						end
-						
-						--select one parent from that list
-						parent1 = epWeighted[math.random(epWeighted.length)]
-						
-						--remove all instances of the chosen parent from the list
-						local m = 1
-						while m <= epWeighted.length do
-							if epWeighted[m] == parent1 then
-								epWeighted[m] = epWeighted[epWeighted.length]
-								epWeighted[epWeighted.length] = nil
-								epWeighted.length = epWeighted.length - 1
-							end
-							m = m + 1
-						end
-						
-						--choose the other parent
-						parent2 = epWeighted[math.random(epWeighted.length)]
-						
-						--make a new brain
-						newBrain = Brain:new()
-						newBrain.crossover(newBrain,parent1,parent2)
-						newBrain.species = parent1.species
-						newPopulation[popCounter] = newBrain
-						popCounter = popCounter + 1
-					end
+					--make a new brain
+					newBrain = Brain:new()
+					newBrain.crossover(newBrain,parent1,parent2)
+					newBrain.species = parent1.species
+					newPopulation[popCounter] = newBrain
+					popCounter = popCounter + 1
 				end
+				
+			--if there's more than one eligible parent, choose two of them to be parents
+			--weight the likelihood of each individual being chosen by their fitness
 			else
-				--allow asexual reproduction
-				--if there's only one eligible parent, it must be both parents
-				if eligibleParents.length == 1 then
-					for i=1,newSizes[s] do
-						parent1 = eligibleParents[1]
-						parent2 = eligibleParents[1]
-						
-						--make a new brain
-						newBrain = Brain:new()
-						newBrain.crossover(newBrain,parent1,parent2)
-						newBrain.species = parent1.species
-						newPopulation[popCounter] = newBrain
-						popCounter = popCounter + 1
+				local lowFit = eligibleParents[eligibleParents.length].fitness
+				local epWeighted = {length = 0}
+				for i=1,newSizes[s] do
+					--create list of eligible parents, where each parent appears a number of times according to their relative fitness
+					for j=1,eligibleParents.length do
+						local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
+						for k=1,weightedLikelihood do
+							epWeighted.length = epWeighted.length + 1
+							epWeighted[epWeighted.length] = eligibleParents[j]
+						end
 					end
 					
-				--if there's more than one eligible parent, choose two of them with replacement to be parents
-				--weight the likelihood of each individual being chosen by their fitness
-				else
-					local lowFit = eligibleParents[eligibleParents.length].fitness
-					local epWeighted = {length = 0}
-					for i=1,newSizes[s] do
-						--create list of eligible parents, where each parent appears a number of times according to their relative fitness
-						for j=1,eligibleParents.length do
-							local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
-							for k=1,weightedLikelihood do
-								epWeighted.length = epWeighted.length + 1
-								epWeighted[epWeighted.length] = eligibleParents[j]
-							end
-						end
-						
-						parent1 = epWeighted[math.random(epWeighted.length)]
-						parent2 = epWeighted[math.random(epWeighted.length)]
-						
-						--make a new brain
-						newBrain = Brain:new()
-						newBrain.crossover(newBrain,parent1,parent2)
-						newBrain.species = parent1.species
-						newPopulation[popCounter] = newBrain
-						popCounter = popCounter + 1
-					end
+					parent1 = epWeighted[math.random(epWeighted.length)]
+					parent2 = epWeighted[math.random(epWeighted.length)]
+					
+					--make a new brain
+					newBrain = Brain:new()
+					newBrain.crossover(newBrain,parent1,parent2)
+					newBrain.species = parent1.species
+					newPopulation[popCounter] = newBrain
+					popCounter = popCounter + 1
 				end
 			end
 		end
