@@ -148,6 +148,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--add or remove to the species' sizes to make the population exact
 	--add/remove from all species evenly, in no particular order
 	--leave one space to carry over the best brain
+	newSizes[self.bestBrain.species] = newSizes[self.bestBrain.species] - 1
 	local excessPopulation = totalPopulation - (POPULATION_SIZE - 1)
 	if excessPopulation ~= 0 then
 		local ns = {length = 0}
@@ -230,9 +231,11 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			--Pick out the elites
 			local numElites = math.floor(newSizes[s] / SIZE_PER_ELITE)
 			for e=1,numElites do
-				elites.length = elites.length + 1
-				elites[elites.length] = fits[e]
-				newSizes[s] = newSizes[s] - 1
+				if fits[e] ~= self.bestBrain then
+					elites.length = elites.length + 1
+					elites[elites.length] = fits[e]
+					newSizes[s] = newSizes[s] - 1
+				end
 			end
 			
 			local eligibleParents = {length = 0}
