@@ -1,0 +1,65 @@
+Generation 42
+
+Population average fitness: 617.68164037698
+Population average modified fitness: 40.052037694661
+Mean adjusted fitness: 4.2913717332206
+Species 212 sum adjusted fitnesses: 14.000055760458
+Species 218 sum adjusted fitnesses: 62.737463186769
+Species 222 sum adjusted fitnesses: 1
+Species 261 sum adjusted fitnesses: 4.5263102400754
+Species 271 sum adjusted fitnesses: 21.397623312203
+Species 272 sum adjusted fitnesses: 49.602335805117
+Species 280 sum adjusted fitnesses: 45.404464198329
+Species 285 sum adjusted fitnesses: 36.505251562912
+Species 290 sum adjusted fitnesses: 46.619963943913
+Species 291 sum adjusted fitnesses: 1.0054286047764
+Species 295 sum adjusted fitnesses: 40.984783927731
+Species 296 sum adjusted fitnesses: 40.739446271228
+Species 300 sum adjusted fitnesses: 42.526785918845
+Species 301 sum adjusted fitnesses: 40.66901137217
+Species 302 sum adjusted fitnesses: 38.887124355125
+Species 303 sum adjusted fitnesses: 42.70490904745
+Species 304 sum adjusted fitnesses: 23.847318556356
+Species 305 sum adjusted fitnesses: 2.6923949708492
+Species 306 sum adjusted fitnesses: 36.575500989828
+Species 308 sum adjusted fitnesses: 38.190528721325
+Species 309 sum adjusted fitnesses: 44.244990062314
+Species 310 sum adjusted fitnesses: 19.766468106313
+Species 313 sum adjusted fitnesses: 32.601905022441
+Species 315 sum adjusted fitnesses: 1
+Species 316 sum adjusted fitnesses: 39.381711711521
+Species 317 sum adjusted fitnesses: 14.912726976116
+Species 318 sum adjusted fitnesses: 49.602335805117
+Species 319 sum adjusted fitnesses: 26.147508214844
+Staleness: 3
+Species 212 size: 3 -> 2
+Species 218 size: 20 -> 16
+Species 222 size: 1 -> 0
+Species 261 size: 1 -> 0
+Species 271 size: 6 -> 5
+Species 272 size: 6 -> 12
+Species 280 size: 10 -> 11
+Species 285 size: 8 -> 9
+Species 290 size: 14 -> 11
+Species 291 size: 1 -> 0
+Species 295 size: 9 -> 10
+Species 296 size: 9 -> 9
+Species 300 size: 6 -> 10
+Species 301 size: 16 -> 9
+Species 302 size: 10 -> 9
+Species 303 size: 9 -> 10
+Species 304 size: 9 -> 6
+Species 305 size: 1 -> 0
+Species 306 size: 8 -> 9
+Species 308 size: 10 -> 9
+Species 309 size: 18 -> 10
+Species 310 size: 4 -> 5
+Species 313 size: 7 -> 8
+Species 315 size: 1 -> 0
+Species 316 size: 9 -> 9
+Species 317 size: 1 -> 3
+Species 318 size: 1 -> 12
+Species 319 size: 2 -> 6
+Species: 295 creates subspecies 320
+Species: 306 creates subspecies 321
+Number of species: 28 -> 23

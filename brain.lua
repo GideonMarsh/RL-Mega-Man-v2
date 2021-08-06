@@ -391,7 +391,11 @@ function Brain.mutateWeights(self)
 	for i,v in ipairs(allConnections) do
 		if i ~= "length" then
 			if (math.min(allConnections.length, 20) * math.random()) < 1 then
-				v.weight = v.weight + (math.random(2001) - 1001) / 1000
+				if math.random() < WEIGHT_NEGATION_CHANCE then
+					v.weight = v.weight * -1
+				else
+					v.weight = v.weight + (math.random(2001) - 1001) / 1000
+				end
 			end
 		end
 	end

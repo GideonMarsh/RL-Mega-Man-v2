@@ -33,7 +33,7 @@ function drawBrain(nodes, connections, brain)
 		end
 		local activeInputs = {}
 		for i in pairs(connections) do
-			if i ~= "length" and connections[i].enabled then
+			if i ~= "length" then
 				if connections[i].inNode <= INPUT_NODES then activeInputs[connections[i].inNode] = true end
 				local c1 = nodePositions[connections[i].inNode]
 				local c2 = nodePositions[connections[i].outNode]
@@ -75,14 +75,14 @@ function drawBrain(nodes, connections, brain)
 			end
 		end
 		for i in pairs(connections) do
-			if i ~= "length" and connections[i].enabled and connections[i].weight ~= 0 then
+			if i ~= "length" then
 				local inN = nodePositions[connections[i].inNode]
 				local outN = nodePositions[connections[i].outNode]
-				--local color = math.floor(connections[i].weight * 100)
-				if connections[i].weight > 0 then
-					gui.line(inN.x,inN.y,outN.x,outN.y,{255,255,255},(connections[i].inNode <= INPUT_NODES))
+				local color = (connections[i].weight > 0) and 255 or 0
+				if connections[i].weight == 0 or not connections[i].enabled then
+					gui.line(inN.x,inN.y,outN.x,outN.y,{64,0,64},(connections[i].inNode <= INPUT_NODES))
 				else
-					gui.line(inN.x,inN.y,outN.x,outN.y,{0,0,0},(connections[i].inNode <= INPUT_NODES))
+					gui.line(inN.x,inN.y,outN.x,outN.y,{color,color,color},(connections[i].inNode <= INPUT_NODES))
 				end
 			end
 		end

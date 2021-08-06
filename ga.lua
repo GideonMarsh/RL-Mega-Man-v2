@@ -223,9 +223,9 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 					c2 = c2 - 1
 				end
 			end
-			--only select top 50% of individuals
+			
 			local eligibleParents = {length = 0}
-			for i=1,math.ceil(fitLen / 2) do
+			for i=1,fitLen do --math.ceil(fitLen / 2) do --only select top 50% of individuals
 				eligibleParents.length = eligibleParents.length + 1
 				eligibleParents[eligibleParents.length] = fits[i]
 			end
