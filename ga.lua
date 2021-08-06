@@ -202,10 +202,11 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--step 3
 	local newPopulation = {}
 	local popCounter = 1
+	local elites = {length = 0}
 	
 	for s in pairs(currentSpecies) do
 		if newSizes[s] > 0 then
-			--sort all individuals by fitness (hight to low)
+			--sort all individuals by fitness (high to low), break ties with size (low to high)
 			local fits = {}
 			local fitLen = 0
 			for i=1,currentSpecies[s].length do
@@ -215,13 +216,23 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			for i=2,fitLen do
 				local c1 = i - 1
 				local c2 = i
-				while c1 >= 1 and fits[c1].fitness < fits[c2].fitness do
+				while c1 >= 1 and (fits[c1].fitness < fits[c2].fitness or 
+					((fits[c1].fitness == fits[c2].fitness) and 
+					(fits[c1].getAllConnections(fits[c1]).length > fits[c2].getAllConnections(fits[c2]).length))) do
 					local temp = fits[c1]
 					fits[c1] = fits[c2]
 					fits[c2] = temp
 					c1 = c1 - 1
 					c2 = c2 - 1
 				end
+			end
+			
+			--Pick out the elites
+			local numElites = math.floor(newSizes[s] / SIZE_PER_ELITE)
+			for e=1,numElites do
+				elites.length = elites.length + 1
+				elites[elites.length] = fits[e]
+				newSizes[s] = newSizes[s] - 1
 			end
 			
 			local eligibleParents = {length = 0}
@@ -325,6 +336,11 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		end
 	end
 	
+	--add the elites to the population
+	for i=1,elites.length do
+		newPopulation[popCounter] = elites[i]
+		popCounter = popCounter + 1
+	end
 	newPopulation[popCounter] = self.bestBrain
 	self.bestBrain.fitness = bestFit
 	

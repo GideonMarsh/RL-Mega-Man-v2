@@ -8,6 +8,7 @@ require "constants"
 require "save_progress"
 
 doDraw = false
+drawDisabled = false
 
 function drawBrain(nodes, connections, brain)
 	if doDraw then
@@ -79,10 +80,16 @@ function drawBrain(nodes, connections, brain)
 				local inN = nodePositions[connections[i].inNode]
 				local outN = nodePositions[connections[i].outNode]
 				local color = (connections[i].weight > 0) and 255 or 0
-				if connections[i].weight == 0 or not connections[i].enabled then
-					gui.line(inN.x,inN.y,outN.x,outN.y,{64,0,64},(connections[i].inNode <= INPUT_NODES))
+				if drawDisabled then
+					if connections[i].weight == 0 or not connections[i].enabled then
+						gui.line(inN.x,inN.y,outN.x,outN.y,{64,0,64},(connections[i].inNode <= INPUT_NODES))
+					else
+						gui.line(inN.x,inN.y,outN.x,outN.y,{color,color,color},(connections[i].inNode <= INPUT_NODES))
+					end
 				else
-					gui.line(inN.x,inN.y,outN.x,outN.y,{color,color,color},(connections[i].inNode <= INPUT_NODES))
+					if not connections[i].weight == 0 or connections[i].enabled then
+						gui.line(inN.x,inN.y,outN.x,outN.y,{color,color,color},(connections[i].inNode <= INPUT_NODES))
+					end
 				end
 			end
 		end

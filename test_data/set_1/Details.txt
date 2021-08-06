@@ -1,0 +1,7 @@
+Only top 50% of a species are eligible as parents
+No weight negation mutation
+
+species 32 makes 208 and 218
+208 and 218 compete for top spots
+neither 208 nor 218 make subspecies for many generations
+in a single generation at a later point, 208 splits into 4 subspecies and dies

@@ -65,7 +65,14 @@ local lastFitnessChange = 0
 while moreToWatch do
 	if input.get()["space"] then
 		if inControl then
-			doDraw = not doDraw
+			if drawDisabled and doDraw then
+				drawDisabled = false
+			elseif doDraw then
+				doDraw = false
+			else
+				doDraw = true
+				drawDisabled = true
+			end
 			inControl = false
 		end
 	else

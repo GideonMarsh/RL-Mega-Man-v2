@@ -58,6 +58,8 @@ WEIGHT_NEGATION_CHANCE = 0.25
 DISABLE_MUTATION_CHANCE = 0.01
 BRAIN_DIFFERENCE_DELTA = 5
 STALE_SPECIES_CUTOFF = 20			--number of generations without improvement until a species is removed
+SIZE_PER_ELITE = 10
+
 
 --Miscellaneous
 TOTAL_FRAME_TIMEOUT = 25200	--max number of frames a brain is allowed to run for (game is 60fps)
