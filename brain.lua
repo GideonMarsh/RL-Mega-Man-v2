@@ -204,7 +204,6 @@ function Brain.isNodeLaterOnPath(self, startNodeInum, locateInum)
 	local q = {top = 1, bottom = 2}
 	q[1] = startNodeInum
 	while q.top < q.bottom do
-		emu.print(q[q.top] .. " " .. locateInum)
 		if q[q.top] == locateInum then return true end
 		local con = self.connections[q[q.top]]
 		while con do

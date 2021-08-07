@@ -149,6 +149,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	--add/remove from all species evenly, in no particular order
 	--leave one space to carry over the best brain
 	newSizes[self.bestBrain.species] = newSizes[self.bestBrain.species] - 1
+	totalPopulation = totalPopulation - 1
 	local excessPopulation = totalPopulation - (POPULATION_SIZE - 1)
 	if excessPopulation ~= 0 then
 		local ns = {length = 0}
