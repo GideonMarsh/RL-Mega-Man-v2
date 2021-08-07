@@ -204,8 +204,9 @@ function Brain.isNodeLaterOnPath(self, startNodeInum, locateInum)
 	local q = {top = 1, bottom = 2}
 	q[1] = startNodeInum
 	while q.top < q.bottom do
+		emu.print(q[q.top] .. " " .. locateInum)
 		if q[q.top] == locateInum then return true end
-		local con = self.connections[q.top]
+		local con = self.connections[q[q.top]]
 		while con do
 			q[q.bottom] = con.outNode
 			q.bottom = q.bottom + 1
@@ -225,10 +226,10 @@ function Brain.addNewConnection(self, inNode, outNode, weight, inum, enabled)
 	if inNode > INPUT_NODES then
 		if inNode <= INPUT_NODES + OUTPUT_NODES then return false end
 	end
-	
+
 	--connection is illegal if it creates a cycle
 	if self.isNodeLaterOnPath(self, outNode, inNode) then return false end
-	
+
 	local newConnection = ConnectionGene:new{weight=weight,inNode=inNode,outNode=outNode,inum=inum,enabled=enabled}
 	if self.connections[inNode] then
 		self.connections[inNode].addNewConnection(self.connections[inNode], newConnection)
@@ -246,8 +247,11 @@ function Brain.addNewNode(self, oldConnection)
 	
 	local w = (math.random(2001) - 1001) / 1000
 	
-	self.addNewConnection(self, oldConnection.inNode, nodeCount, oldConnection.weight, 0, true)
-	self.addNewConnection(self, nodeCount, oldConnection.outNode, w, 0, true)
+	local a = true
+	local b = true
+	a = self.addNewConnection(self, oldConnection.inNode, nodeCount, oldConnection.weight, 0, true)
+	b = self.addNewConnection(self, nodeCount, oldConnection.outNode, w, 0, true)
+	if not a or not b then error("error with node creation") end
 end
 
 --get a table of all connections indexed like an array, with a length
