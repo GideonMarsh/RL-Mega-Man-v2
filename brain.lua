@@ -179,7 +179,10 @@ function Brain.think(self, inputs)
 	while self.nodeOrder[n] do
 		local con = self.connections[self.nodeOrder[n]]
 		if con then
-			con.calculateValue(con, nodes)
+			if not pcall(function() con.calculateValue(con, nodes) end) then
+				emu.print(self)
+				error("invalid node")
+			end
 		end
 		n = n + 1
 	end

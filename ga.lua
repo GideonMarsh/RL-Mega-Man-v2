@@ -121,8 +121,10 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	logFile:write("Staleness: ", self.staleness, "\n")
 	
 	--if the population is stale, remove all but top 3 species
+	local extinction = false
 	if self.staleness >= STALE_SPECIES_CUTOFF then
 		logFile:write("Population stale - extinction event\n")
+		extinction = true
 		self.staleness = 0
 		sumFitnesses[-1] = 0
 		local savedSpecies = {[1]=self.bestBrain.species,[2]=-1,[3]=-1,l=0}
@@ -143,6 +145,7 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 				end
 			end
 		end
+		sumFitnesses[-1] = nil
 	end
 	
 	--add or remove to the species' sizes to make the population exact
@@ -184,9 +187,16 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		end
 		while excessPopulation < 0 do
 			--population too low
+			if extinction then 
+			
+			else
+			
+			end
 			if count == 0 then count = ns.length end
-			newSizes[ns[count]] = newSizes[ns[count]] + 1
-			excessPopulation = excessPopulation + 1
+			if newSizes[ns[count]] > 0 or not extinction then
+				newSizes[ns[count]] = newSizes[ns[count]] + 1
+				excessPopulation = excessPopulation + 1
+			end
 			count = count - 1
 		end
 	end
@@ -228,9 +238,9 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 					c2 = c2 - 1
 				end
 			end
-			
+
 			--Pick out the elites
-			local numElites = math.floor(newSizes[s] / SIZE_PER_ELITE)
+			local numElites = math.min(math.floor(newSizes[s] / SIZE_PER_ELITE), currentSpecies[s].length)
 			for e=1,numElites do
 				if fits[e] ~= self.bestBrain then
 					elites.length = elites.length + 1
@@ -347,7 +357,6 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	end
 	newPopulation[popCounter] = self.bestBrain
 	self.bestBrain.fitness = bestFit
-	
 	local newSpecies = {}
 	local newNumSpecies = 0
 	for i=1,POPULATION_SIZE do

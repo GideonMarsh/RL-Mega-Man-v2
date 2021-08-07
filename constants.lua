@@ -19,6 +19,7 @@ SCREEN_Y_MAX = 231
 X_OFFSET = 3				--after reading a pixel, move over by the offset
 Y_OFFSET = 3
 --Note: screen height is 0-239, but emulator only displays the range of 8-231
+--6450 input pixels
 
 --Number of player controls
 CONTROLLER_OUTPUTS = 7		--up, down, left, right, A, B, weapon selection
@@ -51,8 +52,8 @@ GENE_IMPORTANCE_COEFFICIENT = 5		--coefficients used in Brain.compare()
 WEIGHT_IMPORTANCE_COEFFICIENT = 2
 
 POPULATION_SIZE = 200
-NODE_MUTATION_CHANCE = 0.05
-CONNECTION_MUTATION_CHANCE = 0.25
+NODE_MUTATION_CHANCE = 0.04
+CONNECTION_MUTATION_CHANCE = 0.3
 WEIGHT_MUTATION_CHANCE = 0.4
 WEIGHT_NEGATION_CHANCE = 0.25
 DISABLE_MUTATION_CHANCE = 0.01
