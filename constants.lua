@@ -16,10 +16,12 @@ SCREEN_X_MAX = 255
 SCREEN_Y_MIN = 8
 SCREEN_Y_MAX = 231
 
-X_OFFSET = 3				--after reading a pixel, move over by the offset
-Y_OFFSET = 3
+X_OFFSET = 4				--after reading a pixel, move over by the offset
+Y_OFFSET = 4
+Y_SHIFT = 1
 --Note: screen height is 0-239, but emulator only displays the range of 8-231
---6450 input pixels
+--offset 3 -> 6450 input pixels
+--offset 4 -> 3584 input pixels
 
 --Number of player controls
 CONTROLLER_OUTPUTS = 7		--up, down, left, right, A, B, weapon selection

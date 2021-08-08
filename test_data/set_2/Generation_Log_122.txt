@@ -1,0 +1,54 @@
+Generation 122
+
+Population average fitness: 656.88653035714
+Population average modified fitness: 61.286911303378
+Mean adjusted fitness: 5.6638334290947
+Species 292 sum adjusted fitnesses: 157.69419783261
+Species 665 sum adjusted fitnesses: 39.759194921991
+Species 677 sum adjusted fitnesses: 43.47554901361
+Species 678 sum adjusted fitnesses: 44.815019173624
+Species 682 sum adjusted fitnesses: 38.784849112533
+Species 683 sum adjusted fitnesses: 46.109335535572
+Species 684 sum adjusted fitnesses: 45.908276896945
+Species 685 sum adjusted fitnesses: 50.933429403256
+Species 686 sum adjusted fitnesses: 45.463015015626
+Species 689 sum adjusted fitnesses: 33.028119463046
+Species 690 sum adjusted fitnesses: 42.008495471536
+Species 692 sum adjusted fitnesses: 35.149405614075
+Species 693 sum adjusted fitnesses: 37.073792599679
+Species 694 sum adjusted fitnesses: 44.041881786831
+Species 696 sum adjusted fitnesses: 45.210816445025
+Species 697 sum adjusted fitnesses: 50.933429403256
+Species 698 sum adjusted fitnesses: 46.772310286318
+Species 699 sum adjusted fitnesses: 43.212782524717
+Species 700 sum adjusted fitnesses: 50.933429403256
+Species 701 sum adjusted fitnesses: 118.27391584373
+Species 702 sum adjusted fitnesses: 38.450072052442
+Species 703 sum adjusted fitnesses: 34.735368019257
+Staleness: 7
+Species 292 size: 31 -> 28
+Species 665 size: 9 -> 7
+Species 677 size: 7 -> 8
+Species 678 size: 8 -> 8
+Species 682 size: 4 -> 7
+Species 683 size: 20 -> 8
+Species 684 size: 9 -> 8
+Species 685 size: 8 -> 9
+Species 686 size: 9 -> 8
+Species 689 size: 8 -> 5
+Species 690 size: 11 -> 7
+Species 692 size: 12 -> 6
+Species 693 size: 7 -> 7
+Species 694 size: 7 -> 8
+Species 696 size: 7 -> 8
+Species 697 size: 9 -> 9
+Species 698 size: 12 -> 8
+Species 699 size: 13 -> 8
+Species 700 size: 1 -> 9
+Species 701 size: 1 -> 21
+Species 702 size: 4 -> 7
+Species 703 size: 3 -> 6
+Species: 683 creates subspecies 704
+Species: 689 creates subspecies 705
+Species: 689 creates subspecies 706
+Number of species: 22 -> 23

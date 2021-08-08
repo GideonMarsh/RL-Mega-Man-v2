@@ -14,7 +14,7 @@ function drawBrain(nodes, connections, brain)
 	if doDraw then
 		local nodePositions = {}
 		local pixelsInRow = math.floor((SCREEN_X_MAX - SCREEN_X_MIN + 1) / X_OFFSET)
-		pixelsInRow = pixelsInRow + 1
+		--pixelsInRow = pixelsInRow + 1
 		for i=1,INPUT_NODES + OUTPUT_NODES do
 			nodePositions[i] = {}
 			if i <= INPUT_NODES then

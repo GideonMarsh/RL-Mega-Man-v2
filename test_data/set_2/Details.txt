@@ -1,0 +1,4 @@
+Y offset of 3
+
+Lots of generations, species 292 eventually takes up large portion of population
+Extinction event sometime after generation 100

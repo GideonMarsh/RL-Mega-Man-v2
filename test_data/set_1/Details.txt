@@ -1,5 +1,6 @@
 Only top 50% of a species are eligible as parents
 No weight negation mutation
+Y offset of 3
 
 species 32 makes 208 and 218
 208 and 218 compete for top spots

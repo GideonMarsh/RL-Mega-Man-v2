@@ -419,11 +419,16 @@ function Brain.mutateDisable(self)
 			--inNode is input node
 			inValid = true 
 		else
-			--inNode has another outgoing connection
+			--inNode has another outgoing enabled connection
 			local con = self.connections[allConnections[rand].inNode]
-			if con.outNode ~= allConnections[rand].outNode or con.nextConnection then
-				inValid = true
+			while con do
+				if con.outNode ~= allConnections[rand].outNode and con.enabled then
+					inValid = true
+					break
+				end
+				con = con.nextConnection
 			end
+			
 		end
 		
 		if inValid then
@@ -431,11 +436,11 @@ function Brain.mutateDisable(self)
 				--outNode is output node
 				outValid = true
 			else
-				--outNOde has another incoming connection
+				--outNode has another incoming enabled connection
 				local allCons = self.getAllConnections(self)
 				for i in pairs(allCons) do
 					if i ~= "length" then
-						if allCons[i].inNode ~= allConnections[rand].inNode and allCons[i].outNode == allConnections[rand].outNode then
+						if allCons[i].inNode ~= allConnections[rand].inNode and allCons[i].outNode == allConnections[rand].outNode and allCons[i].enabled then
 							outValid = true
 							break
 						end
