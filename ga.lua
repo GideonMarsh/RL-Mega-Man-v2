@@ -187,11 +187,6 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 		end
 		while excessPopulation < 0 do
 			--population too low
-			if extinction then 
-			
-			else
-			
-			end
 			if count == 0 then count = ns.length end
 			if newSizes[ns[count]] > 0 or not extinction then
 				newSizes[ns[count]] = newSizes[ns[count]] + 1
@@ -300,20 +295,24 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 	
 	--mutate each new brain at random, then prepare their topology
 	for i in pairs(newPopulation) do
-		if math.random() < NODE_MUTATION_CHANCE then
-			newPopulation[i].mutateAddNode(newPopulation[i])
-		end
-		if math.random() < CONNECTION_MUTATION_CHANCE then
-			newPopulation[i].mutateAddConnection(newPopulation[i])
+		local mutateTimes = 1
+		if extinction then mutateTimes = 2 end
+		for m=1,mutateTimes do
+			if math.random() < NODE_MUTATION_CHANCE then
+				newPopulation[i].mutateAddNode(newPopulation[i])
+			end
 			if math.random() < CONNECTION_MUTATION_CHANCE then
 				newPopulation[i].mutateAddConnection(newPopulation[i])
+				if math.random() < CONNECTION_MUTATION_CHANCE then
+					newPopulation[i].mutateAddConnection(newPopulation[i])
+				end
 			end
-		end
-		if math.random() < DISABLE_MUTATION_CHANCE then
-			newPopulation[i].mutateDisable(newPopulation[i])
-		end
-		if math.random() < WEIGHT_MUTATION_CHANCE then
-			newPopulation[i].mutateWeights(newPopulation[i])
+			if math.random() < DISABLE_MUTATION_CHANCE then
+				newPopulation[i].mutateDisable(newPopulation[i])
+			end
+			if math.random() < WEIGHT_MUTATION_CHANCE then
+				newPopulation[i].mutateWeights(newPopulation[i])
+			end
 		end
 		newPopulation[i].prepareNodeTopology(newPopulation[i])
 	end

@@ -318,11 +318,18 @@ function Brain.mutateAddConnection(self)
 	--with this system all potential connections will be tried, even illegal ones
 	--if the outer loop ends without returning, there are no valid connections
 	
+	local biased = math.random() < CONNECTION_MUTATION_BIAS
 	local startNodes = self.getAllNodes(self)
 	while startNodes.length > 0 do
 		--step 1
 		local s = math.random(startNodes.length)
-		local endNodes = self.getAllNodes(self)
+		local endNodes = {}
+		if biased then
+			--if biased, force connection to end at output node for right, A, or B
+			endNodes = {length=3,[1]=INPUT_NODES+4,[2]=INPUT_NODES+5,[3]=INPUT_NODES+6}
+		else
+			endNodes = self.getAllNodes(self)
+		end
 		while endNodes.length > 0 do
 			--step 2
 			local e = math.random(endNodes.length)
