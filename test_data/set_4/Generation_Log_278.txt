@@ -1,0 +1,20 @@
+Generation 278
+
+Population average fitness: 809.40597347222
+Population average modified fitness: 513.65557119334
+Mean adjusted fitness: 6.5422889386794
+Species 830 sum adjusted fitnesses: 781.66808610962
+Species 1033 sum adjusted fitnesses: 104.3634309708
+Species 1047 sum adjusted fitnesses: 181.97757611917
+Species 1062 sum adjusted fitnesses: 115.23543958494
+Species 1065 sum adjusted fitnesses: 58.551755423099
+Species 1068 sum adjusted fitnesses: 66.661499528263
+Staleness: 20
+Population stale - extinction event
+Species 830 size: 123 -> 131
+Species 1033 size: 40 -> 0
+Species 1047 size: 1 -> 40
+Species 1062 size: 1 -> 29
+Species 1065 size: 27 -> 0
+Species 1068 size: 8 -> 0
+Number of species: 6 -> 4

@@ -1,0 +1,18 @@
+Generation 258
+
+Population average fitness: 651.89466184524
+Population average modified fitness: 234.68029332759
+Mean adjusted fitness: 3.5164384961806
+Species 830 sum adjusted fitnesses: 380.85091078161
+Species 1033 sum adjusted fitnesses: 58.749557396533
+Species 1047 sum adjusted fitnesses: 181.93415905368
+Species 1062 sum adjusted fitnesses: 51.361996396199
+Species 1063 sum adjusted fitnesses: 30.391075608092
+Staleness: 1
+Species 830 size: 110 -> 108
+Species 1033 size: 42 -> 17
+Species 1047 size: 1 -> 52
+Species 1062 size: 46 -> 15
+Species 1063 size: 1 -> 8
+Species: 1062 creates subspecies 1064
+Number of species: 5 -> 6

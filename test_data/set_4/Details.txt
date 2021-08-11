@@ -1,0 +1,5 @@
+Runs for almost 300 generations
+3+ extinction events happen
+progress slows to a stop after the first extinction, runs for almost 100 generations without any progress
+
+Ends due to a bug when trying to create generation 282

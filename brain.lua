@@ -77,13 +77,18 @@ end
 function Brain.crossover(self, parentA, parentB)
 	local parentAGenes = parentA.getAllConnections(parentA)
 	local parentBGenes = parentB.getAllConnections(parentB)
+	local enabledAGenes = parentA.getEnabledConnections(parentA)
+	local enabledBGenes = parentB.getEnabledConnections(parentB)
 	
 	--make sure parent A has the higher fitness
 	--if fitnesses are equal, make the smaller one parent A
-	if parentB.fitness > parentA.fitness or (parentA.fitness == parentB.fitness and parentAGenes.length > parentBGenes.length) then
+	if parentB.fitness > parentA.fitness or (parentA.fitness == parentB.fitness and enabledAGenes.length > enabledBGenes.length) then
 		local temp = parentAGenes
 		parentAGenes = parentBGenes
 		parentBGenes = temp
+		temp = enabledAGenes
+		enabledAGenes = enabledBGenes
+		enabledBGenes = temp
 	end
 	
 	--inherit all genes from parentA
@@ -125,8 +130,8 @@ function Brain.compare(self, otherBrain)
 	local c1 = GENE_IMPORTANCE_COEFFICIENT
 	local c2 = WEIGHT_IMPORTANCE_COEFFICIENT
 	
-	local allGenes1 = self.getAllConnections(self)
-	local allGenes2 = otherBrain.getAllConnections(otherBrain)
+	local allGenes1 = self.getEnabledConnections(self)
+	local allGenes2 = otherBrain.getEnabledConnections(otherBrain)
 	
 	local N = (allGenes1.length > allGenes2.length) and allGenes1.length or allGenes2.length
 	
@@ -270,6 +275,22 @@ function Brain.getAllConnections(self)
 	return allConnections
 end
 
+--like getAllConnections, but doesn't include disabled connections
+function Brain.getEnabledConnections(self)
+local enabledConnections = {length = 0}
+	for i in pairs(self.connections) do
+		local c = self.connections[i]
+		repeat
+			if c.enabled then
+				enabledConnections.length = enabledConnections.length + 1
+				enabledConnections[enabledConnections.length] = c
+			end
+			c = c.nextConnection
+		until not c
+	end
+	return enabledConnections
+end
+
 --get a table of all nodes indexed like an array, with a length
 function Brain.getAllNodes(self)
 	local allConnections = self.getAllConnections(self)
@@ -399,7 +420,7 @@ end
 --the chance to modify each connection is 1/number of connections or 5%, whichever is higher
 --this means if there is only one connection, it is guaranteed to be modified
 function Brain.mutateWeights(self)
-	local allConnections = self.getAllConnections(self)
+	local allConnections = self.getEnabledConnections(self)
 	
 	for i,v in ipairs(allConnections) do
 		if i ~= "length" then
@@ -416,7 +437,7 @@ end
 
 --disable a connection, if possible
 function Brain.mutateDisable(self)
-	local allConnections = self.getAllConnections(self)
+	local allConnections = self.getEnabledConnections(self)
 	while allConnections.length > 0 do
 		local rand = math.random(allConnections.length)
 		local inValid = false

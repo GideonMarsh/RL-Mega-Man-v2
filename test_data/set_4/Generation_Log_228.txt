@@ -1,0 +1,76 @@
+Generation 228
+
+Population average fitness: 747.36921287698
+Population average modified fitness: 232.81111658284
+Mean adjusted fitness: 14.749760115919
+Species 702 sum adjusted fitnesses: 45.997280385515
+Species 830 sum adjusted fitnesses: 672.80052077655
+Species 835 sum adjusted fitnesses: 44.989668688921
+Species 888 sum adjusted fitnesses: 61.151719043854
+Species 936 sum adjusted fitnesses: 72.290172946836
+Species 966 sum adjusted fitnesses: 72.045363176145
+Species 968 sum adjusted fitnesses: 89.652605498834
+Species 972 sum adjusted fitnesses: 73.478918803731
+Species 974 sum adjusted fitnesses: 28.201423846783
+Species 981 sum adjusted fitnesses: 81.064190079595
+Species 982 sum adjusted fitnesses: 73.793062869788
+Species 983 sum adjusted fitnesses: 59.866269430269
+Species 987 sum adjusted fitnesses: 69.621670262159
+Species 988 sum adjusted fitnesses: 77.754152557517
+Species 990 sum adjusted fitnesses: 54.612319613725
+Species 991 sum adjusted fitnesses: 72.863253919764
+Species 992 sum adjusted fitnesses: 40.720806291651
+Species 996 sum adjusted fitnesses: 46.073845220185
+Species 998 sum adjusted fitnesses: 55.017727637767
+Species 1000 sum adjusted fitnesses: 106.83175699815
+Species 1004 sum adjusted fitnesses: 88.949629512467
+Species 1008 sum adjusted fitnesses: 44.658005570871
+Species 1010 sum adjusted fitnesses: 87.516129162367
+Species 1013 sum adjusted fitnesses: 2.6924583825482
+Species 1015 sum adjusted fitnesses: 94.642068020347
+Species 1019 sum adjusted fitnesses: 81.823535071899
+Species 1020 sum adjusted fitnesses: 132.27477802411
+Species 1021 sum adjusted fitnesses: 102.34336162335
+Species 1026 sum adjusted fitnesses: 46.345970445947
+Species 1028 sum adjusted fitnesses: 47.603557538891
+Species 1029 sum adjusted fitnesses: 39.577898596821
+Species 1030 sum adjusted fitnesses: 67.91430281504
+Species 1031 sum adjusted fitnesses: 107.26399207234
+Species 1032 sum adjusted fitnesses: 107.51960829913
+Staleness: 19
+Species 702 size: 3 -> 3
+Species 830 size: 54 -> 46
+Species 835 size: 3 -> 3
+Species 888 size: 5 -> 4
+Species 936 size: 3 -> 5
+Species 966 size: 5 -> 5
+Species 968 size: 6 -> 6
+Species 972 size: 5 -> 5
+Species 974 size: 6 -> 2
+Species 981 size: 6 -> 5
+Species 982 size: 5 -> 5
+Species 983 size: 5 -> 4
+Species 987 size: 6 -> 5
+Species 988 size: 6 -> 5
+Species 990 size: 4 -> 4
+Species 991 size: 3 -> 5
+Species 992 size: 4 -> 3
+Species 996 size: 3 -> 3
+Species 998 size: 5 -> 4
+Species 1000 size: 5 -> 7
+Species 1004 size: 4 -> 6
+Species 1008 size: 5 -> 3
+Species 1010 size: 4 -> 6
+Species 1013 size: 1 -> 0
+Species 1015 size: 6 -> 6
+Species 1019 size: 4 -> 6
+Species 1020 size: 6 -> 9
+Species 1021 size: 3 -> 7
+Species 1026 size: 8 -> 3
+Species 1028 size: 3 -> 3
+Species 1029 size: 2 -> 3
+Species 1030 size: 10 -> 5
+Species 1031 size: 1 -> 7
+Species 1032 size: 1 -> 7
+Species: 972 creates subspecies 1033
+Number of species: 34 -> 33

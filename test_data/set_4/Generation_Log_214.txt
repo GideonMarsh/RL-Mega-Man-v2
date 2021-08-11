@@ -1,0 +1,66 @@
+Generation 214
+
+Population average fitness: 832.83500630952
+Population average modified fitness: 341.79672568129
+Mean adjusted fitness: 14.399720580069
+Species 702 sum adjusted fitnesses: 30.974061977564
+Species 830 sum adjusted fitnesses: 899.40907450331
+Species 835 sum adjusted fitnesses: 45.194077060325
+Species 888 sum adjusted fitnesses: 88.825599546091
+Species 896 sum adjusted fitnesses: 80.416641278892
+Species 926 sum adjusted fitnesses: 67.008862636132
+Species 931 sum adjusted fitnesses: 45.318470871152
+Species 932 sum adjusted fitnesses: 59.749692144808
+Species 936 sum adjusted fitnesses: 109.53899586475
+Species 958 sum adjusted fitnesses: 108.35380032862
+Species 966 sum adjusted fitnesses: 89.442791486574
+Species 968 sum adjusted fitnesses: 81.099807483151
+Species 972 sum adjusted fitnesses: 71.17186971624
+Species 974 sum adjusted fitnesses: 85.317156278765
+Species 977 sum adjusted fitnesses: 34.952966670014
+Species 979 sum adjusted fitnesses: 45.751132743772
+Species 980 sum adjusted fitnesses: 77.540888444975
+Species 981 sum adjusted fitnesses: 106.6253787534
+Species 982 sum adjusted fitnesses: 58.738869160224
+Species 983 sum adjusted fitnesses: 88.654991904938
+Species 986 sum adjusted fitnesses: 37.74233115459
+Species 987 sum adjusted fitnesses: 89.03502750894
+Species 988 sum adjusted fitnesses: 71.874919121365
+Species 990 sum adjusted fitnesses: 83.390757529346
+Species 991 sum adjusted fitnesses: 75.006727524009
+Species 992 sum adjusted fitnesses: 71.44340594296
+Species 994 sum adjusted fitnesses: 55.03931549395
+Species 996 sum adjusted fitnesses: 65.516250013829
+Species 997 sum adjusted fitnesses: 56.810252871127
+Staleness: 5
+Species 702 size: 5 -> 2
+Species 830 size: 65 -> 62
+Species 835 size: 4 -> 3
+Species 888 size: 7 -> 6
+Species 896 size: 3 -> 6
+Species 926 size: 8 -> 5
+Species 931 size: 5 -> 3
+Species 932 size: 5 -> 4
+Species 936 size: 3 -> 8
+Species 958 size: 6 -> 8
+Species 966 size: 6 -> 6
+Species 968 size: 4 -> 6
+Species 972 size: 5 -> 5
+Species 974 size: 7 -> 6
+Species 977 size: 3 -> 2
+Species 979 size: 4 -> 3
+Species 980 size: 4 -> 5
+Species 981 size: 5 -> 7
+Species 982 size: 5 -> 4
+Species 983 size: 12 -> 6
+Species 986 size: 3 -> 3
+Species 987 size: 6 -> 6
+Species 988 size: 5 -> 5
+Species 990 size: 5 -> 6
+Species 991 size: 3 -> 5
+Species 992 size: 2 -> 5
+Species 994 size: 7 -> 4
+Species 996 size: 1 -> 5
+Species 997 size: 2 -> 4
+Species: 931 creates subspecies 998
+Number of species: 29 -> 28
