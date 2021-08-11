@@ -1,0 +1,11 @@
+Generation 6
+
+Population average fitness: 167.3973902381
+Population average modified fitness: 2.5490260140696
+Mean adjusted fitness: 0.025443871215088
+Species 1 sum adjusted fitnesses: 2.4284148074884
+Species 2 sum adjusted fitnesses: 2.6603594355291
+Staleness: 0
+Species 1 size: 96 -> 95
+Species 2 size: 104 -> 105
+Number of species: 2 -> 2

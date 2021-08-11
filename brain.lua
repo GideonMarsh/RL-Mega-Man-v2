@@ -166,7 +166,7 @@ function Brain.compare(self, otherBrain)
 		W = W / matchedWeights.length
 	end
 	
-	local d = math.max(((c1 * D) / N),D) + (c2 * W)
+	local d = D + (c2 * W)--math.max(((c1 * D) / N),D) + (c2 * W)
 	return d
 end
 

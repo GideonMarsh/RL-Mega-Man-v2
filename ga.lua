@@ -268,11 +268,14 @@ function GeneticAlgorithmController.makeNextGeneration(self)
 			--weight the likelihood of each individual being chosen by their fitness
 			else
 				local lowFit = eligibleParents[eligibleParents.length].fitness
+				if math.ceil(eligibleParents[1].fitness / lowFit) > 1000 then
+					lowFit = eligibleParents[1].fitness / 1000
+				end
 				local epWeighted = {length = 0}
 				for i=1,newSizes[s] do
 					--create list of eligible parents, where each parent appears a number of times according to their relative fitness
 					for j=1,eligibleParents.length do
-						local weightedLikelihood = math.floor(eligibleParents[j].fitness / lowFit)
+						local weightedLikelihood = math.ceil(eligibleParents[j].fitness / lowFit)
 						for k=1,weightedLikelihood do
 							epWeighted.length = epWeighted.length + 1
 							epWeighted[epWeighted.length] = eligibleParents[j]
@@ -392,12 +395,12 @@ function GeneticAlgorithmController:new(o)
 		o.averagePerformance = 0
 		o.staleness = 0
 		
+		specieCount = specieCount + 1
 		for i=1,POPULATION_SIZE do
 			newBrain = Brain:new()
 			newBrain.initNewBrain(newBrain)
 			
 			newBrain.prepareNodeTopology(newBrain)
-			specieCount = specieCount + 1
 			newBrain.species = specieCount
 			o.population[i] = newBrain
 		end

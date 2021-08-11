@@ -1,0 +1,13 @@
+Generation 7
+
+Population average fitness: 164.63784200397
+Population average modified fitness: 2.5235428779203
+Mean adjusted fitness: 0.025198331239325
+Species 1 sum adjusted fitnesses: 2.3961746576735
+Species 2 sum adjusted fitnesses: 2.6434915901916
+Staleness: 1
+Species 1 size: 97 -> 95
+Species 2 size: 103 -> 105
+Species: 2 creates subspecies 3
+Species: 2 creates subspecies 4
+Number of species: 2 -> 4

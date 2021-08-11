@@ -1,0 +1,23 @@
+Generation 9
+
+New highest fitness: 4.5261536451689 (species 1)
+Population average fitness: 143.18707569444
+Population average modified fitness: 2.3296945852285
+Mean adjusted fitness: 0.056034527378031
+Species 1 sum adjusted fitnesses: 2.3325688638532
+Species 2 sum adjusted fitnesses: 2.4392429473042
+Species 3 sum adjusted fitnesses: 2.6650721164033
+Species 4 sum adjusted fitnesses: 1.0771934849053
+Species 5 sum adjusted fitnesses: 2.6928280631402
+Staleness: 1
+Species 1 size: 56 -> 42
+Species 2 size: 60 -> 44
+Species 3 size: 61 -> 48
+Species 4 size: 22 -> 18
+Species 5 size: 1 -> 48
+Species: 1 creates subspecies 6
+Species: 1 creates subspecies 7
+Species: 1 creates subspecies 8
+Species: 1 creates subspecies 9
+Species: 2 creates subspecies 10
+Number of species: 5 -> 10
