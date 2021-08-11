@@ -1,11 +1,28 @@
 Generation 5
 
-Population average fitness: 166.47788001984
-Population average modified fitness: 2.5405365817239
-Mean adjusted fitness: 0.025313752801131
-Species 1 sum adjusted fitnesses: 2.4168590099778
-Species 2 sum adjusted fitnesses: 2.6458915502484
+Population average fitness: 142.35378765873
+Population average modified fitness: 2.3762105485126
+Mean adjusted fitness: 0.089823526816811
+Species 1 sum adjusted fitnesses: 2.7502704608556
+Species 2 sum adjusted fitnesses: 2.5610276142329
+Species 3 sum adjusted fitnesses: 1.051791334858
+Species 4 sum adjusted fitnesses: 1
+Species 5 sum adjusted fitnesses: 2.6924377851537
+Species 6 sum adjusted fitnesses: 2.6928280631402
+Species 7 sum adjusted fitnesses: 2.5235220419817
+Species 8 sum adjusted fitnesses: 2.6928280631402
 Staleness: 0
-Species 1 size: 92 -> 95
-Species 2 size: 108 -> 105
-Number of species: 2 -> 2
+Species 1 size: 76 -> 31
+Species 2 size: 77 -> 29
+Species 3 size: 33 -> 12
+Species 4 size: 1 -> 10
+Species 5 size: 1 -> 30
+Species 6 size: 1 -> 30
+Species 7 size: 10 -> 28
+Species 8 size: 1 -> 30
+Species: 1 creates subspecies 9
+Species: 1 creates subspecies 10
+Species: 2 creates subspecies 11
+Species: 2 creates subspecies 12
+Species: 3 creates subspecies 13
+Number of species: 8 -> 13

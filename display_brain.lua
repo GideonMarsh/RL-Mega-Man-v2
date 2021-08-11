@@ -17,9 +17,12 @@ function drawBrain(nodes, connections, brain)
 		--pixelsInRow = pixelsInRow + 1
 		for i=1,INPUT_NODES + OUTPUT_NODES do
 			nodePositions[i] = {}
-			if i <= INPUT_NODES then
+			if i <= INPUT_NODES - STATIC_INPUTS then
 				nodePositions[i].x = (i - 1) % pixelsInRow
 				nodePositions[i].y = math.floor((i - 1) / pixelsInRow) + SCREEN_Y_MIN
+			elseif i <= INPUT_NODES then
+				nodePositions[i].x = ((i - (INPUT_NODES - STATIC_INPUTS + 1)) * 5) + 2
+				nodePositions[i].y = math.floor((i - 1) / pixelsInRow) + SCREEN_Y_MIN + 2
 			else
 				nodePositions[i].x = SCREEN_X_MAX - 10
 				nodePositions[i].y = ((i - INPUT_NODES) * 11) - 6 + SCREEN_Y_MIN
@@ -60,7 +63,7 @@ function drawBrain(nodes, connections, brain)
 			end
 		end
 		gui.box(0,8,255,82,{64,64,64,200},{64,64,64,200})
-		for i=1,INPUT_NODES do
+		for i=1,(INPUT_NODES - STATIC_INPUTS) do
 			if activeInputs[i] then 
 				local color = math.floor(nodes[i])
 				if color > 0 then 
@@ -94,7 +97,7 @@ function drawBrain(nodes, connections, brain)
 			end
 		end
 		for i in pairs(nodePositions) do
-			if i > INPUT_NODES then
+			if i > (INPUT_NODES - STATIC_INPUTS) then
 				local color = nodes[i] and math.floor(nodes[i]) or 0
 				if color > 0 then 
 					color = color + 128

@@ -1,12 +1,13 @@
 Generation 1
 
 New highest fitness: 1 (species 1)
-New highest fitness: 1.0054286047764 (species 1)
+New highest fitness: 1.005428626382 (species 1)
+New highest fitness: 2.6923645962486 (species 1)
 New highest fitness: 2.6928280631402 (species 1)
-Population average fitness: 9.2157949206349
-Population average modified fitness: 1.0850130841936
-Mean adjusted fitness: 0.0054250654209679
-Species 1 sum adjusted fitnesses: 1.0850130841936
+Population average fitness: 10.135066587302
+Population average modified fitness: 1.0934990415689
+Mean adjusted fitness: 0.0054674952078446
+Species 1 sum adjusted fitnesses: 1.0934990415689
 Staleness: 0
 Species 1 size: 200 -> 200
 Number of species: 1 -> 1

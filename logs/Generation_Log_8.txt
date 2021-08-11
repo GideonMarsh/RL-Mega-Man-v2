@@ -1,16 +1,2 @@
 Generation 8
 
-Population average fitness: 157.32628906746
-Population average modified fitness: 2.4558649651006
-Mean adjusted fitness: 0.043078063854445
-Species 1 sum adjusted fitnesses: 2.3991529089558
-Species 2 sum adjusted fitnesses: 2.5236317987932
-Species 3 sum adjusted fitnesses: 2.6928280631402
-Species 4 sum adjusted fitnesses: 1
-Staleness: 2
-Species 1 size: 98 -> 56
-Species 2 size: 100 -> 59
-Species 3 size: 1 -> 63
-Species 4 size: 1 -> 22
-Species: 2 creates subspecies 5
-Number of species: 4 -> 5

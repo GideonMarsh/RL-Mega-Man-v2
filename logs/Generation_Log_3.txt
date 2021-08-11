@@ -1,10 +1,12 @@
 Generation 3
 
-Population average fitness: 115.4216269246
-Population average modified fitness: 2.0673731268263
-Mean adjusted fitness: 0.010336865634132
-Species 1 sum adjusted fitnesses: 2.0673731268263
+New highest fitness: 4.5266576861318 (species 1)
+Population average fitness: 114.50529230159
+Population average modified fitness: 2.0685207257837
+Mean adjusted fitness: 0.010342603628918
+Species 1 sum adjusted fitnesses: 2.0685207257837
 Staleness: 0
 Species 1 size: 200 -> 200
 Species: 1 creates subspecies 2
-Number of species: 1 -> 2
+Species: 1 creates subspecies 3
+Number of species: 1 -> 3
