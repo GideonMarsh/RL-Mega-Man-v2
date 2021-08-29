@@ -1,0 +1,112 @@
+Generation 17
+
+New highest fitness: 14.757380336874 (species 1)
+Population average fitness: 131.33888295635
+Population average modified fitness: 2.3194797672725
+Mean adjusted fitness: 0.47921601422877
+Species 1 sum adjusted fitnesses: 5.2899830709451
+Species 2 sum adjusted fitnesses: 1.0027144428246
+Species 3 sum adjusted fitnesses: 2.6921639037186
+Species 5 sum adjusted fitnesses: 1
+Species 6 sum adjusted fitnesses: 1.0054287128044
+Species 7 sum adjusted fitnesses: 3.4679778056369
+Species 8 sum adjusted fitnesses: 1.0054289288603
+Species 10 sum adjusted fitnesses: 1.0054289720715
+Species 11 sum adjusted fitnesses: 1.0054289828743
+Species 12 sum adjusted fitnesses: 1
+Species 14 sum adjusted fitnesses: 2.4104436533649
+Species 16 sum adjusted fitnesses: 2.4104383881666
+Species 17 sum adjusted fitnesses: 2.6926363471977
+Species 18 sum adjusted fitnesses: 1.0027143023882
+Species 19 sum adjusted fitnesses: 1.5651333374801
+Species 21 sum adjusted fitnesses: 1
+Species 22 sum adjusted fitnesses: 2.2708121044614
+Species 23 sum adjusted fitnesses: 1.0054287560156
+Species 24 sum adjusted fitnesses: 2.411406559029
+Species 25 sum adjusted fitnesses: 1.0054287776212
+Species 27 sum adjusted fitnesses: 1.8489706174689
+Species 28 sum adjusted fitnesses: 2.0166599500435
+Species 32 sum adjusted fitnesses: 1
+Species 34 sum adjusted fitnesses: 1.0054286047764
+Species 43 sum adjusted fitnesses: 2.3955819296054
+Species 44 sum adjusted fitnesses: 2.6924985945222
+Species 45 sum adjusted fitnesses: 1
+Species 47 sum adjusted fitnesses: 1
+Species 48 sum adjusted fitnesses: 2.6925113232036
+Species 49 sum adjusted fitnesses: 2.1292597477696
+Species 50 sum adjusted fitnesses: 1.8462819877991
+Species 51 sum adjusted fitnesses: 2.6080986364301
+Species 52 sum adjusted fitnesses: 1
+Species 53 sum adjusted fitnesses: 1
+Species 54 sum adjusted fitnesses: 1.0054286155792
+Species 55 sum adjusted fitnesses: 2.3539374533077
+Species 56 sum adjusted fitnesses: 2.8401702134096
+Species 59 sum adjusted fitnesses: 1.0027145508526
+Species 60 sum adjusted fitnesses: 2.692059842372
+Species 61 sum adjusted fitnesses: 2.4818992436284
+Species 63 sum adjusted fitnesses: 1.8459922833214
+Species 64 sum adjusted fitnesses: 1.0054286911988
+Species 65 sum adjusted fitnesses: 2.4104507123814
+Species 66 sum adjusted fitnesses: 2.1293232283887
+Species 69 sum adjusted fitnesses: 2.6926541539408
+Species 71 sum adjusted fitnesses: 2.130273770265
+Species 72 sum adjusted fitnesses: 2.6920690837355
+Species 73 sum adjusted fitnesses: 2.6925323840379
+Species 74 sum adjusted fitnesses: 2.6919845666428
+Species 75 sum adjusted fitnesses: 2.6919956156123
+Staleness: 0
+Species 1 size: 11 -> 11
+Species 2 size: 2 -> 2
+Species 3 size: 6 -> 6
+Species 5 size: 2 -> 2
+Species 6 size: 2 -> 2
+Species 7 size: 7 -> 7
+Species 8 size: 2 -> 2
+Species 10 size: 2 -> 2
+Species 11 size: 2 -> 2
+Species 12 size: 2 -> 2
+Species 14 size: 6 -> 5
+Species 16 size: 6 -> 5
+Species 17 size: 6 -> 6
+Species 18 size: 2 -> 2
+Species 19 size: 6 -> 3
+Species 21 size: 2 -> 2
+Species 22 size: 4 -> 5
+Species 23 size: 2 -> 2
+Species 24 size: 6 -> 5
+Species 25 size: 2 -> 2
+Species 27 size: 2 -> 4
+Species 28 size: 5 -> 4
+Species 32 size: 2 -> 2
+Species 34 size: 2 -> 2
+Species 43 size: 5 -> 5
+Species 44 size: 4 -> 6
+Species 45 size: 2 -> 2
+Species 47 size: 2 -> 2
+Species 48 size: 4 -> 6
+Species 49 size: 6 -> 4
+Species 50 size: 2 -> 4
+Species 51 size: 20 -> 5
+Species 52 size: 4 -> 2
+Species 53 size: 2 -> 2
+Species 54 size: 2 -> 2
+Species 55 size: 5 -> 5
+Species 56 size: 7 -> 6
+Species 59 size: 2 -> 2
+Species 60 size: 8 -> 6
+Species 61 size: 8 -> 5
+Species 63 size: 2 -> 4
+Species 64 size: 2 -> 2
+Species 65 size: 6 -> 5
+Species 66 size: 6 -> 4
+Species 69 size: 2 -> 6
+Species 71 size: 3 -> 4
+Species 72 size: 1 -> 6
+Species 73 size: 2 -> 6
+Species 74 size: 1 -> 6
+Species 75 size: 1 -> 6
+Species: 17 creates subspecies 76
+Species: 24 creates subspecies 77
+Species: 28 creates subspecies 78
+Species: 51 creates subspecies 79
+Number of species: 50 -> 52

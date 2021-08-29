@@ -1,0 +1,34 @@
+Generation 438
+
+Population average fitness: 1180.1100285516
+Population average modified fitness: 1986.1223347975
+Mean adjusted fitness: 96.351465323618
+Species 1247 sum adjusted fitnesses: 2248.6441117725
+Species 1294 sum adjusted fitnesses: 2117.4933641804
+Species 1426 sum adjusted fitnesses: 2239.6370666568
+Species 1427 sum adjusted fitnesses: 1462.1062260081
+Species 1429 sum adjusted fitnesses: 1175.1380958996
+Species 1430 sum adjusted fitnesses: 2479.1047707185
+Species 1431 sum adjusted fitnesses: 1745.0838646416
+Species 1432 sum adjusted fitnesses: 1992.4531954064
+Species 1434 sum adjusted fitnesses: 1409.7569625439
+Species 1436 sum adjusted fitnesses: 1438.2974393499
+Species 1440 sum adjusted fitnesses: 103.37925420615
+Species 1444 sum adjusted fitnesses: 859.19871333976
+Staleness: 8
+Species 1247 size: 21 -> 23
+Species 1294 size: 63 -> 22
+Species 1426 size: 19 -> 23
+Species 1427 size: 23 -> 15
+Species 1429 size: 3 -> 12
+Species 1430 size: 28 -> 26
+Species 1431 size: 18 -> 18
+Species 1432 size: 6 -> 21
+Species 1434 size: 5 -> 15
+Species 1436 size: 10 -> 15
+Species 1440 size: 1 -> 1
+Species 1444 size: 3 -> 9
+Species: 1430 creates subspecies 1445
+Species: 1444 creates subspecies 1446
+Species: 1444 creates subspecies 1447
+Number of species: 12 -> 14

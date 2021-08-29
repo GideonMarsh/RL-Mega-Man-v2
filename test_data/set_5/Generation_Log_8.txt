@@ -1,0 +1,44 @@
+Generation 8
+
+New highest fitness: 4.526711964828 (species 1)
+Population average fitness: 75.039128253968
+Population average modified fitness: 1.8063097425239
+Mean adjusted fitness: 0.13542592195874
+Species 1 sum adjusted fitnesses: 3.7880398247239
+Species 2 sum adjusted fitnesses: 1.1676701393854
+Species 3 sum adjusted fitnesses: 1.2641041583972
+Species 4 sum adjusted fitnesses: 1.8481058898343
+Species 5 sum adjusted fitnesses: 1
+Species 6 sum adjusted fitnesses: 1.0038001292109
+Species 7 sum adjusted fitnesses: 1.742813329183
+Species 8 sum adjusted fitnesses: 1.0054288726858
+Species 9 sum adjusted fitnesses: 1
+Species 10 sum adjusted fitnesses: 1.002714529247
+Species 11 sum adjusted fitnesses: 1.0054289018533
+Species 12 sum adjusted fitnesses: 1.1740842787432
+Species 13 sum adjusted fitnesses: 2.6925218536207
+Species 14 sum adjusted fitnesses: 1.0054287776212
+Species 15 sum adjusted fitnesses: 1
+Species 16 sum adjusted fitnesses: 2.6925113232036
+Species 17 sum adjusted fitnesses: 2.6925323840379
+Staleness: 1
+Species 1 size: 34 -> 29
+Species 2 size: 31 -> 9
+Species 3 size: 13 -> 9
+Species 4 size: 44 -> 14
+Species 5 size: 7 -> 7
+Species 6 size: 10 -> 7
+Species 7 size: 16 -> 13
+Species 8 size: 10 -> 7
+Species 9 size: 4 -> 7
+Species 10 size: 2 -> 7
+Species 11 size: 4 -> 7
+Species 12 size: 10 -> 9
+Species 13 size: 2 -> 20
+Species 14 size: 1 -> 7
+Species 15 size: 10 -> 7
+Species 16 size: 1 -> 20
+Species 17 size: 1 -> 21
+Species: 4 creates subspecies 18
+Species: 7 creates subspecies 19
+Number of species: 17 -> 18

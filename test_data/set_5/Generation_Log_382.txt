@@ -1,0 +1,52 @@
+Generation 382
+
+New highest fitness: 4220.5568268981 (species 1095)
+Population average fitness: 1074.2293560317
+Population average modified fitness: 1785.8457223416
+Mean adjusted fitness: 163.22181860225
+Species 1095 sum adjusted fitnesses: 2662.5878543069
+Species 1142 sum adjusted fitnesses: 2056.1571160212
+Species 1170 sum adjusted fitnesses: 2380.0571089068
+Species 1175 sum adjusted fitnesses: 3446.9544593422
+Species 1176 sum adjusted fitnesses: 1458.0211173339
+Species 1181 sum adjusted fitnesses: 1730.9391908668
+Species 1182 sum adjusted fitnesses: 1258.1146340087
+Species 1183 sum adjusted fitnesses: 2071.7741188994
+Species 1186 sum adjusted fitnesses: 1396.5309421764
+Species 1187 sum adjusted fitnesses: 2002.5015907199
+Species 1189 sum adjusted fitnesses: 1755.1873527483
+Species 1191 sum adjusted fitnesses: 3447.126012951
+Species 1195 sum adjusted fitnesses: 116.24891023928
+Species 1197 sum adjusted fitnesses: 1423.5997485287
+Species 1200 sum adjusted fitnesses: 1690.2040520867
+Species 1201 sum adjusted fitnesses: 103.37925420615
+Species 1203 sum adjusted fitnesses: 1745.3135915011
+Species 1204 sum adjusted fitnesses: 103.37925420615
+Species 1205 sum adjusted fitnesses: 1725.652192402
+Species 1206 sum adjusted fitnesses: 30.684764667104
+Species 1207 sum adjusted fitnesses: 39.950454330368
+Staleness: 1
+Species 1095 size: 10 -> 16
+Species 1142 size: 28 -> 13
+Species 1170 size: 10 -> 15
+Species 1175 size: 1 -> 21
+Species 1176 size: 14 -> 9
+Species 1181 size: 2 -> 11
+Species 1182 size: 14 -> 8
+Species 1183 size: 11 -> 13
+Species 1186 size: 10 -> 9
+Species 1187 size: 21 -> 12
+Species 1189 size: 12 -> 11
+Species 1191 size: 1 -> 21
+Species 1195 size: 1 -> 0
+Species 1197 size: 12 -> 9
+Species 1200 size: 37 -> 10
+Species 1201 size: 1 -> 0
+Species 1203 size: 10 -> 11
+Species 1204 size: 1 -> 0
+Species 1205 size: 2 -> 11
+Species 1206 size: 1 -> 0
+Species 1207 size: 1 -> 0
+Species: 1186 creates subspecies 1208
+Species: 1189 creates subspecies 1209
+Number of species: 21 -> 20

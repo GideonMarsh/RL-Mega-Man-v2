@@ -1,0 +1,54 @@
+Generation 153
+
+Population average fitness: 1035.4942888095
+Population average modified fitness: 822.86100834534
+Mean adjusted fitness: 84.951111121056
+Species 126 sum adjusted fitnesses: 1085.8270227109
+Species 207 sum adjusted fitnesses: 1785.4161601263
+Species 409 sum adjusted fitnesses: 369.03433643663
+Species 417 sum adjusted fitnesses: 67.068620208189
+Species 448 sum adjusted fitnesses: 804.22011437002
+Species 468 sum adjusted fitnesses: 1785.4161601263
+Species 494 sum adjusted fitnesses: 340.79182424558
+Species 516 sum adjusted fitnesses: 39.949162319549
+Species 523 sum adjusted fitnesses: 840.00400794527
+Species 524 sum adjusted fitnesses: 812.21148505048
+Species 528 sum adjusted fitnesses: 460.11447251518
+Species 529 sum adjusted fitnesses: 1785.4166972601
+Species 530 sum adjusted fitnesses: 138.10868965432
+Species 540 sum adjusted fitnesses: 819.02530170302
+Species 541 sum adjusted fitnesses: 757.67364509029
+Species 544 sum adjusted fitnesses: 944.66795154659
+Species 548 sum adjusted fitnesses: 187.28908774106
+Species 551 sum adjusted fitnesses: 482.57305008334
+Species 553 sum adjusted fitnesses: 944.66795154659
+Species 554 sum adjusted fitnesses: 962.15451120239
+Species 555 sum adjusted fitnesses: 178.30820733921
+Species 556 sum adjusted fitnesses: 455.6158134433
+Species 557 sum adjusted fitnesses: 944.66795154659
+Staleness: 5
+Species 126 size: 75 -> 13
+Species 207 size: 1 -> 21
+Species 409 size: 3 -> 4
+Species 417 size: 2 -> 1
+Species 448 size: 6 -> 9
+Species 468 size: 1 -> 21
+Species 494 size: 6 -> 4
+Species 516 size: 1 -> 1
+Species 523 size: 9 -> 10
+Species 524 size: 14 -> 10
+Species 528 size: 17 -> 5
+Species 529 size: 2 -> 21
+Species 530 size: 2 -> 2
+Species 540 size: 6 -> 10
+Species 541 size: 24 -> 9
+Species 544 size: 8 -> 11
+Species 548 size: 3 -> 2
+Species 551 size: 4 -> 6
+Species 553 size: 1 -> 11
+Species 554 size: 1 -> 11
+Species 555 size: 4 -> 2
+Species 556 size: 9 -> 5
+Species 557 size: 1 -> 11
+Species: 524 creates subspecies 558
+Number of species: 23 -> 24

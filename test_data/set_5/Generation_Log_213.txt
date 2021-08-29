@@ -1,0 +1,56 @@
+Generation 213
+
+Population average fitness: 1089.1773816468
+Population average modified fitness: 1283.3291217196
+Mean adjusted fitness: 142.80503603864
+Species 126 sum adjusted fitnesses: 1354.6307180265
+Species 468 sum adjusted fitnesses: 944.59680356889
+Species 632 sum adjusted fitnesses: 1785.4166972601
+Species 634 sum adjusted fitnesses: 1045.9706279317
+Species 636 sum adjusted fitnesses: 1893.4359064201
+Species 638 sum adjusted fitnesses: 2113.6770381863
+Species 644 sum adjusted fitnesses: 2569.1983960858
+Species 645 sum adjusted fitnesses: 750.03837121518
+Species 647 sum adjusted fitnesses: 960.54357569186
+Species 667 sum adjusted fitnesses: 813.6812063639
+Species 669 sum adjusted fitnesses: 1290.5698737067
+Species 673 sum adjusted fitnesses: 1044.4115115325
+Species 679 sum adjusted fitnesses: 1081.7344654296
+Species 680 sum adjusted fitnesses: 996.74158866334
+Species 684 sum adjusted fitnesses: 1174.3547784502
+Species 686 sum adjusted fitnesses: 1510.7357962548
+Species 692 sum adjusted fitnesses: 2.6925331940732
+Species 694 sum adjusted fitnesses: 1092.8307594387
+Species 695 sum adjusted fitnesses: 39.948812067337
+Species 698 sum adjusted fitnesses: 2571.7706716719
+Species 702 sum adjusted fitnesses: 806.80342690471
+Species 703 sum adjusted fitnesses: 1068.1882117658
+Species 704 sum adjusted fitnesses: 1067.7409766315
+Species 705 sum adjusted fitnesses: 581.29446126572
+Staleness: 2
+Species 126 size: 16 -> 9
+Species 468 size: 2 -> 7
+Species 632 size: 1 -> 13
+Species 634 size: 7 -> 7
+Species 636 size: 26 -> 13
+Species 638 size: 11 -> 15
+Species 644 size: 1 -> 18
+Species 645 size: 3 -> 5
+Species 647 size: 6 -> 7
+Species 667 size: 7 -> 6
+Species 669 size: 7 -> 9
+Species 673 size: 9 -> 7
+Species 679 size: 5 -> 8
+Species 680 size: 6 -> 7
+Species 684 size: 6 -> 8
+Species 686 size: 25 -> 11
+Species 692 size: 1 -> 0
+Species 694 size: 5 -> 8
+Species 695 size: 1 -> 0
+Species 698 size: 1 -> 18
+Species 702 size: 16 -> 6
+Species 703 size: 25 -> 7
+Species 704 size: 11 -> 7
+Species 705 size: 2 -> 4
+Species: 645 creates subspecies 706
+Number of species: 24 -> 22

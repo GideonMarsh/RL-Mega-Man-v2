@@ -1,0 +1,56 @@
+Generation 349
+
+Population average fitness: 1202.5142930953
+Population average modified fitness: 2199.536708355
+Mean adjusted fitness: 241.44468309205
+Species 1037 sum adjusted fitnesses: 3459.98031623
+Species 1047 sum adjusted fitnesses: 2194.3514155382
+Species 1070 sum adjusted fitnesses: 3459.98031623
+Species 1075 sum adjusted fitnesses: 3445.84356754
+Species 1077 sum adjusted fitnesses: 2456.0650504131
+Species 1081 sum adjusted fitnesses: 2337.0910694682
+Species 1082 sum adjusted fitnesses: 2087.8076236188
+Species 1090 sum adjusted fitnesses: 2462.0161449545
+Species 1091 sum adjusted fitnesses: 1730.2798839964
+Species 1093 sum adjusted fitnesses: 3445.39013037
+Species 1095 sum adjusted fitnesses: 2604.075070319
+Species 1097 sum adjusted fitnesses: 2571.76403993
+Species 1098 sum adjusted fitnesses: 3096.211549162
+Species 1099 sum adjusted fitnesses: 2219.3860760778
+Species 1101 sum adjusted fitnesses: 1508.3197795681
+Species 1103 sum adjusted fitnesses: 1334.249571912
+Species 1107 sum adjusted fitnesses: 3445.84356754
+Species 1108 sum adjusted fitnesses: 4.52609217585
+Species 1109 sum adjusted fitnesses: 1677.9565316113
+Species 1110 sum adjusted fitnesses: 103.379254206
+Species 1111 sum adjusted fitnesses: 2.69253319407
+Species 1112 sum adjusted fitnesses: 69.962994425283
+Species 1113 sum adjusted fitnesses: 2571.76403993
+Staleness: 7
+Species 1037 size: 1 -> 14
+Species 1047 size: 22 -> 9
+Species 1070 size: 1 -> 14
+Species 1075 size: 1 -> 14
+Species 1077 size: 32 -> 10
+Species 1081 size: 13 -> 10
+Species 1082 size: 10 -> 9
+Species 1090 size: 27 -> 10
+Species 1091 size: 15 -> 7
+Species 1093 size: 1 -> 14
+Species 1095 size: 25 -> 11
+Species 1097 size: 2 -> 11
+Species 1098 size: 5 -> 13
+Species 1099 size: 7 -> 9
+Species 1101 size: 2 -> 6
+Species 1103 size: 6 -> 6
+Species 1107 size: 1 -> 14
+Species 1108 size: 1 -> 0
+Species 1109 size: 22 -> 7
+Species 1110 size: 1 -> 1
+Species 1111 size: 1 -> 0
+Species 1112 size: 3 -> 0
+Species 1113 size: 1 -> 11
+Species: 1091 creates subspecies 1114
+Species: 1098 creates subspecies 1115
+Species: 1099 creates subspecies 1116
+Number of species: 23 -> 24

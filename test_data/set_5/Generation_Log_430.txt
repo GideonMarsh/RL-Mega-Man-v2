@@ -1,0 +1,85 @@
+Generation 430
+
+Population average fitness: 1186.1140561508
+Population average modified fitness: 2125.9762236931
+Mean adjusted fitness: 380.07365458682
+Species 1244 sum adjusted fitnesses: 1758.3574951921
+Species 1247 sum adjusted fitnesses: 2834.7923955659
+Species 1266 sum adjusted fitnesses: 1979.6459308998
+Species 1267 sum adjusted fitnesses: 1746.2360192416
+Species 1294 sum adjusted fitnesses: 3445.7818124597
+Species 1306 sum adjusted fitnesses: 2298.1598470455
+Species 1331 sum adjusted fitnesses: 2240.175305158
+Species 1333 sum adjusted fitnesses: 2603.2387530704
+Species 1340 sum adjusted fitnesses: 953.18371575094
+Species 1341 sum adjusted fitnesses: 1759.4568127045
+Species 1349 sum adjusted fitnesses: 2464.7283303894
+Species 1353 sum adjusted fitnesses: 2041.6408084936
+Species 1361 sum adjusted fitnesses: 2298.4173419674
+Species 1369 sum adjusted fitnesses: 1175.2101455157
+Species 1370 sum adjusted fitnesses: 1154.4424500419
+Species 1374 sum adjusted fitnesses: 1751.2742474539
+Species 1377 sum adjusted fitnesses: 1774.4484165689
+Species 1381 sum adjusted fitnesses: 1544.0683239418
+Species 1385 sum adjusted fitnesses: 1774.6601347734
+Species 1388 sum adjusted fitnesses: 2704.5440303523
+Species 1390 sum adjusted fitnesses: 1536.7011201432
+Species 1395 sum adjusted fitnesses: 3379.0459107676
+Species 1396 sum adjusted fitnesses: 1171.7439941229
+Species 1400 sum adjusted fitnesses: 2764.0542637629
+Species 1402 sum adjusted fitnesses: 2371.6533913213
+Species 1403 sum adjusted fitnesses: 2320.9896034782
+Species 1407 sum adjusted fitnesses: 2443.9542361592
+Species 1408 sum adjusted fitnesses: 3447.126012951
+Species 1409 sum adjusted fitnesses: 729.08435982759
+Species 1412 sum adjusted fitnesses: 1091.1682106981
+Species 1414 sum adjusted fitnesses: 2380.6760860515
+Species 1418 sum adjusted fitnesses: 2826.7163213996
+Species 1419 sum adjusted fitnesses: 1392.166611133
+Species 1420 sum adjusted fitnesses: 39.794608695335
+Species 1421 sum adjusted fitnesses: 2023.8414152069
+Species 1422 sum adjusted fitnesses: 3432.6012806078
+Species 1423 sum adjusted fitnesses: 50.482043723535
+Species 1424 sum adjusted fitnesses: 2310.4691307274
+Staleness: 20
+Population stale - extinction event
+Species 1244 size: 6 -> 0
+Species 1247 size: 9 -> 66
+Species 1266 size: 5 -> 0
+Species 1267 size: 6 -> 0
+Species 1294 size: 5 -> 67
+Species 1306 size: 6 -> 0
+Species 1331 size: 4 -> 0
+Species 1333 size: 8 -> 0
+Species 1340 size: 6 -> 0
+Species 1341 size: 10 -> 0
+Species 1349 size: 7 -> 0
+Species 1353 size: 10 -> 0
+Species 1361 size: 3 -> 0
+Species 1369 size: 3 -> 0
+Species 1370 size: 3 -> 0
+Species 1374 size: 4 -> 0
+Species 1377 size: 2 -> 0
+Species 1381 size: 2 -> 0
+Species 1385 size: 4 -> 0
+Species 1388 size: 9 -> 0
+Species 1390 size: 9 -> 0
+Species 1395 size: 7 -> 0
+Species 1396 size: 6 -> 0
+Species 1400 size: 5 -> 0
+Species 1402 size: 7 -> 0
+Species 1403 size: 6 -> 0
+Species 1407 size: 10 -> 0
+Species 1408 size: 1 -> 67
+Species 1409 size: 6 -> 0
+Species 1412 size: 3 -> 0
+Species 1414 size: 13 -> 0
+Species 1418 size: 4 -> 0
+Species 1419 size: 1 -> 0
+Species 1420 size: 1 -> 0
+Species 1421 size: 3 -> 0
+Species 1422 size: 2 -> 0
+Species 1423 size: 1 -> 0
+Species 1424 size: 3 -> 0
+Species: 1408 creates subspecies 1425
+Number of species: 38 -> 4

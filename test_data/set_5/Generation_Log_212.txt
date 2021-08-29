@@ -1,0 +1,54 @@
+Generation 212
+
+Population average fitness: 1083.4187390675
+Population average modified fitness: 1257.3959089554
+Mean adjusted fitness: 157.87574177912
+Species 126 sum adjusted fitnesses: 1047.3326063295
+Species 468 sum adjusted fitnesses: 1785.4166972601
+Species 632 sum adjusted fitnesses: 1785.4166972601
+Species 634 sum adjusted fitnesses: 1151.8883115887
+Species 636 sum adjusted fitnesses: 1634.1477116239
+Species 638 sum adjusted fitnesses: 1678.3230270483
+Species 644 sum adjusted fitnesses: 2569.1983960858
+Species 645 sum adjusted fitnesses: 849.71357633584
+Species 647 sum adjusted fitnesses: 928.93269474044
+Species 667 sum adjusted fitnesses: 1065.5537299409
+Species 669 sum adjusted fitnesses: 1059.373068706
+Species 673 sum adjusted fitnesses: 1415.1358761285
+Species 679 sum adjusted fitnesses: 841.65181036376
+Species 680 sum adjusted fitnesses: 950.93836208297
+Species 684 sum adjusted fitnesses: 946.15998452053
+Species 686 sum adjusted fitnesses: 1495.368430354
+Species 692 sum adjusted fitnesses: 1438.3954424375
+Species 694 sum adjusted fitnesses: 794.63424641218
+Species 695 sum adjusted fitnesses: 199.17771994452
+Species 698 sum adjusted fitnesses: 2571.7706716719
+Species 702 sum adjusted fitnesses: 1011.7046032484
+Species 703 sum adjusted fitnesses: 2569.4985316136
+Species 704 sum adjusted fitnesses: 1785.4161601263
+Staleness: 1
+Species 126 size: 19 -> 7
+Species 468 size: 1 -> 11
+Species 632 size: 1 -> 11
+Species 634 size: 5 -> 7
+Species 636 size: 29 -> 10
+Species 638 size: 14 -> 11
+Species 644 size: 1 -> 17
+Species 645 size: 4 -> 5
+Species 647 size: 3 -> 6
+Species 667 size: 12 -> 7
+Species 669 size: 7 -> 7
+Species 673 size: 9 -> 9
+Species 679 size: 11 -> 5
+Species 680 size: 9 -> 6
+Species 684 size: 9 -> 6
+Species 686 size: 23 -> 9
+Species 692 size: 11 -> 9
+Species 694 size: 7 -> 5
+Species 695 size: 2 -> 1
+Species 698 size: 1 -> 17
+Species 702 size: 20 -> 6
+Species 703 size: 1 -> 17
+Species 704 size: 1 -> 11
+Species: 645 creates subspecies 705
+Number of species: 23 -> 24

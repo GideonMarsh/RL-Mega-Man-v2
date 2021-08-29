@@ -1,0 +1,80 @@
+Generation 258
+
+Population average fitness: 1105.4528676786
+Population average modified fitness: 1403.0072595505
+Mean adjusted fitness: 209.95845543187
+Species 704 sum adjusted fitnesses: 1364.9069336462
+Species 730 sum adjusted fitnesses: 82.184142616468
+Species 754 sum adjusted fitnesses: 734.07294680929
+Species 763 sum adjusted fitnesses: 1364.9073364966
+Species 770 sum adjusted fitnesses: 1315.7500790447
+Species 772 sum adjusted fitnesses: 919.54398839027
+Species 773 sum adjusted fitnesses: 954.81367322642
+Species 774 sum adjusted fitnesses: 1488.0143715394
+Species 779 sum adjusted fitnesses: 1033.2256208612
+Species 783 sum adjusted fitnesses: 1089.8601801835
+Species 786 sum adjusted fitnesses: 2061.6115326528
+Species 789 sum adjusted fitnesses: 2333.3536499501
+Species 791 sum adjusted fitnesses: 826.37340313797
+Species 796 sum adjusted fitnesses: 3444.2371109699
+Species 807 sum adjusted fitnesses: 2343.8597102585
+Species 809 sum adjusted fitnesses: 483.33986305429
+Species 815 sum adjusted fitnesses: 802.91644159666
+Species 821 sum adjusted fitnesses: 1201.0117628985
+Species 824 sum adjusted fitnesses: 677.86586803518
+Species 826 sum adjusted fitnesses: 2571.1083552328
+Species 827 sum adjusted fitnesses: 1041.3598284221
+Species 829 sum adjusted fitnesses: 1785.4166972601
+Species 832 sum adjusted fitnesses: 1203.6200982313
+Species 833 sum adjusted fitnesses: 1168.8141429823
+Species 834 sum adjusted fitnesses: 604.00854800744
+Species 835 sum adjusted fitnesses: 1339.7356877923
+Species 836 sum adjusted fitnesses: 2614.8709673622
+Species 838 sum adjusted fitnesses: 923.11328116455
+Species 842 sum adjusted fitnesses: 116.25298465569
+Species 844 sum adjusted fitnesses: 1224.7371914862
+Species 847 sum adjusted fitnesses: 679.28296406815
+Species 848 sum adjusted fitnesses: 1785.4161601263
+Species 849 sum adjusted fitnesses: 103.37925420615
+Species 850 sum adjusted fitnesses: 2.6925226636323
+Species 851 sum adjusted fitnesses: 266.73237455741
+Species 852 sum adjusted fitnesses: 39.301412787805
+Staleness: 1
+Species 704 size: 4 -> 7
+Species 730 size: 3 -> 0
+Species 754 size: 6 -> 3
+Species 763 size: 8 -> 7
+Species 770 size: 8 -> 6
+Species 772 size: 4 -> 4
+Species 773 size: 5 -> 5
+Species 774 size: 6 -> 7
+Species 779 size: 3 -> 5
+Species 783 size: 10 -> 5
+Species 786 size: 10 -> 10
+Species 789 size: 16 -> 11
+Species 791 size: 2 -> 4
+Species 796 size: 1 -> 16
+Species 807 size: 24 -> 11
+Species 809 size: 2 -> 2
+Species 815 size: 7 -> 4
+Species 821 size: 3 -> 6
+Species 824 size: 7 -> 3
+Species 826 size: 1 -> 12
+Species 827 size: 7 -> 5
+Species 829 size: 3 -> 9
+Species 832 size: 6 -> 6
+Species 833 size: 6 -> 6
+Species 834 size: 7 -> 3
+Species 835 size: 4 -> 6
+Species 836 size: 8 -> 12
+Species 838 size: 16 -> 4
+Species 842 size: 1 -> 1
+Species 844 size: 3 -> 6
+Species 847 size: 4 -> 3
+Species 848 size: 1 -> 9
+Species 849 size: 1 -> 1
+Species 850 size: 1 -> 0
+Species 851 size: 1 -> 1
+Species 852 size: 1 -> 0
+Species: 836 creates subspecies 853
+Number of species: 36 -> 32

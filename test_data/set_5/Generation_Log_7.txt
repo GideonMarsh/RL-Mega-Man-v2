@@ -1,0 +1,40 @@
+Generation 7
+
+New highest fitness: 4.5266338542934 (species 1)
+Population average fitness: 96.945395357143
+Population average modified fitness: 2.1182307139636
+Mean adjusted fitness: 0.10262674870388
+Species 1 sum adjusted fitnesses: 3.4795028435957
+Species 2 sum adjusted fitnesses: 1.117560336384
+Species 3 sum adjusted fitnesses: 1.2856604545323
+Species 4 sum adjusted fitnesses: 1.6189122880671
+Species 5 sum adjusted fitnesses: 1
+Species 6 sum adjusted fitnesses: 1.0038001259701
+Species 7 sum adjusted fitnesses: 1.6784842067501
+Species 8 sum adjusted fitnesses: 1.0054289072547
+Species 9 sum adjusted fitnesses: 1
+Species 10 sum adjusted fitnesses: 1.002714529247
+Species 11 sum adjusted fitnesses: 1.0054289720715
+Species 12 sum adjusted fitnesses: 1.0054286911988
+Species 13 sum adjusted fitnesses: 2.3169997233127
+Species 14 sum adjusted fitnesses: 1.0054286623913
+Species 15 sum adjusted fitnesses: 1
+Staleness: 1
+Species 1 size: 73 -> 34
+Species 2 size: 15 -> 11
+Species 3 size: 18 -> 13
+Species 4 size: 11 -> 16
+Species 5 size: 19 -> 7
+Species 6 size: 20 -> 10
+Species 7 size: 25 -> 16
+Species 8 size: 1 -> 10
+Species 9 size: 1 -> 10
+Species 10 size: 2 -> 10
+Species 11 size: 1 -> 10
+Species 12 size: 1 -> 10
+Species 13 size: 9 -> 23
+Species 14 size: 3 -> 10
+Species 15 size: 1 -> 10
+Species: 4 creates subspecies 16
+Species: 13 creates subspecies 17
+Number of species: 15 -> 17

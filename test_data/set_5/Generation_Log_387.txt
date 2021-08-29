@@ -1,0 +1,67 @@
+Generation 387
+
+Population average fitness: 1180.5232017063
+Population average modified fitness: 2115.0492495862
+Mean adjusted fitness: 303.79797459504
+Species 1095 sum adjusted fitnesses: 2651.1272825639
+Species 1142 sum adjusted fitnesses: 1936.1643666506
+Species 1170 sum adjusted fitnesses: 1745.9035372065
+Species 1175 sum adjusted fitnesses: 3446.9544593422
+Species 1176 sum adjusted fitnesses: 1727.7546737237
+Species 1182 sum adjusted fitnesses: 2195.6449635442
+Species 1183 sum adjusted fitnesses: 109.81608820402
+Species 1187 sum adjusted fitnesses: 1187.9833573017
+Species 1189 sum adjusted fitnesses: 3446.9014246348
+Species 1197 sum adjusted fitnesses: 1756.8237154943
+Species 1200 sum adjusted fitnesses: 2828.0436586359
+Species 1203 sum adjusted fitnesses: 1754.1698088606
+Species 1205 sum adjusted fitnesses: 2209.180130346
+Species 1206 sum adjusted fitnesses: 4220.5568268981
+Species 1208 sum adjusted fitnesses: 2585.7563456756
+Species 1209 sum adjusted fitnesses: 2881.3685721769
+Species 1210 sum adjusted fitnesses: 3445.873482864
+Species 1213 sum adjusted fitnesses: 2927.7865390142
+Species 1214 sum adjusted fitnesses: 2139.051765538
+Species 1215 sum adjusted fitnesses: 1631.5025084007
+Species 1217 sum adjusted fitnesses: 103.37925420615
+Species 1218 sum adjusted fitnesses: 3445.873482864
+Species 1219 sum adjusted fitnesses: 1413.994579305
+Species 1220 sum adjusted fitnesses: 39.794608695335
+Species 1221 sum adjusted fitnesses: 22.990380803094
+Species 1222 sum adjusted fitnesses: 3445.9796510927
+Species 1223 sum adjusted fitnesses: 3445.8435675367
+Species 1224 sum adjusted fitnesses: 2013.3758874297
+Staleness: 4
+Species 1095 size: 16 -> 9
+Species 1142 size: 18 -> 6
+Species 1170 size: 8 -> 6
+Species 1175 size: 1 -> 11
+Species 1176 size: 14 -> 6
+Species 1182 size: 4 -> 7
+Species 1183 size: 2 -> 1
+Species 1187 size: 9 -> 4
+Species 1189 size: 2 -> 11
+Species 1197 size: 12 -> 6
+Species 1200 size: 7 -> 9
+Species 1203 size: 24 -> 6
+Species 1205 size: 14 -> 7
+Species 1206 size: 1 -> 14
+Species 1208 size: 4 -> 9
+Species 1209 size: 12 -> 9
+Species 1210 size: 1 -> 11
+Species 1213 size: 13 -> 10
+Species 1214 size: 13 -> 7
+Species 1215 size: 4 -> 5
+Species 1217 size: 2 -> 1
+Species 1218 size: 1 -> 11
+Species 1219 size: 5 -> 5
+Species 1220 size: 1 -> 0
+Species 1221 size: 1 -> 0
+Species 1222 size: 2 -> 11
+Species 1223 size: 2 -> 11
+Species 1224 size: 7 -> 7
+Species: 1208 creates subspecies 1225
+Species: 1209 creates subspecies 1226
+Species: 1213 creates subspecies 1227
+Species: 1197 creates subspecies 1228
+Number of species: 28 -> 28

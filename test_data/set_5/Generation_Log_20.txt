@@ -1,0 +1,111 @@
+Generation 20
+
+Population average fitness: 164.08206228175
+Population average modified fitness: 3.0510587575734
+Mean adjusted fitness: 0.54129449115773
+Species 1 sum adjusted fitnesses: 12.302705416222
+Species 3 sum adjusted fitnesses: 2.6922483080883
+Species 6 sum adjusted fitnesses: 1.0027143564022
+Species 7 sum adjusted fitnesses: 3.7429996291688
+Species 8 sum adjusted fitnesses: 1.0054289504659
+Species 10 sum adjusted fitnesses: 1.0054289720715
+Species 11 sum adjusted fitnesses: 1.0054290260855
+Species 14 sum adjusted fitnesses: 2.6926059825327
+Species 16 sum adjusted fitnesses: 2.2693992880284
+Species 17 sum adjusted fitnesses: 2.6927197410101
+Species 18 sum adjusted fitnesses: 1.0054286047764
+Species 19 sum adjusted fitnesses: 1.0054289936771
+Species 22 sum adjusted fitnesses: 2.6925917257238
+Species 23 sum adjusted fitnesses: 1.0054287776212
+Species 24 sum adjusted fitnesses: 2.6927183830711
+Species 25 sum adjusted fitnesses: 1.0054288424379
+Species 27 sum adjusted fitnesses: 2.6924734262451
+Species 28 sum adjusted fitnesses: 2.692653436729
+Species 43 sum adjusted fitnesses: 2.6926088416084
+Species 44 sum adjusted fitnesses: 2.5044691159075
+Species 47 sum adjusted fitnesses: 1
+Species 48 sum adjusted fitnesses: 2.6925446504537
+Species 49 sum adjusted fitnesses: 2.0165862357767
+Species 50 sum adjusted fitnesses: 2.6926041553172
+Species 51 sum adjusted fitnesses: 2.6927648741932
+Species 52 sum adjusted fitnesses: 1
+Species 53 sum adjusted fitnesses: 1
+Species 54 sum adjusted fitnesses: 1
+Species 55 sum adjusted fitnesses: 2.2693361068537
+Species 56 sum adjusted fitnesses: 2.8277605258536
+Species 59 sum adjusted fitnesses: 2.1303019873551
+Species 60 sum adjusted fitnesses: 2.1280742097898
+Species 61 sum adjusted fitnesses: 2.6928280631402
+Species 63 sum adjusted fitnesses: 2.5791677748736
+Species 64 sum adjusted fitnesses: 1.0027143455994
+Species 65 sum adjusted fitnesses: 2.3540870774098
+Species 66 sum adjusted fitnesses: 2.1284149241668
+Species 69 sum adjusted fitnesses: 2.6927042048199
+Species 72 sum adjusted fitnesses: 2.7130753961831
+Species 76 sum adjusted fitnesses: 2.4515705699848
+Species 77 sum adjusted fitnesses: 2.0175983053807
+Species 79 sum adjusted fitnesses: 2.6926830933473
+Species 80 sum adjusted fitnesses: 1
+Species 81 sum adjusted fitnesses: 2.6923828612197
+Species 82 sum adjusted fitnesses: 1
+Species 84 sum adjusted fitnesses: 1.0054286047764
+Species 85 sum adjusted fitnesses: 2.6925323840379
+Species 86 sum adjusted fitnesses: 2.6928280631402
+Staleness: 0
+Species 1 size: 14 -> 23
+Species 3 size: 5 -> 5
+Species 6 size: 2 -> 2
+Species 7 size: 7 -> 7
+Species 8 size: 2 -> 2
+Species 10 size: 2 -> 2
+Species 11 size: 2 -> 2
+Species 14 size: 5 -> 5
+Species 16 size: 4 -> 4
+Species 17 size: 4 -> 5
+Species 18 size: 2 -> 2
+Species 19 size: 2 -> 2
+Species 22 size: 5 -> 5
+Species 23 size: 2 -> 2
+Species 24 size: 5 -> 5
+Species 25 size: 2 -> 2
+Species 27 size: 3 -> 5
+Species 28 size: 8 -> 5
+Species 43 size: 5 -> 5
+Species 44 size: 9 -> 5
+Species 47 size: 2 -> 0
+Species 48 size: 6 -> 5
+Species 49 size: 5 -> 4
+Species 50 size: 5 -> 5
+Species 51 size: 5 -> 5
+Species 52 size: 2 -> 0
+Species 53 size: 2 -> 2
+Species 54 size: 1 -> 2
+Species 55 size: 4 -> 4
+Species 56 size: 5 -> 5
+Species 59 size: 3 -> 4
+Species 60 size: 3 -> 4
+Species 61 size: 5 -> 5
+Species 63 size: 15 -> 5
+Species 64 size: 2 -> 2
+Species 65 size: 5 -> 4
+Species 66 size: 3 -> 4
+Species 69 size: 4 -> 5
+Species 72 size: 5 -> 5
+Species 76 size: 7 -> 5
+Species 77 size: 5 -> 4
+Species 79 size: 4 -> 5
+Species 80 size: 1 -> 2
+Species 81 size: 5 -> 5
+Species 82 size: 2 -> 2
+Species 84 size: 1 -> 2
+Species 85 size: 2 -> 5
+Species 86 size: 1 -> 5
+Species: 17 creates subspecies 87
+Species: 17 creates subspecies 88
+Species: 17 creates subspecies 89
+Species: 48 creates subspecies 90
+Species: 77 creates subspecies 91
+Species: 66 creates subspecies 92
+Species: 72 creates subspecies 93
+Species: 65 creates subspecies 94
+Number of species: 48 -> 54

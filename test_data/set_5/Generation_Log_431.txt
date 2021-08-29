@@ -1,0 +1,18 @@
+Generation 431
+
+Population average fitness: 977.6209021627
+Population average modified fitness: 1530.9461046421
+Mean adjusted fitness: 23.599047804383
+Species 1247 sum adjusted fitnesses: 1693.0837592622
+Species 1294 sum adjusted fitnesses: 1401.441433952
+Species 1408 sum adjusted fitnesses: 1521.9051134564
+Species 1425 sum adjusted fitnesses: 103.37925420615
+Staleness: 1
+Species 1247 size: 66 -> 73
+Species 1294 size: 67 -> 59
+Species 1408 size: 66 -> 64
+Species 1425 size: 1 -> 4
+Species: 1408 creates subspecies 1426
+Species: 1408 creates subspecies 1427
+Species: 1408 creates subspecies 1428
+Number of species: 4 -> 7

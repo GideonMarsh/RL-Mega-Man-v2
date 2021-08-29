@@ -1,0 +1,41 @@
+Generation 339
+
+New highest fitness: 3460.0252990598 (species 1047)
+Population average fitness: 1133.5778364087
+Population average modified fitness: 2007.694640869
+Mean adjusted fitness: 171.30063990367
+Species 1037 sum adjusted fitnesses: 3459.9803162296
+Species 1047 sum adjusted fitnesses: 1463.3189472859
+Species 1056 sum adjusted fitnesses: 3446.4366651476
+Species 1070 sum adjusted fitnesses: 2122.8883314636
+Species 1075 sum adjusted fitnesses: 3445.8435675367
+Species 1076 sum adjusted fitnesses: 3446.4366651476
+Species 1077 sum adjusted fitnesses: 2223.9175778431
+Species 1081 sum adjusted fitnesses: 1984.2211662359
+Species 1082 sum adjusted fitnesses: 2571.764039926
+Species 1087 sum adjusted fitnesses: 2230.3912884544
+Species 1090 sum adjusted fitnesses: 3445.3901303704
+Species 1091 sum adjusted fitnesses: 1045.223176758
+Species 1092 sum adjusted fitnesses: 1584.4101256381
+Species 1093 sum adjusted fitnesses: 1749.9561584959
+Species 1094 sum adjusted fitnesses: 39.949824201599
+Staleness: 1
+Species 1037 size: 2 -> 20
+Species 1047 size: 35 -> 9
+Species 1056 size: 1 -> 20
+Species 1070 size: 18 -> 12
+Species 1075 size: 1 -> 20
+Species 1076 size: 1 -> 20
+Species 1077 size: 64 -> 13
+Species 1081 size: 14 -> 12
+Species 1082 size: 2 -> 15
+Species 1087 size: 36 -> 13
+Species 1090 size: 2 -> 20
+Species 1091 size: 10 -> 6
+Species 1092 size: 5 -> 9
+Species 1093 size: 8 -> 10
+Species 1094 size: 1 -> 1
+Species: 1070 creates subspecies 1095
+Species: 1070 creates subspecies 1096
+Species: 1091 creates subspecies 1097
+Number of species: 15 -> 18

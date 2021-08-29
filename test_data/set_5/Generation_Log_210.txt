@@ -1,0 +1,56 @@
+Generation 210
+
+Population average fitness: 1105.8297287103
+Population average modified fitness: 1283.3166834036
+Mean adjusted fitness: 141.14690706296
+Species 126 sum adjusted fitnesses: 830.03522916519
+Species 468 sum adjusted fitnesses: 1785.4166972601
+Species 632 sum adjusted fitnesses: 1785.4164286932
+Species 634 sum adjusted fitnesses: 427.95233303326
+Species 636 sum adjusted fitnesses: 1427.9384425296
+Species 638 sum adjusted fitnesses: 1803.9428377167
+Species 644 sum adjusted fitnesses: 2569.1983960858
+Species 645 sum adjusted fitnesses: 587.9151137247
+Species 647 sum adjusted fitnesses: 472.25099824796
+Species 667 sum adjusted fitnesses: 1400.4427851384
+Species 669 sum adjusted fitnesses: 1494.530821349
+Species 673 sum adjusted fitnesses: 1067.8640812415
+Species 679 sum adjusted fitnesses: 1527.8184407919
+Species 680 sum adjusted fitnesses: 1150.2597920255
+Species 684 sum adjusted fitnesses: 1009.8835474018
+Species 686 sum adjusted fitnesses: 1505.7993061229
+Species 692 sum adjusted fitnesses: 1894.6260729947
+Species 694 sum adjusted fitnesses: 1371.5761332202
+Species 695 sum adjusted fitnesses: 295.3100892268
+Species 698 sum adjusted fitnesses: 2571.7706716719
+Species 699 sum adjusted fitnesses: 30.686287220229
+Species 700 sum adjusted fitnesses: 2.692427544373
+Species 701 sum adjusted fitnesses: 2.6925226636323
+Species 702 sum adjusted fitnesses: 1213.3619575228
+Staleness: 4
+Species 126 size: 22 -> 6
+Species 468 size: 1 -> 13
+Species 632 size: 2 -> 13
+Species 634 size: 5 -> 3
+Species 636 size: 33 -> 10
+Species 638 size: 16 -> 13
+Species 644 size: 1 -> 18
+Species 645 size: 4 -> 4
+Species 647 size: 4 -> 3
+Species 667 size: 9 -> 10
+Species 669 size: 6 -> 11
+Species 673 size: 12 -> 8
+Species 679 size: 10 -> 11
+Species 680 size: 8 -> 8
+Species 684 size: 10 -> 7
+Species 686 size: 20 -> 11
+Species 692 size: 7 -> 13
+Species 694 size: 16 -> 10
+Species 695 size: 1 -> 1
+Species 698 size: 1 -> 18
+Species 699 size: 1 -> 0
+Species 700 size: 1 -> 0
+Species 701 size: 1 -> 0
+Species 702 size: 9 -> 9
+Species: 692 creates subspecies 703
+Number of species: 24 -> 22

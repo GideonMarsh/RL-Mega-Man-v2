@@ -1,0 +1,54 @@
+Generation 385
+
+Population average fitness: 1210.7593546627
+Population average modified fitness: 2327.6685991999
+Mean adjusted fitness: 215.04397919115
+Species 1095 sum adjusted fitnesses: 2123.5720504354
+Species 1142 sum adjusted fitnesses: 2357.0226860212
+Species 1170 sum adjusted fitnesses: 2240.3796102541
+Species 1175 sum adjusted fitnesses: 3446.9544593422
+Species 1176 sum adjusted fitnesses: 1791.096738885
+Species 1181 sum adjusted fitnesses: 1725.8259242799
+Species 1182 sum adjusted fitnesses: 2692.1132996514
+Species 1183 sum adjusted fitnesses: 2774.3395403968
+Species 1187 sum adjusted fitnesses: 2038.8272865665
+Species 1189 sum adjusted fitnesses: 1756.5580844244
+Species 1197 sum adjusted fitnesses: 2960.2458331272
+Species 1200 sum adjusted fitnesses: 2038.8598212756
+Species 1203 sum adjusted fitnesses: 1963.9940155662
+Species 1205 sum adjusted fitnesses: 2924.2571310696
+Species 1206 sum adjusted fitnesses: 2452.2080987737
+Species 1208 sum adjusted fitnesses: 3231.5343370113
+Species 1209 sum adjusted fitnesses: 2696.1461196007
+Species 1210 sum adjusted fitnesses: 1724.3183708358
+Species 1211 sum adjusted fitnesses: 30.591232920004
+Species 1212 sum adjusted fitnesses: 39.951197792078
+Staleness: 2
+Species 1095 size: 4 -> 10
+Species 1142 size: 25 -> 11
+Species 1170 size: 7 -> 10
+Species 1175 size: 1 -> 16
+Species 1176 size: 13 -> 8
+Species 1181 size: 2 -> 8
+Species 1182 size: 9 -> 13
+Species 1183 size: 15 -> 13
+Species 1187 size: 6 -> 9
+Species 1189 size: 10 -> 8
+Species 1197 size: 10 -> 14
+Species 1200 size: 24 -> 9
+Species 1203 size: 20 -> 9
+Species 1205 size: 17 -> 14
+Species 1206 size: 17 -> 11
+Species 1208 size: 5 -> 15
+Species 1209 size: 9 -> 13
+Species 1210 size: 4 -> 8
+Species 1211 size: 1 -> 0
+Species 1212 size: 1 -> 1
+Species: 1170 creates subspecies 1213
+Species: 1170 creates subspecies 1214
+Species: 1205 creates subspecies 1215
+Species: 1206 creates subspecies 1216
+Species: 1176 creates subspecies 1217
+Species: 1210 creates subspecies 1218
+Species: 1197 creates subspecies 1219
+Number of species: 20 -> 25

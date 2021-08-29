@@ -1,0 +1,40 @@
+Generation 378
+
+Population average fitness: 1149.7743641071
+Population average modified fitness: 2038.92647217
+Mean adjusted fitness: 135.88911955498
+Species 1095 sum adjusted fitnesses: 1957.6564435104
+Species 1142 sum adjusted fitnesses: 3446.8916473756
+Species 1170 sum adjusted fitnesses: 2598.9412024368
+Species 1175 sum adjusted fitnesses: 1930.9393582483
+Species 1176 sum adjusted fitnesses: 1579.173868904
+Species 1181 sum adjusted fitnesses: 1417.8137355236
+Species 1182 sum adjusted fitnesses: 2056.3944111889
+Species 1183 sum adjusted fitnesses: 936.45802257042
+Species 1186 sum adjusted fitnesses: 2442.1877121757
+Species 1187 sum adjusted fitnesses: 2215.487293676
+Species 1189 sum adjusted fitnesses: 2530.6248586708
+Species 1190 sum adjusted fitnesses: 2315.0483550061
+Species 1191 sum adjusted fitnesses: 1749.201572737
+Species 1192 sum adjusted fitnesses: 1.0054289720715
+Staleness: 6
+Species 1095 size: 18 -> 14
+Species 1142 size: 1 -> 25
+Species 1170 size: 8 -> 19
+Species 1175 size: 27 -> 14
+Species 1176 size: 11 -> 12
+Species 1181 size: 5 -> 10
+Species 1182 size: 42 -> 15
+Species 1183 size: 12 -> 7
+Species 1186 size: 20 -> 18
+Species 1187 size: 11 -> 16
+Species 1189 size: 27 -> 19
+Species 1190 size: 5 -> 17
+Species 1191 size: 12 -> 13
+Species 1192 size: 1 -> 1
+Species: 1186 creates subspecies 1193
+Species: 1187 creates subspecies 1194
+Species: 1189 creates subspecies 1195
+Species: 1191 creates subspecies 1196
+Species: 1175 creates subspecies 1197
+Number of species: 14 -> 19

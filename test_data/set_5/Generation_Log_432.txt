@@ -1,0 +1,23 @@
+Generation 432
+
+Population average fitness: 1181.4588605754
+Population average modified fitness: 2258.0420682416
+Mean adjusted fitness: 57.285975954641
+Species 1247 sum adjusted fitnesses: 2680.3474889043
+Species 1294 sum adjusted fitnesses: 1898.8337296508
+Species 1408 sum adjusted fitnesses: 2023.8284681449
+Species 1425 sum adjusted fitnesses: 77.784440654615
+Species 1426 sum adjusted fitnesses: 2398.7255785324
+Species 1427 sum adjusted fitnesses: 2362.7766543652
+Species 1428 sum adjusted fitnesses: 14.898830676048
+Staleness: 2
+Species 1247 size: 73 -> 47
+Species 1294 size: 59 -> 33
+Species 1408 size: 20 -> 35
+Species 1425 size: 4 -> 1
+Species 1426 size: 42 -> 42
+Species 1427 size: 1 -> 41
+Species 1428 size: 1 -> 1
+Species: 1294 creates subspecies 1429
+Species: 1294 creates subspecies 1430
+Number of species: 7 -> 9

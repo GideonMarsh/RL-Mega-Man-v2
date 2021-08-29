@@ -1,0 +1,66 @@
+Generation 119
+
+Population average fitness: 921.60976892857
+Population average modified fitness: 336.43914878011
+Mean adjusted fitness: 25.929782228174
+Species 126 sum adjusted fitnesses: 962.1540356619
+Species 207 sum adjusted fitnesses: 646.91032382067
+Species 346 sum adjusted fitnesses: 116.26157362355
+Species 357 sum adjusted fitnesses: 200.05039150566
+Species 409 sum adjusted fitnesses: 323.61270772476
+Species 412 sum adjusted fitnesses: 58.554626923499
+Species 416 sum adjusted fitnesses: 84.660139214207
+Species 417 sum adjusted fitnesses: 178.01886806618
+Species 418 sum adjusted fitnesses: 170.01939520093
+Species 419 sum adjusted fitnesses: 191.04166251864
+Species 426 sum adjusted fitnesses: 89.987590321922
+Species 428 sum adjusted fitnesses: 171.54736070084
+Species 429 sum adjusted fitnesses: 69.916134674719
+Species 430 sum adjusted fitnesses: 217.47189570149
+Species 433 sum adjusted fitnesses: 103.77750530421
+Species 434 sum adjusted fitnesses: 104.39362540486
+Species 435 sum adjusted fitnesses: 275.21737930865
+Species 436 sum adjusted fitnesses: 84.326701981713
+Species 441 sum adjusted fitnesses: 69.914537204471
+Species 443 sum adjusted fitnesses: 217.47189570149
+Species 445 sum adjusted fitnesses: 39.950567222467
+Species 448 sum adjusted fitnesses: 173.61064625519
+Species 452 sum adjusted fitnesses: 2.692427544373
+Species 453 sum adjusted fitnesses: 101.98092848718
+Species 454 sum adjusted fitnesses: 275.21737930865
+Species 455 sum adjusted fitnesses: 101.98092848718
+Species 456 sum adjusted fitnesses: 53.234289278137
+Species 457 sum adjusted fitnesses: 101.98092848718
+Staleness: 1
+Species 126 size: 14 -> 37
+Species 207 size: 48 -> 25
+Species 346 size: 1 -> 4
+Species 357 size: 20 -> 8
+Species 409 size: 13 -> 12
+Species 412 size: 3 -> 2
+Species 416 size: 4 -> 3
+Species 417 size: 7 -> 7
+Species 418 size: 18 -> 7
+Species 419 size: 7 -> 7
+Species 426 size: 4 -> 3
+Species 428 size: 10 -> 7
+Species 429 size: 4 -> 3
+Species 430 size: 3 -> 8
+Species 433 size: 4 -> 4
+Species 434 size: 7 -> 4
+Species 435 size: 1 -> 11
+Species 436 size: 7 -> 3
+Species 441 size: 4 -> 3
+Species 443 size: 3 -> 8
+Species 445 size: 2 -> 2
+Species 448 size: 9 -> 7
+Species 452 size: 1 -> 0
+Species 453 size: 1 -> 4
+Species 454 size: 1 -> 11
+Species 455 size: 1 -> 4
+Species 456 size: 2 -> 2
+Species 457 size: 1 -> 4
+Species: 434 creates subspecies 458
+Species: 419 creates subspecies 459
+Species: 443 creates subspecies 460
+Number of species: 28 -> 29

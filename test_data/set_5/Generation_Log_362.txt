@@ -1,0 +1,62 @@
+Generation 362
+
+Population average fitness: 1178.6452795833
+Population average modified fitness: 2014.9704286838
+Mean adjusted fitness: 258.30842384814
+Species 1095 sum adjusted fitnesses: 2224.15824306
+Species 1103 sum adjusted fitnesses: 1306.2251001517
+Species 1109 sum adjusted fitnesses: 2273.3067011784
+Species 1114 sum adjusted fitnesses: 1847.6059036382
+Species 1116 sum adjusted fitnesses: 2007.8121169091
+Species 1119 sum adjusted fitnesses: 1997.2788127973
+Species 1134 sum adjusted fitnesses: 3446.8916473756
+Species 1135 sum adjusted fitnesses: 1465.5992005658
+Species 1136 sum adjusted fitnesses: 2829.2974870882
+Species 1139 sum adjusted fitnesses: 2340.2895212542
+Species 1141 sum adjusted fitnesses: 2141.6522871286
+Species 1142 sum adjusted fitnesses: 1897.9072271129
+Species 1143 sum adjusted fitnesses: 1204.7516926147
+Species 1147 sum adjusted fitnesses: 1945.2650602073
+Species 1148 sum adjusted fitnesses: 1774.6114108714
+Species 1150 sum adjusted fitnesses: 2016.3146767382
+Species 1153 sum adjusted fitnesses: 1929.108842632
+Species 1156 sum adjusted fitnesses: 1748.9688506965
+Species 1160 sum adjusted fitnesses: 3020.0777194188
+Species 1161 sum adjusted fitnesses: 2879.1883076802
+Species 1162 sum adjusted fitnesses: 3445.9993207712
+Species 1163 sum adjusted fitnesses: 997.66115464311
+Species 1165 sum adjusted fitnesses: 2571.764039926
+Species 1168 sum adjusted fitnesses: 39.950897745072
+Species 1169 sum adjusted fitnesses: 2309.9985474231
+Staleness: 20
+Population stale - extinction event
+Species 1095 size: 11 -> 64
+Species 1103 size: 8 -> 0
+Species 1109 size: 8 -> 0
+Species 1114 size: 7 -> 0
+Species 1116 size: 10 -> 0
+Species 1119 size: 10 -> 0
+Species 1134 size: 1 -> 68
+Species 1135 size: 16 -> 0
+Species 1136 size: 7 -> 0
+Species 1139 size: 10 -> 0
+Species 1141 size: 7 -> 0
+Species 1142 size: 24 -> 0
+Species 1143 size: 9 -> 0
+Species 1147 size: 9 -> 0
+Species 1148 size: 4 -> 0
+Species 1150 size: 9 -> 0
+Species 1153 size: 9 -> 0
+Species 1156 size: 3 -> 0
+Species 1160 size: 8 -> 0
+Species 1161 size: 12 -> 0
+Species 1162 size: 4 -> 68
+Species 1163 size: 8 -> 0
+Species 1165 size: 1 -> 0
+Species 1168 size: 2 -> 0
+Species 1169 size: 3 -> 0
+Species: 1162 creates subspecies 1170
+Species: 1162 creates subspecies 1171
+Species: 1162 creates subspecies 1172
+Species: 1162 creates subspecies 1173
+Number of species: 25 -> 8

@@ -1,0 +1,61 @@
+Generation 10
+
+Population average fitness: 100.52628539683
+Population average modified fitness: 2.0426148267683
+Mean adjusted fitness: 0.1958330929931
+Species 1 sum adjusted fitnesses: 4.2601428593514
+Species 2 sum adjusted fitnesses: 1.0054289473794
+Species 3 sum adjusted fitnesses: 1.5677018416143
+Species 4 sum adjusted fitnesses: 2.2459533775615
+Species 5 sum adjusted fitnesses: 1
+Species 6 sum adjusted fitnesses: 1.0023265912019
+Species 7 sum adjusted fitnesses: 1.8487044912508
+Species 8 sum adjusted fitnesses: 1.0031021833328
+Species 10 sum adjusted fitnesses: 1
+Species 11 sum adjusted fitnesses: 1.0054289828743
+Species 12 sum adjusted fitnesses: 1.511395453832
+Species 13 sum adjusted fitnesses: 2.6925851347799
+Species 14 sum adjusted fitnesses: 1.6367354194179
+Species 15 sum adjusted fitnesses: 1
+Species 16 sum adjusted fitnesses: 2.4507194783256
+Species 17 sum adjusted fitnesses: 1.8476233918256
+Species 18 sum adjusted fitnesses: 1.0046530898083
+Species 19 sum adjusted fitnesses: 1.0043431041982
+Species 20 sum adjusted fitnesses: 2.6919950949792
+Species 21 sum adjusted fitnesses: 1
+Species 22 sum adjusted fitnesses: 2.6925323840379
+Species 23 sum adjusted fitnesses: 1.0027143888106
+Species 24 sum adjusted fitnesses: 2.6925323840379
+Staleness: 3
+Species 1 size: 27 -> 23
+Species 2 size: 7 -> 5
+Species 3 size: 9 -> 8
+Species 4 size: 53 -> 11
+Species 5 size: 6 -> 5
+Species 6 size: 7 -> 5
+Species 7 size: 14 -> 9
+Species 8 size: 7 -> 5
+Species 10 size: 7 -> 5
+Species 11 size: 8 -> 5
+Species 12 size: 10 -> 8
+Species 13 size: 3 -> 14
+Species 14 size: 8 -> 8
+Species 15 size: 3 -> 5
+Species 16 size: 7 -> 13
+Species 17 size: 4 -> 9
+Species 18 size: 7 -> 5
+Species 19 size: 5 -> 5
+Species 20 size: 1 -> 14
+Species 21 size: 1 -> 5
+Species 22 size: 1 -> 14
+Species 23 size: 2 -> 5
+Species 24 size: 3 -> 14
+Species: 2 creates subspecies 25
+Species: 2 creates subspecies 26
+Species: 4 creates subspecies 27
+Species: 4 creates subspecies 28
+Species: 16 creates subspecies 29
+Species: 16 creates subspecies 30
+Species: 17 creates subspecies 31
+Species: 19 creates subspecies 32
+Number of species: 23 -> 31

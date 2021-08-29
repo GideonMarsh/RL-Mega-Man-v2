@@ -1,0 +1,55 @@
+Generation 201
+
+New highest fitness: 2571.7706716719 (species 638)
+Population average fitness: 1076.8105421032
+Population average modified fitness: 1171.1477072497
+Mean adjusted fitness: 133.6583472226
+Species 126 sum adjusted fitnesses: 1191.1988086082
+Species 468 sum adjusted fitnesses: 1169.8409161499
+Species 632 sum adjusted fitnesses: 1785.4162496486
+Species 634 sum adjusted fitnesses: 1599.7950351433
+Species 636 sum adjusted fitnesses: 2571.3353238406
+Species 638 sum adjusted fitnesses: 1567.1616757293
+Species 639 sum adjusted fitnesses: 69.683379515928
+Species 644 sum adjusted fitnesses: 829.64609629099
+Species 645 sum adjusted fitnesses: 356.1152102075
+Species 647 sum adjusted fitnesses: 1090.8002657478
+Species 659 sum adjusted fitnesses: 962.15395295923
+Species 666 sum adjusted fitnesses: 1202.362344627
+Species 667 sum adjusted fitnesses: 1350.4233597375
+Species 669 sum adjusted fitnesses: 1107.8839895641
+Species 672 sum adjusted fitnesses: 1785.4161601263
+Species 673 sum adjusted fitnesses: 1548.6750152041
+Species 677 sum adjusted fitnesses: 815.60253093629
+Species 679 sum adjusted fitnesses: 1209.9486666343
+Species 680 sum adjusted fitnesses: 989.63594632516
+Species 682 sum adjusted fitnesses: 1785.4166972601
+Species 683 sum adjusted fitnesses: 103.37927419975
+Species 684 sum adjusted fitnesses: 1038.7862261503
+Species 685 sum adjusted fitnesses: 600.99231991378
+Staleness: 1
+Species 126 size: 6 -> 9
+Species 468 size: 14 -> 9
+Species 632 size: 6 -> 13
+Species 634 size: 9 -> 12
+Species 636 size: 2 -> 20
+Species 638 size: 20 -> 12
+Species 639 size: 4 -> 1
+Species 644 size: 10 -> 6
+Species 645 size: 7 -> 3
+Species 647 size: 15 -> 8
+Species 659 size: 2 -> 7
+Species 666 size: 9 -> 9
+Species 667 size: 10 -> 10
+Species 669 size: 26 -> 8
+Species 672 size: 1 -> 13
+Species 673 size: 11 -> 12
+Species 677 size: 11 -> 6
+Species 679 size: 15 -> 9
+Species 680 size: 11 -> 7
+Species 682 size: 2 -> 13
+Species 683 size: 1 -> 1
+Species 684 size: 3 -> 8
+Species 685 size: 5 -> 4
+Species: 644 creates subspecies 686
+Number of species: 23 -> 22

@@ -1,0 +1,34 @@
+Generation 369
+
+Population average fitness: 1216.5012273214
+Population average modified fitness: 2218.5841291347
+Mean adjusted fitness: 189.1462585263
+Species 1095 sum adjusted fitnesses: 2718.6590121176
+Species 1134 sum adjusted fitnesses: 3446.9014246348
+Species 1142 sum adjusted fitnesses: 3446.8916473756
+Species 1162 sum adjusted fitnesses: 3446.4366651476
+Species 1170 sum adjusted fitnesses: 3446.4784353893
+Species 1171 sum adjusted fitnesses: 2066.2332300071
+Species 1173 sum adjusted fitnesses: 3154.629513033
+Species 1175 sum adjusted fitnesses: 2196.6094287358
+Species 1176 sum adjusted fitnesses: 3445.873482864
+Species 1177 sum adjusted fitnesses: 1358.4716472769
+Species 1178 sum adjusted fitnesses: 3064.9318058517
+Species 1181 sum adjusted fitnesses: 3445.873482864
+Species 1182 sum adjusted fitnesses: 2591.261929962
+Staleness: 7
+Species 1095 size: 15 -> 14
+Species 1134 size: 1 -> 19
+Species 1142 size: 2 -> 18
+Species 1162 size: 1 -> 18
+Species 1170 size: 1 -> 18
+Species 1171 size: 77 -> 11
+Species 1173 size: 3 -> 17
+Species 1175 size: 54 -> 12
+Species 1176 size: 1 -> 18
+Species 1177 size: 22 -> 7
+Species 1178 size: 10 -> 16
+Species 1181 size: 1 -> 18
+Species 1182 size: 12 -> 14
+Species: 1178 creates subspecies 1183
+Number of species: 13 -> 14

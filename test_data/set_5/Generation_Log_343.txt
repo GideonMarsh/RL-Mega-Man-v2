@@ -1,0 +1,54 @@
+Generation 343
+
+New highest fitness: 3460.4370864262 (species 1095)
+Population average fitness: 1182.6645316468
+Population average modified fitness: 2125.2185057193
+Mean adjusted fitness: 261.02466431884
+Species 1037 sum adjusted fitnesses: 3459.9803162296
+Species 1047 sum adjusted fitnesses: 2346.7037702032
+Species 1070 sum adjusted fitnesses: 3459.9803162296
+Species 1075 sum adjusted fitnesses: 3445.8435675367
+Species 1076 sum adjusted fitnesses: 2066.8548358107
+Species 1077 sum adjusted fitnesses: 3358.5843633298
+Species 1081 sum adjusted fitnesses: 2380.0451930145
+Species 1082 sum adjusted fitnesses: 1792.0206645922
+Species 1087 sum adjusted fitnesses: 1747.3994811638
+Species 1090 sum adjusted fitnesses: 1814.59012456
+Species 1091 sum adjusted fitnesses: 1684.9667270674
+Species 1093 sum adjusted fitnesses: 3445.3901303704
+Species 1095 sum adjusted fitnesses: 2268.2415214706
+Species 1097 sum adjusted fitnesses: 2571.764039926
+Species 1098 sum adjusted fitnesses: 1918.4417627035
+Species 1099 sum adjusted fitnesses: 1172.0882115912
+Species 1100 sum adjusted fitnesses: 2571.764039926
+Species 1101 sum adjusted fitnesses: 2983.9762493137
+Species 1102 sum adjusted fitnesses: 2571.764039926
+Species 1103 sum adjusted fitnesses: 2571.764039926
+Species 1104 sum adjusted fitnesses: 2571.764039926
+Species 1105 sum adjusted fitnesses: 1.0054289504659
+Staleness: 1
+Species 1037 size: 1 -> 13
+Species 1047 size: 28 -> 9
+Species 1070 size: 1 -> 13
+Species 1075 size: 1 -> 13
+Species 1076 size: 25 -> 8
+Species 1077 size: 10 -> 13
+Species 1081 size: 16 -> 9
+Species 1082 size: 13 -> 7
+Species 1087 size: 16 -> 7
+Species 1090 size: 24 -> 7
+Species 1091 size: 17 -> 6
+Species 1093 size: 1 -> 13
+Species 1095 size: 24 -> 9
+Species 1097 size: 1 -> 10
+Species 1098 size: 13 -> 7
+Species 1099 size: 3 -> 4
+Species 1100 size: 1 -> 10
+Species 1101 size: 1 -> 11
+Species 1102 size: 1 -> 10
+Species 1103 size: 1 -> 10
+Species 1104 size: 1 -> 10
+Species 1105 size: 1 -> 1
+Species: 1076 creates subspecies 1106
+Species: 1076 creates subspecies 1107
+Number of species: 22 -> 22

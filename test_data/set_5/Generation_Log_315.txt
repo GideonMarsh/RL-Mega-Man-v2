@@ -1,0 +1,33 @@
+Generation 315
+
+Population average fitness: 1165.375930873
+Population average modified fitness: 1913.6940397081
+Mean adjusted fitness: 104.29936891172
+Species 887 sum adjusted fitnesses: 1596.959344184
+Species 952 sum adjusted fitnesses: 2571.764039926
+Species 1027 sum adjusted fitnesses: 2571.764039926
+Species 1037 sum adjusted fitnesses: 3459.9803162296
+Species 1040 sum adjusted fitnesses: 1804.8052033694
+Species 1041 sum adjusted fitnesses: 1454.0307215462
+Species 1047 sum adjusted fitnesses: 2101.3099321837
+Species 1052 sum adjusted fitnesses: 2079.6763848899
+Species 1053 sum adjusted fitnesses: 1373.0605053231
+Species 1054 sum adjusted fitnesses: 2.6925010242841
+Species 1055 sum adjusted fitnesses: 103.37774803309
+Species 1056 sum adjusted fitnesses: 1740.4530457088
+Staleness: 6
+Species 887 size: 20 -> 15
+Species 952 size: 2 -> 25
+Species 1027 size: 1 -> 25
+Species 1037 size: 2 -> 33
+Species 1040 size: 56 -> 17
+Species 1041 size: 6 -> 14
+Species 1047 size: 81 -> 20
+Species 1052 size: 20 -> 20
+Species 1053 size: 8 -> 13
+Species 1054 size: 1 -> 0
+Species 1055 size: 1 -> 1
+Species 1056 size: 2 -> 17
+Species: 1052 creates subspecies 1057
+Species: 1056 creates subspecies 1058
+Number of species: 12 -> 13

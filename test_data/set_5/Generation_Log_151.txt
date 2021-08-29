@@ -1,0 +1,63 @@
+Generation 151
+
+Population average fitness: 1052.4294152381
+Population average modified fitness: 808.94912873189
+Mean adjusted fitness: 83.65066338732
+Species 126 sum adjusted fitnesses: 1785.4161601263
+Species 207 sum adjusted fitnesses: 1785.4161601263
+Species 409 sum adjusted fitnesses: 331.87687694029
+Species 416 sum adjusted fitnesses: 4.5267455245625
+Species 417 sum adjusted fitnesses: 194.21277072818
+Species 418 sum adjusted fitnesses: 944.66908834229
+Species 448 sum adjusted fitnesses: 813.88993997201
+Species 468 sum adjusted fitnesses: 1785.4161601263
+Species 494 sum adjusted fitnesses: 250.00386621239
+Species 512 sum adjusted fitnesses: 277.72281905172
+Species 516 sum adjusted fitnesses: 39.949162319549
+Species 523 sum adjusted fitnesses: 574.9907925998
+Species 524 sum adjusted fitnesses: 944.66791094677
+Species 528 sum adjusted fitnesses: 629.20495093453
+Species 529 sum adjusted fitnesses: 1144.2389070025
+Species 530 sum adjusted fitnesses: 160.13857505092
+Species 532 sum adjusted fitnesses: 640.5339801688
+Species 540 sum adjusted fitnesses: 616.89529866684
+Species 541 sum adjusted fitnesses: 573.34829474611
+Species 543 sum adjusted fitnesses: 604.10387919605
+Species 544 sum adjusted fitnesses: 702.15337171303
+Species 547 sum adjusted fitnesses: 688.92470834627
+Species 548 sum adjusted fitnesses: 260.95906692489
+Species 549 sum adjusted fitnesses: 944.66908834229
+Species 550 sum adjusted fitnesses: 32.204103355464
+Staleness: 3
+Species 126 size: 1 -> 21
+Species 207 size: 1 -> 21
+Species 409 size: 3 -> 4
+Species 416 size: 1 -> 1
+Species 417 size: 3 -> 2
+Species 418 size: 1 -> 11
+Species 448 size: 7 -> 10
+Species 468 size: 1 -> 21
+Species 494 size: 2 -> 3
+Species 512 size: 4 -> 3
+Species 516 size: 1 -> 1
+Species 523 size: 5 -> 7
+Species 524 size: 6 -> 11
+Species 528 size: 8 -> 8
+Species 529 size: 72 -> 14
+Species 530 size: 3 -> 2
+Species 532 size: 3 -> 8
+Species 540 size: 27 -> 7
+Species 541 size: 12 -> 7
+Species 543 size: 18 -> 7
+Species 544 size: 11 -> 8
+Species 547 size: 7 -> 8
+Species 548 size: 1 -> 3
+Species 549 size: 1 -> 11
+Species 550 size: 1 -> 1
+Species: 524 creates subspecies 551
+Species: 524 creates subspecies 552
+Species: 541 creates subspecies 553
+Species: 547 creates subspecies 554
+Species: 547 creates subspecies 555
+Species: 547 creates subspecies 556
+Number of species: 25 -> 28

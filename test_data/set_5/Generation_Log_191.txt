@@ -1,0 +1,53 @@
+Generation 191
+
+Population average fitness: 1099.9625364881
+Population average modified fitness: 1085.9827988913
+Mean adjusted fitness: 95.924278944675
+Species 126 sum adjusted fitnesses: 1785.4166972601
+Species 468 sum adjusted fitnesses: 1135.0363258389
+Species 529 sum adjusted fitnesses: 1785.4166972601
+Species 623 sum adjusted fitnesses: 1125.2378334203
+Species 631 sum adjusted fitnesses: 1785.4166972601
+Species 632 sum adjusted fitnesses: 1092.3482073241
+Species 634 sum adjusted fitnesses: 790.4786460337
+Species 636 sum adjusted fitnesses: 1156.9990975857
+Species 638 sum adjusted fitnesses: 1218.0642008931
+Species 639 sum adjusted fitnesses: 930.9647555869
+Species 641 sum adjusted fitnesses: 116.25298465569
+Species 644 sum adjusted fitnesses: 691.42284663778
+Species 645 sum adjusted fitnesses: 840.17621382033
+Species 647 sum adjusted fitnesses: 1201.9676813006
+Species 648 sum adjusted fitnesses: 2.6910792837339
+Species 652 sum adjusted fitnesses: 1439.9823203534
+Species 654 sum adjusted fitnesses: 756.05664277159
+Species 655 sum adjusted fitnesses: 2.6924587296966
+Species 656 sum adjusted fitnesses: 4.5265565232737
+Species 657 sum adjusted fitnesses: 39.640219419711
+Species 658 sum adjusted fitnesses: 1
+Species 659 sum adjusted fitnesses: 1283.0676269762
+Staleness: 3
+Species 126 size: 1 -> 19
+Species 468 size: 53 -> 12
+Species 529 size: 2 -> 19
+Species 623 size: 8 -> 12
+Species 631 size: 1 -> 19
+Species 632 size: 14 -> 11
+Species 634 size: 5 -> 8
+Species 636 size: 16 -> 12
+Species 638 size: 9 -> 13
+Species 639 size: 11 -> 10
+Species 641 size: 1 -> 0
+Species 644 size: 10 -> 7
+Species 645 size: 11 -> 9
+Species 647 size: 26 -> 13
+Species 648 size: 1 -> 0
+Species 652 size: 15 -> 15
+Species 654 size: 5 -> 8
+Species 655 size: 1 -> 0
+Species 656 size: 1 -> 0
+Species 657 size: 1 -> 0
+Species 658 size: 1 -> 0
+Species 659 size: 7 -> 13
+Species: 654 creates subspecies 660
+Species: 623 creates subspecies 661
+Number of species: 22 -> 18

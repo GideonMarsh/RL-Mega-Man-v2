@@ -1,0 +1,54 @@
+Generation 202
+
+Population average fitness: 1082.8993169841
+Population average modified fitness: 1163.3133817976
+Mean adjusted fitness: 127.38077931088
+Species 126 sum adjusted fitnesses: 905.10263313016
+Species 468 sum adjusted fitnesses: 1313.1751338787
+Species 632 sum adjusted fitnesses: 1115.3255464631
+Species 634 sum adjusted fitnesses: 1114.973593509
+Species 636 sum adjusted fitnesses: 1719.8129069301
+Species 638 sum adjusted fitnesses: 1548.2003154886
+Species 639 sum adjusted fitnesses: 664.62343737262
+Species 644 sum adjusted fitnesses: 1845.9963782251
+Species 645 sum adjusted fitnesses: 391.84905508157
+Species 647 sum adjusted fitnesses: 1566.3269211377
+Species 666 sum adjusted fitnesses: 1203.7032753814
+Species 667 sum adjusted fitnesses: 662.31192112932
+Species 669 sum adjusted fitnesses: 1011.2538296094
+Species 672 sum adjusted fitnesses: 894.05426218769
+Species 673 sum adjusted fitnesses: 1202.8232424186
+Species 677 sum adjusted fitnesses: 1676.1534838268
+Species 679 sum adjusted fitnesses: 912.52818977299
+Species 680 sum adjusted fitnesses: 808.78145899199
+Species 682 sum adjusted fitnesses: 1785.4166972601
+Species 684 sum adjusted fitnesses: 1155.7120976433
+Species 685 sum adjusted fitnesses: 748.48988998209
+Species 686 sum adjusted fitnesses: 1229.5415927552
+Staleness: 2
+Species 126 size: 6 -> 7
+Species 468 size: 12 -> 10
+Species 632 size: 32 -> 9
+Species 634 size: 13 -> 9
+Species 636 size: 6 -> 14
+Species 638 size: 26 -> 12
+Species 639 size: 5 -> 5
+Species 644 size: 2 -> 15
+Species 645 size: 3 -> 3
+Species 647 size: 8 -> 12
+Species 666 size: 9 -> 9
+Species 667 size: 10 -> 5
+Species 669 size: 19 -> 8
+Species 672 size: 2 -> 7
+Species 673 size: 12 -> 9
+Species 677 size: 6 -> 13
+Species 679 size: 2 -> 7
+Species 680 size: 7 -> 6
+Species 682 size: 1 -> 15
+Species 684 size: 4 -> 9
+Species 685 size: 11 -> 6
+Species 686 size: 4 -> 10
+Species: 647 creates subspecies 687
+Species: 667 creates subspecies 688
+Species: 468 creates subspecies 689
+Number of species: 22 -> 23

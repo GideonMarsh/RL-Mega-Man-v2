@@ -81,7 +81,7 @@ while true do
 		inControl = true
 	end
 	--do neural network calculation for this frame
-	local inputs = getInputValues()
+	local inputs = getRelativeInputValues()
 	inputs[INPUT_NODES - 11] = -128
 	inputs[INPUT_NODES - 10] = 127
 	inputs[INPUT_NODES - 9] = ((frameCounter % 2) * 255) - 128

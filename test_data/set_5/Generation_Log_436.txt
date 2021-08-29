@@ -1,0 +1,41 @@
+Generation 436
+
+Population average fitness: 1178.3228742262
+Population average modified fitness: 2032.3654452264
+Mean adjusted fitness: 153.11487283638
+Species 1247 sum adjusted fitnesses: 2784.3378720353
+Species 1294 sum adjusted fitnesses: 2495.4546489569
+Species 1408 sum adjusted fitnesses: 1342.274984476
+Species 1426 sum adjusted fitnesses: 2271.9702023045
+Species 1427 sum adjusted fitnesses: 724.09995626631
+Species 1429 sum adjusted fitnesses: 3445.8235747647
+Species 1430 sum adjusted fitnesses: 2602.2189402607
+Species 1431 sum adjusted fitnesses: 1457.3105942978
+Species 1432 sum adjusted fitnesses: 1445.8842080035
+Species 1434 sum adjusted fitnesses: 1895.2657102066
+Species 1436 sum adjusted fitnesses: 1854.2471629663
+Species 1437 sum adjusted fitnesses: 1296.2699407824
+Species 1438 sum adjusted fitnesses: 116.25314703576
+Species 1439 sum adjusted fitnesses: 3445.7818124597
+Species 1440 sum adjusted fitnesses: 3445.7818124597
+Staleness: 6
+Species 1247 size: 19 -> 18
+Species 1294 size: 48 -> 16
+Species 1408 size: 15 -> 9
+Species 1426 size: 21 -> 15
+Species 1427 size: 7 -> 5
+Species 1429 size: 1 -> 23
+Species 1430 size: 8 -> 17
+Species 1431 size: 10 -> 10
+Species 1432 size: 10 -> 9
+Species 1434 size: 34 -> 12
+Species 1436 size: 9 -> 12
+Species 1437 size: 15 -> 8
+Species 1438 size: 1 -> 0
+Species 1439 size: 1 -> 23
+Species 1440 size: 1 -> 23
+Species: 1437 creates subspecies 1441
+Species: 1434 creates subspecies 1442
+Species: 1434 creates subspecies 1443
+Species: 1432 creates subspecies 1444
+Number of species: 15 -> 17

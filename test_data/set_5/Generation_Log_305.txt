@@ -1,0 +1,25 @@
+Generation 305
+
+New highest fitness: 3446.3850455305 (species 789)
+Population average fitness: 950.33241059524
+Population average modified fitness: 1231.7008319788
+Mean adjusted fitness: 24.165692745558
+Species 789 sum adjusted fitnesses: 1194.5797047196
+Species 887 sum adjusted fitnesses: 1444.4588279616
+Species 952 sum adjusted fitnesses: 1221.8201425227
+Species 1027 sum adjusted fitnesses: 843.50083647173
+Species 1035 sum adjusted fitnesses: 2.6928280631402
+Species 1036 sum adjusted fitnesses: 22.7084568968
+Species 1037 sum adjusted fitnesses: 103.37775247605
+Staleness: 1
+Species 789 size: 65 -> 49
+Species 887 size: 65 -> 60
+Species 952 size: 48 -> 51
+Species 1027 size: 19 -> 35
+Species 1035 size: 1 -> 0
+Species 1036 size: 1 -> 1
+Species 1037 size: 1 -> 4
+Species: 1027 creates subspecies 1038
+Species: 1027 creates subspecies 1039
+Species: 1027 creates subspecies 1040
+Number of species: 7 -> 9

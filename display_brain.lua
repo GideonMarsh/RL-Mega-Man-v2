@@ -37,7 +37,7 @@ function drawBrain(nodes, connections, brain)
 		end
 		local activeInputs = {}
 		for i in pairs(connections) do
-			if i ~= "length" then
+			if i ~= "length" and connections[i].enabled then
 				if connections[i].inNode <= INPUT_NODES then activeInputs[connections[i].inNode] = true end
 				local c1 = nodePositions[connections[i].inNode]
 				local c2 = nodePositions[connections[i].outNode]
@@ -47,18 +47,18 @@ function drawBrain(nodes, connections, brain)
 					error(connections[i].inNode .. " has no position")
 				end
 				if connections[i].inNode > INPUT_NODES + OUTPUT_NODES then
-					c1.x = 0.75 * c1.x + 0.25 * c2.x
+					c1.x = 0.6 * c1.x + 0.4 * c2.x
 					if c1.x >= c2.x then c1.x = c1.x - 30 end
 					if c1.x < (pixelsInRow + 2) then c1.x = (pixelsInRow + 2) end
 					if c1.x > (SCREEN_X_MAX - 13) then c1.x = (SCREEN_X_MAX - 13) end
-					c1.y = 0.75 * c1.y + 0.25 * c2.y
+					c1.y = 0.6 * c1.y + 0.4 * c2.y
 				end
 				if connections[i].outNode > INPUT_NODES + OUTPUT_NODES then
-					c2.x = 0.25 * c1.x + 0.75 * c2.x
+					c2.x = 0.4 * c1.x + 0.6 * c2.x
 					if c1.x >= c2.x then c2.x = c2.x + 30 end
 					if c2.x < (pixelsInRow + 2) then c2.x = (pixelsInRow + 2) end
 					if c2.x > (SCREEN_X_MAX - 13) then c2.x = (SCREEN_X_MAX - 13) end
-					c2.y = 0.25 * c1.y + 0.75 * c2.y
+					c2.y = 0.4 * c1.y + 0.6 * c2.y
 				end
 			end
 		end

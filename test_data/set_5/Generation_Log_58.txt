@@ -1,0 +1,99 @@
+Generation 58
+
+Population average fitness: 589.28471293651
+Population average modified fitness: 37.439909434799
+Mean adjusted fitness: 6.0424958322087
+Species 1 sum adjusted fitnesses: 29.463927456776
+Species 124 sum adjusted fitnesses: 30.187422647014
+Species 126 sum adjusted fitnesses: 84.240391451788
+Species 136 sum adjusted fitnesses: 14.760366327767
+Species 138 sum adjusted fitnesses: 34.046897126612
+Species 149 sum adjusted fitnesses: 22.144349456155
+Species 152 sum adjusted fitnesses: 32.703672894626
+Species 155 sum adjusted fitnesses: 22.704302965071
+Species 172 sum adjusted fitnesses: 32.411291255109
+Species 175 sum adjusted fitnesses: 30.63634292876
+Species 177 sum adjusted fitnesses: 18.626014924374
+Species 179 sum adjusted fitnesses: 14.752368782511
+Species 181 sum adjusted fitnesses: 25.200872670646
+Species 182 sum adjusted fitnesses: 25.198692246941
+Species 184 sum adjusted fitnesses: 29.160355630746
+Species 191 sum adjusted fitnesses: 12.74335225512
+Species 192 sum adjusted fitnesses: 20.461251051008
+Species 194 sum adjusted fitnesses: 20.738838440483
+Species 196 sum adjusted fitnesses: 39.957380050392
+Species 198 sum adjusted fitnesses: 32.703661509807
+Species 206 sum adjusted fitnesses: 34.815661339815
+Species 207 sum adjusted fitnesses: 103.77591081757
+Species 208 sum adjusted fitnesses: 32.410535106583
+Species 216 sum adjusted fitnesses: 36.81672272969
+Species 217 sum adjusted fitnesses: 27.763608702091
+Species 219 sum adjusted fitnesses: 18.175436864404
+Species 223 sum adjusted fitnesses: 22.208315844048
+Species 224 sum adjusted fitnesses: 25.198329664208
+Species 225 sum adjusted fitnesses: 26.722724551468
+Species 229 sum adjusted fitnesses: 28.216325428369
+Species 233 sum adjusted fitnesses: 2.692396243697
+Species 234 sum adjusted fitnesses: 19.179574028763
+Species 237 sum adjusted fitnesses: 29.932940082104
+Species 238 sum adjusted fitnesses: 4.5263561496712
+Species 242 sum adjusted fitnesses: 30.203394904872
+Species 243 sum adjusted fitnesses: 32.709364851021
+Species 244 sum adjusted fitnesses: 22.669206959094
+Species 245 sum adjusted fitnesses: 38.865836843197
+Species 246 sum adjusted fitnesses: 32.410535106583
+Species 247 sum adjusted fitnesses: 1
+Species 248 sum adjusted fitnesses: 30.187420052232
+Species 249 sum adjusted fitnesses: 2.7657606387796
+Species 250 sum adjusted fitnesses: 32.411057461774
+Staleness: 1
+Species 1 size: 3 -> 5
+Species 124 size: 3 -> 5
+Species 126 size: 34 -> 14
+Species 136 size: 1 -> 2
+Species 138 size: 6 -> 6
+Species 149 size: 3 -> 4
+Species 152 size: 4 -> 5
+Species 155 size: 3 -> 4
+Species 172 size: 5 -> 5
+Species 175 size: 4 -> 5
+Species 177 size: 2 -> 3
+Species 179 size: 1 -> 2
+Species 181 size: 4 -> 4
+Species 182 size: 4 -> 4
+Species 184 size: 5 -> 5
+Species 191 size: 3 -> 2
+Species 192 size: 5 -> 3
+Species 194 size: 5 -> 3
+Species 196 size: 5 -> 7
+Species 198 size: 5 -> 5
+Species 206 size: 6 -> 6
+Species 207 size: 1 -> 18
+Species 208 size: 4 -> 5
+Species 216 size: 4 -> 6
+Species 217 size: 6 -> 5
+Species 219 size: 9 -> 3
+Species 223 size: 3 -> 4
+Species 224 size: 4 -> 4
+Species 225 size: 6 -> 4
+Species 229 size: 4 -> 5
+Species 233 size: 1 -> 1
+Species 234 size: 6 -> 3
+Species 237 size: 7 -> 5
+Species 238 size: 1 -> 1
+Species 242 size: 8 -> 5
+Species 243 size: 6 -> 5
+Species 244 size: 3 -> 4
+Species 245 size: 7 -> 6
+Species 246 size: 4 -> 5
+Species 247 size: 1 -> 1
+Species 248 size: 1 -> 5
+Species 249 size: 2 -> 1
+Species 250 size: 1 -> 5
+Species: 242 creates subspecies 251
+Species: 182 creates subspecies 252
+Species: 216 creates subspecies 253
+Species: 219 creates subspecies 254
+Species: 196 creates subspecies 255
+Species: 172 creates subspecies 256
+Number of species: 43 -> 47
