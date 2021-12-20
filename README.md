@@ -44,10 +44,8 @@ The fitness of each brain is calculated primarily from the distance progressed t
 
 As of right now, the algorithm is capable of progressing through the early parts of a level, learning to overcome each obstacle at a steady rate. However, the speed at which the algorithm learns to overcome obstacles decreases dramatically around 25% through the level. It is unclear exactly why this happens, but some theories I have are:
 - There is some unseen bug or inefficiency in the current implementation that when found will solve the issue.
-- The speed at which the population "learns" is inversely correlated to the complexity of each brain. The further it progresses, the slower it will continue to progress. The slowdown is expected behavior. 
+- The speed at which the population "learns" is inversely correlated to the complexity of each brain. The further it progresses, the slower it will continue to progress. The slowdown is expected behavior, and exponentially longer times are required for continued progress.
 - Due to my implementation of the algorithm, the speed at which it overcomes the earlier obstacles is exaggerated, and the eventual slowdown is the actual baseline progression speed. 
-- I may have accidentally programmed the script in such a way that favors early progression at the cost of later progression. This might possibly be because it is much easier and faster to test the early parts of the genetic algorithm.
-- The speed of the learning process is highly random for each new population, and I keep inadvertantly skipping the populations that progress slowly at the beginning.
+- I may have accidentally programmed the script in such a way that favors early progression at the cost of later progression. This might possibly be because it is much easier and faster to test the early parts of the genetic algorithm, or because I'm over-engineering the code in an attempt to overcome this problem.
+- The speed of the learning process is highly random for each new population, and I keep inadvertantly skipping the populations that progress slowly at the beginning or progress faster in the middle.
 - The levels are too long for the algorithm to work as expected. This is a limitation of the algorithm.
-
-Regardless of why this is happening, this can be overcome by letting the script run for exponentially longer times. 
